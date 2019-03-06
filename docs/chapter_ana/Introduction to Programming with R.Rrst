@@ -1,4 +1,11 @@
+.. {r setup, echo = FALSE, results = 'hide'}
+options(width = 75)
+library(knitr)
+render_rst(strict=TRUE)
 
+# global chunk options
+opts_chunk$set(fig.width=5, fig.height=5)
+.. ..
 
 Introduction to Programming with R
 ##################################
@@ -132,39 +139,9 @@ There's a few things to pick apart here, so let's start at the top:
 - :code:`ABSOLUTELY NO WARRANTY`: this is the big reason some companies are still hesitant to use R in high-stakes situations. If your results are wrong because there is an error somewhere in the R-package you are using to perform your analysis, there is no one you can (legally) blame, but yourself for not checking the code thoroughly enough. Now keep in mind, that this is very rare, because most researchers publishing R packages do not just throw any half-baked ideas on CRAN, because their reputations are also tied to their work. The idea is simply, if you want to be sure everything is correct, check for yourself.
 - :code:`how to cite R or R packages in publications`: this is the last point I want to highlight. Many people pour years of their lives into making the procedures work that you can then use for free. Please reward their work by citing them correctly, if your are using it. As a matter of fact, let us make this the first R command we perform:
 
-
-
-::
-
-    citation()
-
-
-
-::
-
-    ## 
-    ## To cite R in publications use:
-    ## 
-    ##   R Core Team (2018). R: A language and environment for
-    ##   statistical computing. R Foundation for Statistical Computing,
-    ##   Vienna, Austria. URL https://www.R-project.org/.
-    ## 
-    ## A BibTeX entry for LaTeX users is
-    ## 
-    ##   @Manual{,
-    ##     title = {R: A Language and Environment for Statistical Computing},
-    ##     author = {{R Core Team}},
-    ##     organization = {R Foundation for Statistical Computing},
-    ##     address = {Vienna, Austria},
-    ##     year = {2018},
-    ##     url = {https://www.R-project.org/},
-    ##   }
-    ## 
-    ## We have invested a lot of time and effort in creating R, please
-    ## cite it when using it for data analysis. See also
-    ## 'citation("pkgname")' for citing R packages.
-
-
+.. {r}
+citation()
+.. ..
 
 Using the :code:`citation()` function provides you with an overview and a BibTeX source for citing R. If your analysis was performed in R, please use this function to cite it correctly.
 
@@ -187,23 +164,15 @@ When you start up RStudio, the first thing you should do is to open a new R scri
 
 There are four basic panes in this window. In the top left you have the R script you just opened. This is the spot, where you can generate your code. Writing the code does not do anything at first until it is executed. You can run the R code either by clicking the Run-button (in the top right of this pane) or by using :kbd:`Ctrl+Enter`. For example, typing in :code:`3 + 4` and executing it will send the command (3 + 4) to the console (the pane on the bottom left). Here you should then have:
 
-
-
-::
-
-    3+4
-
-
+.. {r eval=FALSE}
+3+4
+.. ..
 
 as a mirror of what you executed and
 
-
-
-::
-
-    ## [1] 7
-
-
+.. {r echo=FALSE}
+3+4
+.. ..
 
 as the result. The layout will be a bit different from what you see on this website: your commands should be preceded by a prompt :code:`>` and, by default, be in blue, while the result should be in black. Throughout the sections of this volume dealing with R, results will always be preceded by the double hash: :code:`##`.
 
@@ -222,19 +191,15 @@ Commenting and basic functionality
 
 Use comments for everything. I can not stress this enough. Comments are your way of communicating to others and - most often the more important case - to your future self, what you are doing why. This goes beyond simple small comments and extends to structuring your code. RStudio does a good job of encouraging this, by allowing you to collapse entire sections of your code, if you are currently not interested in looking at it. For the most basic structure, I would recommend using the simple comment character :code:`#` for small comments and notes. For section titles I recommend beginning the title with :code:`####` and ending it with :code:`----`. RStudio will automatically recognize this as the section header, but even if you are using something else, this will help you keep your code organized and readable. Let's see how this works with some simple calculations in R:
 
+.. {r calculator, eval = FALSE}
+#### Simple calculations ----
 
-
-::
-
-    #### Simple calculations ----
-    
-    3 + 4   # Addition
-    3 - 4   # Subtraction
-    3 * 4   # Multiplication
-    3 / 4   # Division
-    3 ^ 4   # Powers
-
-
+3 + 4   # Addition
+3 - 4   # Subtraction
+3 * 4   # Multiplication
+3 / 4   # Division
+3 ^ 4   # Powers
+.. ..
 
 Here the section is titled "Simple calculations" and each type of calculation is described in a short comment. Now, this may be overkill, but you get the point.
 
@@ -242,68 +207,34 @@ As you can see, I have always left a space between the numbers and the operation
 
 Now, as we have seen before, executing the basic calculations in your code will result in you receiving a copy of the code you executed, as well as a numeric result in your console. Let's take the division example:
 
-
-
-::
-
-    3 / 4   # Division
-
-
-
-::
-
-    ## [1] 0.75
-
-
+.. {r}
+3 / 4   # Division
+.. ..
 
 Of course, numeric results are just one kind of result you can obtain from R. As you have seen above, we are often also interested in logical returns. In R, these work something like this:
 
+.. {r logicals, eval = FALSE}
+#### Logical relations ----
 
-
-::
-
-    #### Logical relations ----
-    
-    3 == 4   # Equal?
-    3 != 4   # Unequal?
-    3 > 4    # Greater than?
-    3 < 4    # Smaller than?
-    3 >= 4   # Greater or equal?
-    3 <= 4   # Smaller or equal?
-
-
+3 == 4   # Equal?
+3 != 4   # Unequal?
+3 > 4    # Greater than?
+3 < 4    # Smaller than?
+3 >= 4   # Greater or equal?
+3 <= 4   # Smaller or equal?
+.. ..
 
 The first one, as you should expect, returns
 
-
-
-::
-
-    3 == 4   # Equal?
-
-
-
-::
-
-    ## [1] FALSE
-
-
+.. {r}
+3 == 4   # Equal?
+.. ..
 
 and the second one returns
 
-
-
-::
-
-    3 != 4   # Unequal?
-
-
-
-::
-
-    ## [1] TRUE
-
-
+.. {r}
+3 != 4   # Unequal?
+.. ..
 
 Internally, :code:`TRUE` is coded as a 1, while :code:`FALSE` is coded as a 0. Besides making sense, this also results in a lot of nice properties, we will be making use of soon.
 
@@ -313,35 +244,15 @@ Functions and arguments
 
 What we have looked at so far as simple calculations and equality/inequality checks. These are somewhat special, because the deviate from the "normal way" of doing things in R. Normally, you use functions in R. Using the basic addition shown above, you would write:
 
-
-
-::
-
-    3 + 4 + 1 + 2
-
-
-
-::
-
-    ## [1] 10
-
-
+.. {r}
+3 + 4 + 1 + 2
+.. ..
 
 but the way more akin to how R works in all other instances is by using the :code:`sum` function.
 
-
-
-::
-
-    sum(3, 4, 1, 2)
-
-
-
-::
-
-    ## [1] 10
-
-
+.. {r}
+sum(3, 4, 1, 2)
+.. ..
 
 Now, from this simple example you can already derive the basics of how functions work in R. The general structure is always
 
@@ -351,84 +262,33 @@ Now, from this simple example you can already derive the basics of how functions
 
 As you can see, the name of a function is written first and all the arguments the function requires are passed to it in parentheses, separated by commas. The :code:`sum` function is special in a way, because it can basically take an infinite number of arguments. Let's look at a more prototypical function:
 
-
-
-::
-
-    log(100)
-
-
-
-::
-
-    ## [1] 4.60517
-
-
+.. {r}
+log(100)
+.. ..
 
 As you can see, this returns the natural logarithm of 100. However, what if I want a logarithm with a different base? Because we are using 100 as the example, the simplest logarithm would be of base 10:
 
-
-
-::
-
-    log(100, 10)
-
-
-
-::
-
-    ## [1] 2
-
-
+.. {r}
+log(100, 10)
+.. ..
 
 Let us untangle how this works: remember your school math: :math:`\log_{\text{base}} \text{argument} = \text{answer}`. So, the :code:`log` function takes the argument as its first argument and the base as its second argument. Now, because most people simply can not remember the correct order of all arguments for all functions, there is a second way of using functions:
 
-
-
-::
-
-    log(x = 100, base = 10)
-
-
-
-::
-
-    ## [1] 2
-
-
+.. {r}
+log(x = 100, base = 10)
+.. ..
 
 In this approach, you need to name the arguments, but are now free to provide them in any order you wish:
 
-
-
-::
-
-    log(base = 10, x = 100)
-
-
-
-::
-
-    ## [1] 2
-
-
+.. {r}
+log(base = 10, x = 100)
+.. ..
 
 How can you ever know the names and order of a function? There are a few different possibilities, the quickest one is probably:
 
-
-
-::
-
-    args(log)
-
-
-
-::
-
-    ## function (x, base = exp(1)) 
-    ## NULL
-
-
+.. {r}
+args(log)
+.. ..
 
 So what does this mean? The function :code:`log` has two possible arguments: :code:`x` and :code:`base`. However, what :code:`base = exp(1)` tells you, is that there is a default in place for the :code:`base`-argument. So, if you do not provide a value for this argument, the default is used. In this case :math:`e` is defined for the exponential function :code:`exp`, but not separately. So if you use the :code:`log`-function, :code:`exp(1)` is evaluated and passed to :code:`log` as an argument. This already shows you that functions can be nested in R: the :code:`exp`-function needs to be evaluated to provide an argument for :code:`log`, so it must be evaluated first. This leads to the same simple principle you find in equations, which can make complicated R code frustrating to read: nested functions are evaluated from the inside out. There are several ways to avoid this, which we will get to in bit.
 
@@ -440,13 +300,9 @@ While we used :code:`args` to get a quick overview of the arguments for the loga
 
 So, let's look at the help for the logarithm:
 
-
-
-::
-
-    help(log)
-
-
+.. {r, eval = FALSE}
+help(log)
+.. ..
 
 opens up the help file for the :code:`log` function. You can scroll through this help, but here is a short rundown of how basic layout of any R help file:
 
@@ -470,13 +326,9 @@ Apropos
 
 :code:`apropos` is function you can use instead of :code:`help`. Using :code:`help` requires you to know the exact, specific name of the function you need help with. Most of the time that is not the situation you need help in. Often the actual name of a function eludes you, which is where :code:`apropos` (or its short version :code:`??`) comes into play.
 
-
-
-::
-
-    apropos(logarithm)
-
-
+.. {r, eval = FALSE}
+apropos(logarithm)
+.. ..
 
 should open a list of some possible functions you could have meant. From here, you can navigate the help files of these functions.
 
@@ -484,27 +336,19 @@ should open a list of some possible functions you could have meant. From here, y
 Objects and the Workspace
 =========================
 
-Now we are really getting into the bread and butter of R. What we saw above - typing in a function and getting a result printed out - is less frequently of interest in R, than storing results of a function and using them again in some other fashion. It is also where R gains a leg-up on many of its competitors in the market of data analysis software. Storing results from one type of analysis and then using these as the data for a different type of analysis gives you the flexibility of doing whatever you want with R. Its implementation is also extremely intuitive, so let us take a look:
+Now we are really getting into the bread and butter of R. What we saw above - typing in a function and getting a result printed out - is less frequently of interest in R than storing results of a function and using them again in some other fashion. It is also where R gains a leg-up on many of its competitors in the market of data analysis software. Storing results from one type of analysis and then using these as the data for a different type of analysis gives you the flexibility of doing whatever you want with R. Its implementation is also extremely intuitive, so let us take a look:
 
-
-
-::
-
-    my_num <- sum(3, 4, 1, 2)
-
-
+.. {r}
+my_num <- sum(3, 4, 1, 2)
+.. ..
 
 As you can see, you did not get a result. The result of the :code:`sum` is simply stored in the object called :code:`my_num`. The arrow :code:`<-` assigns the result of the right side to whatever object is on the left side. This also works in reverse:
 
+.. {r}
+sum(3, 4, 1, 2) -> my_num
+.. ..
 
-
-::
-
-    sum(3, 4, 1, 2) -> my_num
-
-
-
-but the first version is much more common. 
+but the first version is much more common, because it allows you to see the objects you have created faster. One important thing that just happened, that I want to draw your attention to, is that there was no
 
 References
 **********
