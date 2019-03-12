@@ -36,4 +36,24 @@
   url    = {https://stackoverflow.blog/2017/10/10/impressive-growth-r/},
 }
 
+@Misc{Muenchen2019,
+  author = {Muenchen, Robert A.},
+  title  = {The Popularity of Data Science Software},
+  month  = {February},
+  year   = {2019},
+  note   = {[Online; accessed Mar 3, 2019]},
+  day    = {25},
+  url    = {http://r4stats.com/articles/popularity/},
+}
+
+@Article{Stroop1935,
+  author  = {Stroop, J. Ridley},
+  title   = {Studies of interference in serial verbal reactions},
+  journal = {Journal of Experimental Psychology},
+  year    = {1935},
+  volume  = {18},
+  pages   = {643-662},
+  url     = {http://www.yorku.ca/pclassic/Stroop},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

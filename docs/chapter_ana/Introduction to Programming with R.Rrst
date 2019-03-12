@@ -78,7 +78,7 @@ To install R after having installed XQuartz, again simply download the `installe
 Install R on Ubuntu
 -------------------
 
-R is can be installed from the repositories for many Linux distributions. We will cover the case for Ubuntu here, but you can find an online tutorial for installing R on RedHat on `this blog<https://blog.sellorm.com/2017/11/11/basic-installation-of-r-on-redhat-linux-7/>`_, for example.
+R can be installed from the repositories for many Linux distributions. We will cover the case for Ubuntu here, but you can find an online tutorial for installing R on RedHat on `this blog<https://blog.sellorm.com/2017/11/11/basic-installation-of-r-on-redhat-linux-7/>`_, for example.
 
 To install R on a Ubuntu machine, you will need sudo-permissions. Because R is part of the Ubuntu repositories, you can simply install it via::
 
@@ -114,15 +114,15 @@ Running R for the first time
 
 To run R, either open a terminal (for the OS X and Linux users out there) or run the RGUI program you just installed on your Windows machine. You should be greeted by a wall of text, looking something like this::
 
-  ## R version 3.5.2 (2018-12-20) -- "Eggshell Igloo"
-  ## Copyright (C) 2018 The R Foundation for Statistical Computing
+  ## R version 3.5.3 (2019-03-11) -- "Great Truth"
+  ## Copyright (C) 2019 The R Foundation for Statistical Computing
   ## Platform: x86_64-pc-linux-gnu (64-bit)
 
   ## R is free software and comes with ABSOLUTELY NO WARRANTY.
   ## You are welcome to redistribute it under certain conditions.
   ## Type 'license()' or 'licence()' for distribution details.
 
-  ## Natural language support but running in an English locale
+  ##   Natural language support but running in an English locale
 
   ## R is a collaborative project with many contributors.
   ## Type 'contributors()' for more information and
@@ -131,6 +131,7 @@ To run R, either open a terminal (for the OS X and Linux users out there) or run
   ## Type 'demo()' for some demos, 'help()' for on-line help, or
   ## 'help.start()' for an HTML browser interface to help.
   ## Type 'q()' to quit R.
+
 
 There's a few things to pick apart here, so let's start at the top:
 
@@ -332,9 +333,55 @@ apropos(logarithm)
 
 should open a list of some possible functions you could have meant. From here, you can navigate the help files of these functions.
 
+Messages, warnings, and errors
+==============================
 
-Objects and the Workspace
-=========================
+There is no way around it: mistakes happen. When using R, especially in the learning phases, you will produce code that is incorrect, produces errors, or does not do what you expected it to. It is important to know, that this is nothing to be afraid of. One of the advantages of R is that it is made for people who are not professional programmers, so it is rather forgiving in how mistakes can be handled. Because you can execute R code a line at a time, you can avoid the anxious time spent waiting for your code to compile before punishing you with error messages. Instead, you get an immediate feedback on what you did wrong - always think of this, when you are struggling through countless R errors.
+
+On a fundamental level, R has three ways (in addition to just producing correct output) to communicate with you: messages, warnings, and errors.
+
+Messages are simply a sign of a chatty programmer. Often times they provide information about the options with which you invoked a function or tell you about a package being in a beta-State. The startup we looked at in the section `Running R for the first time`_, was such a message: it gives you additional information. You can produce messages yourself:
+
+.. {r}
+message('I am peckish.')
+.. ..
+
+This makes sense, if you are running long scripts or writing your own functions and want to produce some output to give you a progress update, for example.
+
+The second tier are warnings:
+
+.. {r}
+warning('I am hungry.')
+.. ..
+
+Warnings indicate that something probably did not go as planned. This means that the function you called still produced output, but you should check to see, whether it is really what you wanted. You can produce a warning for the logarithm-example by
+
+.. {r}
+log(-1)
+.. ..
+
+This still produces output (:code:`NaN`, meaning 'Not a Number'), but tells you that something went awry in a warning message. If you produce a lot of warnings (more than 10, by default) R will simply say something like :code:`There were 11 warnings (use warnings() to see them)`. Then, executing :code:`warnings()` will give you a detailed output about the warnings you produced. If you really produce a lot of warnings (more than 50, by default) R will stop counting them and only return the first 50 when you invoke :code:`warnings()`.
+
+The third tier are errors. Errors mean, that the function you called was aborted and that no output was produced. A typical error is providing the wrong arguments to functions:
+
+.. {r}
+log(argument = 10)
+.. ..
+
+Just like messages and warnings, you can also produce them yourself
+
+.. {r}
+stop('I am starving.')
+.. ..
+
+Note that errors are produced using the :code:`stop` function, not with a function called :code:`error`. This underlines that the code is stopped at that point. If you are writing a function this means that the execution of the function is aborted at that point and that the error-message you provided is returned. In long scripts this does not mean, that the next line will not be executed, however! Because the next line is a new command, R will simply continue on without having produced the previous results, which can often result in very long chains of errors.
+
+The text produced by warnings and errors is written to be useful in all cases, in which they can occur, so it often does not seem all that helpful. However, once you develop a better understanding of the inner workings of R, you will start noticing that they actually tell you exactly what the problem is.
+
+
+
+Objects and the Environment
+===========================
 
 Now we are really getting into the bread and butter of R. What we saw above - typing in a function and getting a result printed out - is less frequently of interest in R than storing results of a function and using them again in some other fashion. It is also where R gains a leg-up on many of its competitors in the market of data analysis software. Storing results from one type of analysis and then using these as the data for a different type of analysis gives you the flexibility of doing whatever you want with R. Its implementation is also extremely intuitive, so let us take a look:
 
@@ -348,7 +395,367 @@ As you can see, you did not get a result. The result of the :code:`sum` is simpl
 sum(3, 4, 1, 2) -> my_num
 .. ..
 
-but the first version is much more common, because it allows you to see the objects you have created faster. One important thing that just happened, that I want to draw your attention to, is that there was no
+but the first version is much more common, because it allows you to see the objects you have created faster. One important thing that just happened, that I want to draw your attention to, is that there was no warning whatsoever. In R objects are simply overwritten if you assign new content to them, so it is best to be very aware of the names for objects that you have already used. This makes it doubly important to use distinctive names for your objects (the other reason being that you want to know what is happening). The `Google Styleguide for R<https://google.github.io/styleguide/Rguide.xml>`_ that I mentioned above also contains some guidelines on how you should name your objects. These are only guidelines, however, and objects can have any name that does not start in a number.
+
+Now that results are in an object, how do we get access to them? The easiest way is to simply write the name of the object:
+
+.. {r}
+my_num
+.. ..
+
+which is shorthand for writing :code:`print(my_num)` or :code:`(my_num)`. But the goal of assigning values and results to objects is to be able to pass them on to other functions. So, in this simple example:
+
+.. {r}
+sqrt(my_num)
+.. ..
+
+passes our object to a function. This is essentially the same as:
+
+.. {r}
+sqrt(sum(3, 4, 1, 2))
+.. ..
+
+which evaluates the :code:`sum` and then passes its results to :code:`sqrt`. As you have probably guessed, there is no end to the possibilities of nesting functions or creating objects. So
+
+.. {r}
+my_root <- sqrt(my_num)
+.. ..
+
+uses the object :code:`my_num` as an argument in the square-root function and then stores the result in a new object called :code:`my_root`.
+
+If you are using RStudio you have probably realized that both objects have appeared in the Environment tab of top-right pane. RStudio give you continuous information on what you are currently working with. Any object in the global environment (the one you are currently working in) can be accessed, used, and overwritten. The traditional R way of looking at your environment is
+
+.. {r}
+ls()
+.. ..
+
+which lists all objects and functions that you have created. If your workspace has gotten out of hand, you can also list only some objects with
+
+.. {r}
+ls(pattern = 'num')
+.. ..
+
+This shows you all objects which contain :code:`num` in their name. Removing objects from your workspace is also quite simple:
+
+.. {r}
+rm(my_num)
+ls()
+.. ..
+
+Again, notice that you do not get a warning - the object simply disappears - so you might want to be rather careful with using :code:`rm`. If you want everything in your workspace to disappear and start over with a blank slate, you can combine :code:`rm` and :code:`ls`:
+
+.. {r}
+rm(list = ls())
+.. ..
+
+where you simply provide the entire environment (as produced by :code:`ls`) as an argument to :code:`rm`.
+
+
+Handling data
+*************
+
+As you saw in the previous section, objects are where results and numbers are stored. Data you assess is no different, it is only bigger. As discussed in Chapter XX, variables are the basis of assessing behavior and multiple variables are combined into datasets.
+
+R is extremely rarely used to manually input any data. Most of the time it is either imported from a program you used to assess your experimental data (e.g. from Psychopy), downloaded from a provider you used for assessing data online (from Limesurvey, Unipark, or something similar) or transferred from a different source of data storage (e.g. from an Excel-Sheet). Nevertheless, knowing how data can be created in R can be an incredible help to understanding how data is structured, when it comes from somewhere else.
+
+
+Vectors
+=======
+
+So let us build a minimal example: say you observed reaction times of five participants in a `Stroop test<http://www.yorku.ca/pclassic/Stroop/>`_ (:cite:`Stroop1935`), one of the classics of experimental psychology. The basic idea is best conveyed in a picture:
+
+.. figure:: https://upload.wikimedia.org/wikipedia/commons/f/fe/Stroop_effect_memory_test.png
+    The basic idea of a stroop test (Fitness queen04, `CC BY-SA 3.0< https://creativecommons.org/licenses/by-sa/3.0>`_).
+
+The Stroop effect is the difference between the time it takes you to correctly name the color a word is printed in, when the word and text color match versus when the do not (see :cite:`MacLeod1991` for an overview over the first 50 years of its existence). If you want to see how it works, you can check your performance in an online version on `Open Cognition Lab<http://opencoglab.org/stroop/>`_, for example.
+
+Now, let's say you measured six reaction times manually, by administering a minimal version of the Stroop to a friend. The times could be (in milliseconds) 597, 1146, 497, 938, 1080, and 1304. To input data as one vector in R, you can use
+
+.. {r}
+react <- c(597, 1146, 497, 938, 1080, 1304)
+.. ..
+
+Calling the :code:`help` function on :code:`c` (as discussed in `Getting and using help`_) reveals that it is a basic function to combine all arguments (in this case six reaction times) into a single object. This object is a vector: a one-dimensional array of information, which is of the same type. You can find out what type of vector you just stored your information in in multiple ways. We can use
+
+.. {r}
+class(react)
+.. ..
+
+to start, because that provides us with the most basic information about the object :code:`react`: it is a numeric vector. Using
+
+.. {r}
+str(react)
+.. ..
+
+we obtain a bit more detailed information about the *structure* of the object: it is numeric (:code:`num`), it contains the elements one through six (:code:`[1:6]`), and we see a preview of this object, namely its first five elements.
+
+There are three general types of vectors in R:
+
++--------------------+--------------------+----------------------------------------+
+| Type               | Shorthand          | Content                                |
++====================+====================+========================================+
+| :code:`logical`    | :code:`logi`       | :code:`TRUE` or :code:`FALSE`          |
++--------------------+--------------------+----------------------------------------+
+| :code:`numeric`    | :code:`num`        | Any type of number                     |
++--------------------+--------------------+----------------------------------------+
+| :code:`character`  | :code:`chr`        | Any combination of letters and numbers |
++--------------------+--------------------+----------------------------------------+
+
+Continuing with the Stroop example, the color of the text that was presented is relevant information. We could encode this in a character vector:
+
+.. {r}
+color <- c('green', 'purple', 'blue', 'purple', 'red', 'green')
+.. ..
+
+We can check whether this is a :code:`character` vector with
+
+.. {r}
+is.character(color)
+.. ..
+
+In general, the :code:`is.` prefix can be combined with all types of data storage in R, to check whether it is of that type. The same goes for :code:`as.` which can be used for a simple attempt to convert data from one type to another. For the vector-types we have seen, you could use
+
+.. {r}
+as.numeric(color)
+.. ..
+
+As you can see, this produces a warning (see `Messages, warnings, and errors`_) and the resulting vector contains only :code:`NA`. This is R's way of encoding the absence of information and is short for *not available*. This occurs, because R has no idea how to transform the word :code:`'green'` into a number. Using the basics of measurement theory that were discussed in Chapter XX, we know that what R is missing is some form of adequate relation. We will discuss how this is done in `Factors`_, but for now, let us continue with vectors.
+
+Next to the color, the actual text we are presented with in the Stroop test is also quite important. So, we can generate another character vector:
+
+.. {r}
+text <- c('green', 'purple', 'blue', 'green', 'blue', 'red')
+.. ..
+
+Now, the core effect found by :cite:`Stroop1935` is that the reaction is slower, when the color and the text are incongruent. We can use the logical relations shown in `Commenting and basic functionality`_ to generate a logical vector:
+
+.. {r}
+cong <- color == text
+.. ..
+
+In `Commenting and basic functionality`_ we saw how comparisons work, when we compare two elements. And incredible positive about R is that most things (e.g. functions and mathematical operations) also work when applied to entire vectors or matrices of data. What happened in this instance, is that the elements in :code:`color` and the elements in :code:`text` were compared one-by-one: is the first element in :code:`color` the same as the first element in :code:`text`? Is the second element in :code:`color` the same as the second element in :code:`text`? And so on... This results in a logical vector of the same length as the two original vectors, because they were compared element-wise:
+
+.. {r}
+cong
+.. ..
+
+As you can see, this is a logical vector:
+
+.. {r}
+is.logical(cong)
+.. ..
+
+Factors
+=======
+
+R's way of storing variables with a nominal or ordinal scale is a type of special vector called a :code:`factor`. These factors have the special property of being numeric while also storing information about what each numeric value means. Take the color variable from our example: we can convert the character vector containing the colors of the presented to a factor by using
+
+.. {r}
+color_fac <- as.factor(color)
+.. ..
+
+and to obtain some overview of what this now looks like:
+
+.. {r}
+str(color_fac)
+.. ..
+
+As you can see, this factor contains numeric values (:code:`2 3 1 3 4 2`), but also encodes what each of these numbers mean, by assigning levels. To see all levels of a factor, you can use
+
+.. {r}
+levels(color_fac)
+.. ..
+
+As you can probably guess, the numeric values are assigned by the way these levels are ordered. Because the original we converted to a factor was a character vector, these levels are ordered alphabetically. Specifically, all unique values of the vector:
+
+.. {r}
+unique(color)
+.. ..
+
+are ordered and then used as the levels of the factor. Printing the contents of the factor returns the levels, which are associated with each value, not the number that is stored:
+
+.. {r}
+color_fac
+.. ..
+
+which is much more useful, because we will rarely have code-book lying next to our screen where we can look up what each number means. Additionally printing a factor returns the *possible* values, meaning all levels of the factor. Be aware that this makes it possible to have levels of factors, which are not realized in the data.
+
+The dual storage of information makes it, so that factors can easily be converted to :code:`numeric` or :code:`character`:
+
+.. {r}
+as.numeric(color_fac)
+as.character(color_fac)
+.. ..
+
+whichever is more relevant at the moment. However, even though there are numbers associated with each level, the values order of the values is arbitrary, meaning normal factors encode nominal scales. You can even change which level comes first, i.e. which level is the reference level, by using:
+
+.. {r}
+color_fac <- relevel(color_fac, 'green')
+.. ..
+
+This command overwrites the original object :code:`color_fac` with a new version, where :code:`'green'` is the first level. All other levels are simply moved back:
+
+.. {r}
+levels(color_fac)
+.. ..
+
+If your original is a character vector, the strings are simply used as the levels. If your original vector is numeric, this does not really help you. Take the numeric version of our colors:
+
+.. {r}
+color_num <- c(2, 3, 1, 3, 4, 2)
+.. ..
+
+and convert it to a factor:
+
+.. {r}
+color_fac2 <- as.factor(color_num)
+levels(color_fac2)
+.. ..
+
+the resulting levels are not really helpful. In this case, you can provide new levels to the object.
+
+.. {r}
+levels(color_fac2) <- c('blue', 'green', 'purple', 'red')
+color_fac2
+.. ..
+
+Let's take a quick look at how this works: there are four levels (1, 2, 3, 4) from the conversion of the numeric vector. These four levels can be provided with new labels (blue, green, purple, red). Thus, it is important that there are actually four levels, which we assign to levels attribute. We don't need to assign the values for each observation of the variable, but only the unique levels.
+
+Now, as I've noted, normal factors encode nominal scales. You can also encode ordinal variables with the :code:`ordered` type. Say we ordered the colors by their wavelengths: purple (with the shortest wavelength), blue, green, red.
+
+.. {r}
+color_ord <- as.ordered(color)
+color_ord
+.. ..
+
+Well that's not what we wanted. I will leave it up to you to find out how the correct order of colors can be achieved in this case! At this point, all you need, is to be aware that unordered (i.e. nominal) and ordered (i.e. ordinal) variables can both be used in R. As a matter of fact, this is one of the many cases in R, where one is simply a special version of the other:
+
+.. {r}
+is.factor(color_ord)
+is.ordered(color_fac)
+.. ..
+
+meaning that :code:`ordered` is a special case of :code:`factor`.
+
+
+Combining data
+==============
+
+As a result of the section on `Vectors`_, we have four different objects in our environment, which all relate to the same thing. Naturally, the best idea would be to combine them somehow. As with vectors, there are multiple types of storing data sets in R, but their relationships are a bit more complicated. Let's get a general overview:
+
++--------------------+-------------------------------------------------------+
+| Type               | Content                                               |
++====================+=======================================================+
+| :code:`matrix`     | Vectors of the same length and type (two dimensional) |
++--------------------+-------------------------------------------------------+
+| :code:`array`      | Vectors of the same length and type (n-dimensional)   |
++--------------------+-------------------------------------------------------+
+| :code:`data.frame` | Vectors of the same length                            |
++--------------------+-------------------------------------------------------+
+| :code:`list`       | Any objects                                           |
++--------------------+-------------------------------------------------------+
+
+As you can see, the types are more specialized the further to they are to the top of the table. More specialized types restrict your possibilities of combining arbitrary information, but make storing and handling data more efficient in terms of computational power. Especially when handling abstrusely large data (such as raw fMRI or genetical data), I would highly recommend using matrices. Matrices are especially useful, because you can simply apply matrix-algebra to them, making computation and data analysis much easier.
+
+As you can probably tell from the table, a :code:`matrix` is a special case of an :code:`array` - the two dimensional one. Less obvious is the fact that :code:`data.frame`s are special cases of :code:`list`s, i.e. the one where all content is of exactly the same length.
+
+Let's begin by constructing a matrix. For this, we need to ensure that the objects we intend to combine are of the same type and of the same length:
+
+.. {r}
+class(color)
+class(text)
+length(color)
+length(text)
+.. ..
+
+or, more simply:
+
+.. {r}
+class(color) == class(text)
+length(color) == length(text)
+.. ..
+
+If we want to combine these two to a matrix, there are multiple ways, but the two main approaches are, by either using the :code:`matrix` function or by using :code:`cbind`. We will use the second approach here, but I encourage you to take a look at :code:`help(matrix)` and try this approach to reconstruct what is happening here.
+
+The function :code:`cbind` refers to *binding* vectors together as mulitple *columns*. Traditionally, data frames are organized in such a fashion, that columns represent different variables, while rows represent different observations (e.g. people). If you wanted to combine data from different people that were observed on the same number of variables (e.g. the six reaction times of two different people) you would use :code:`rbind`, for *binding* multiple *rows*. In our case, we can combine :code:`text` and :code:`color` to a matrix:
+
+.. {r}
+mat <- cbind(color, text)
+.. ..
+
+The resulting object is a matrix:
+
+.. {r}
+class(mat)
+.. ..
+
+but - because matrices are special cases of arrays - it is also an array!
+
+.. {r}
+is.array(mat)
+.. ..
+
+What matrices are not, is special cases of :code:`data.frame`s or :code:`list`s:
+
+.. {r}
+is.data.frame(mat)
+is.list(mat)
+.. ..
+
+Combining :code:`color` and :code:`text` worked, because both are of the same type (:code:`character`). However, the data we have is also numeric (the reaction times) and logical (the indicator of congruence). If you combine all of them using the :code:`cbind` command, the following will happen:
+
+.. {r}
+mat <- cbind(color, text, cong, react)
+mat
+.. ..
+
+All vectors were combined, but they were all converted to the most general type of vector of the three: :code:`character`. This is bad, because you loose the numeric information in the variable :code:`react` and can not use it for calculations and thus statistical analysis.
+
+This is why, in most cases you will encounter with behavioral data, :code:`data.frame`s are the type of storage needed. You can combine the four vectors like this:
+
+.. {r}
+dat <- data.frame(color, text, cong, react)
+.. ..
+
+This results in a :code:`data.frame` with six rows and four columns:
+
+.. {r}
+str(dat)
+dat
+.. ..
+
+As you can see, R automatically converts character vectors to factors! This is because that is what is most often desired. As with (almost) all behavior of R, you can adjust this. As we saw in `Functions and arguments`_, this is only a matter of identifying the correct argument and changing its value. You can check :code:`help(data.frame)` and will see that the argument we are looking for is aptly named :code:`stringsAsFactors`. So:
+
+.. {r}
+dat2 <- data.frame(color, text, cong, react, stringsAsFactors = FALSE)
+.. ..
+
+will provide us with a :code:`data.frame` in which the character vectors remain as such. We can check:
+
+.. {r}
+str(dat2)
+.. ..
+
+The final way of storing data is simultaneously the least efficient and most regularly used form: :code:`lists`. The latter is the case because most functions return lists as results. For very large data sets I would advise against using list, because they tend to slow everything down quite drastically. In general, if it is at all possible to simplify your data into a data type that is above it in the table I presented at the beginning of this section, you should probably do it.
+
+Nevertheless, lists are useful, because you can combine all types of information and data. A simple case is a list of different vectors:
+
+.. {r}
+lst <- list(color, text, cong, react)
+str(lst)
+.. ..
+
+The structure of this looks eerily similar to that of the :code:`data.frame` we looked at before. That is because, as mentioned, :code:`data.frame`s are simply special lists. The difference is that you can store anything in your list, even other lists!
+
+.. {r}
+meta_list <- list('Person 1', lst, dat)
+str(meta_list)
+.. ..
+
+In many cases, the results of functions are rather complicated list. For example, the result of a regression in R is a list of 13 elements of various types and sizes, so it is useful to know how to interact with lists, even if your own data should ideally be stored in a different format.
+
+
+
 
 References
 **********
