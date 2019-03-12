@@ -133,33 +133,16 @@ and terms he coined and the hypothesis testing ideas of Neyman and Pearson
 (`Dienes, 2008`_). In this part, we will have a look at the logic and 
 assumptions of these steps in NHST.
 
-+-------------------------------------------------------------------------------
------+--------------------------------------------------------------------------
-----------------------------------+
-|Fisher                                                                         
-     | Neyman-Pearson                                                           
-                                  |
-+===============================================================================
-=====+==========================================================================
-==================================+
-| 1. State :math:`H_0`                                                          
-     | 1. State :math:`H_0` and :math:`H_1`                                     
-                                  |
-|                                                                               
-     | 2. Specify :math:`\alpha`                                                
-                                  |
-| 2. Specify test statistic                                                     
-     | 3. Specify test statistic                                                
-                                  |
-| 3. Collect data, calculate test statistic, determine :math:`p`                
-     | 4. Collect data, calculate test statistic, determine :math:`p`           
-                                  |
-| 4. Reject :math:`H_0` if :math:`p` ist small otherwise, :math:`H_0` is 
-retained    | 5. Reject :math:`H_0` in favor of :math:`H_1` if :math:`p < 
-\alpha`; otherwise :math:`H_0` is retained     |
-+-------------------------------------------------------------------------------
------+--------------------------------------------------------------------------
-----------------------------------+
++------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+|Fisher                                                                              | Neyman-Pearson                                                                                             |
++====================================================================================+============================================================================================================+
+| 1. State :math:`H_0`                                                               | 1. State :math:`H_0` and :math:`H_1`                                                                       |
+|                                                                                    | 2. Specify :math:`\alpha`                                                                                  |
+| 2. Specify test statistic                                                          | 3. Specify test statistic                                                                                  |
+| 3. Collect data, calculate test statistic, determine :math:`p`                     | 4. Collect data, calculate test statistic, determine :math:`p`                                             |
+| 4. Reject :math:`H_0` if :math:`p` ist small otherwise, :math:`H_0` is retained    | 5. Reject :math:`H_0` in favor of :math:`H_1` if :math:`p < \alpha`; otherwise :math:`H_0` is retained     |
++------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+
 
 Frequencies and infinity!
 =========================
