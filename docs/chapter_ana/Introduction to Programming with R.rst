@@ -35,7 +35,7 @@ A lot of software is limited to what has been implemented by the developers. Thi
 
 There are hundreds of resources and websites containing tutorials, guides, comparisons of approaches, and assistance. Of course, R comes with help-files and examples and there is `an extensive list of FAQs<https://cran.r-project.org/doc/FAQ/R-FAQ.html>`_, but as is the case with most programming languages, the premier resource for specific questions is `stack overflow<https://stackoverflow.com/>`_. As I am writing this, there are currently 278380 questions tagged "R" on stack overflow, most of them with well-meaning, detailed responses.
 
-But before we can get to experts' opinions on stack overflow, there are some additional resources you can check, if the presentation in this volume leaves you with open questions. Maybe one of the websites that is visited most often in the early stages of learning R is the `Quick-R website by DataCamp<https://www.statmethods.net/>`_, where you will get quick glance answers to some of the early questions in an alternative way to our presentation here. Another way you may want to try to learn the first steps of R is through online courses like `Harvard's "Statistics and R"<https://online-learning.harvard.edu/course/statistics-and-r>`_ or `DataCamp's interactive "Introduction to R"<https://www.datacamp.com/courses/free-introduction-to-r>`_. There are also a lot of other courses out there, most of which are not free, however. Our hope is, of course, that you will be in no need for such resources once you are done with this and the following sections, but it cannot hurt, to have alternatives.
+But before we can get to experts' opinions on stack overflow, there are some additional resources you can check, if the presentation in this volume leaves you with open questions. Maybe one of the websites that is visited most often in the early stages of learning R is the `Quick-R website by DataCamp<https://www.statmethods.net/>`_, where you will get quick answers to some of the early questions in an alternative way to our presentation here. Another way you may want to try to learn the first steps of R is through online courses like `Harvard's "Statistics and R"<https://online-learning.harvard.edu/course/statistics-and-r>`_ or `DataCamp's interactive "Introduction to R"<https://www.datacamp.com/courses/free-introduction-to-r>`_. There are also a lot of other courses out there, most of which are not free, however. Our hope is, of course, that you will be in no need for such resources once you are done with this and the following sections, but it cannot hurt, to have alternatives.
 
 6. Everyone uses it
 
@@ -172,7 +172,7 @@ Using the :code:`citation()` function provides you with an overview and a BibTeX
 RStudio
 =======
 
-The official way to interface with R is either via command line (if you are using OS X or Linux) or using the R GUI (if you are using Windows). Both approaches are very limited in their depiction of information and some might even want to call them ugly. This is why there are multiple frontends you can use for R. For those of you, who are already proficient in Emacs, there is `ESS (Emacs Speaks Statistics)<http://ess.r-project.org/>`_, which allows you to interact not only with R, but with a lot of other statstical languages as well. For those who enjoy a more customizable interface, I would highly recommend `Atom<https://atom.io/>`_, which allows you to interface with Python and R in the same environment and comes with integrated git-functionality. `Here is a quick description of how to get both working in Atom<https://jstaf.github.io/2018/03/25/atom-ide.html>`_. However, the most widespread IDE for R is, by far, RStudio.
+The official way to interface with R is either via command line (if you are using OS X or Linux) or using the R GUI (if you are using Windows). Both approaches are very limited in their depiction of information and some might even want to call them ugly. This is why there are multiple frontends you can use for R. For those of you, who are already proficient in Emacs, there is `ESS (Emacs Speaks Statistics)<http://ess.r-project.org/>`_, which allows you to interact not only with R, but with a lot of other statistical languages as well. For those who enjoy a more customizable interface, I would highly recommend `Atom<https://atom.io/>`_, which allows you to interface with Python and R in the same environment and comes with integrated git-functionality. `Here is a quick description of how to get both working in Atom<https://jstaf.github.io/2018/03/25/atom-ide.html>`_. However, the most widespread IDE for R is, by far, RStudio.
 
 RStudio is a company based in Boston, MA, developing a variety of different products centered around R. Their initial product was the IDE RStudio, which provides a much nicer GUI for R, than the original. The benefit of RStudio over the other possibilities I talked about above is that it is specifically designed for R and all of its little quirks. Thus, it is not a multi-purpose programming tool, but is focused on giving you the easiest and most intuitive way to interact with R, making it a good tool for learning and using R. Beyond that it works identically across all platforms (Windows, OS X, and Linux), making it a good tool for teaching. It also integrates some extensions on R (like R-Markdown for reporting), which we will get into later in this volume.
 
@@ -685,6 +685,7 @@ which evaluates the :code:`sum` and then passes its results to :code:`sqrt`. As 
 
 uses the object :code:`my_num` as an argument in the square-root function and then stores the result in a new object called :code:`my_root`.
 
+Again, *we* decided how to name this object. Instead of naming it :code:`my_num`, we could have named it :code:`cheesecake` or :code:`captain_marvel`. Of course these names would not be very descriptive and would probably confuse us in the future as well as others trying to use the code.
 If you are using RStudio you have probably realized that both objects have appeared in the Environment tab of top-right pane. RStudio give you continuous information on what you are currently working with. Any object in the global environment (the one you are currently working in) can be accessed, used, and overwritten. The traditional R way of looking at your environment is
 
 
@@ -754,6 +755,7 @@ As you saw in the previous section, objects are where results and numbers are st
 
 R is extremely rarely used to manually input any data. Most of the time it is either imported from a program you used to assess your experimental data (e.g. from Psychopy), downloaded from a provider you used for assessing data online (from Limesurvey, Unipark, or something similar) or transferred from a different source of data storage (e.g. from an Excel-Sheet). Nevertheless, knowing how data can be created in R can be an incredible help to understanding how data is structured, when it comes from somewhere else.
 
+One more important thing before we continue. In case you were testing all of the previous commands directly in the console, I would like to remind you that we have a script open. This should be used for writing down and commenting the code from this exercise. Do not forget to regularly save it, as you would any other work in progress. You can copy-paste the commands from the following sections into your script, give them a descriptive comment and execute them right from the editor. Just select the row you would like to execute and hit the Run button. You can also use the Ctrl + Enter shortcut (Cmd + Enter on Macs).
 
 Vectors
 =======
@@ -763,7 +765,7 @@ So let us build a minimal example: say you observed reaction times of five parti
 .. figure:: figures/stroop.png
 
 
-The Stroop effect is the difference between the time it takes you to correctly name the color a word is printed in, when the word and text color match versus when the do not (see :cite:`MacLeod1991` for an overview over the first 50 years of its existence). If you want to see how it works, you can check your performance in an online version on `Open Cognition Lab<http://opencoglab.org/stroop/>`_, for example.
+The Stroop effect is the difference between the time it takes you to correctly name the color a word is printed in, when the word and text color match versus when they do not (see :cite:`MacLeod1991` for an overview over the first 50 years of its existence). If you want to see how it works, you can check your performance in an online version on `Open Cognition Lab<http://opencoglab.org/stroop/>`_, for example.
 
 Now, let's say you measured six reaction times manually, by administering a minimal version of the Stroop to a friend. The times could be (in milliseconds) 597, 1146, 497, 938, 1080, and 1304. To input data as one vector in R, you can use
 
@@ -1257,7 +1259,7 @@ or, more simply:
 
 If we want to combine these two to a matrix, there are multiple ways, but the two main approaches are, by either using the :code:`matrix` function or by using :code:`cbind`. We will use the second approach here, but I encourage you to take a look at :code:`help(matrix)` and try this approach to reconstruct what is happening here.
 
-The function :code:`cbind` refers to *binding* vectors together as mulitple *columns*. Traditionally, data frames are organized in such a fashion, that columns represent different variables, while rows represent different observations (e.g. people). If you wanted to combine data from different people that were observed on the same number of variables (e.g. the six reaction times of two different people) you would use :code:`rbind`, for *binding* multiple *rows*. In our case, we can combine :code:`text` and :code:`color` to a matrix:
+The function :code:`cbind` refers to *binding* vectors together as multiple *columns*. Traditionally, data frames are organized in such a fashion, that columns represent different variables, while rows represent different observations (e.g. people). If you wanted to combine data from different people that were observed on the same number of variables (e.g. the six reaction times of two different people) you would use :code:`rbind`, for *binding* multiple *rows*. In our case, we can combine :code:`text` and :code:`color` to a matrix:
 
 
 
@@ -2296,7 +2298,7 @@ to check. In most cases I highly recommend having an additional subfolder called
 Saving and loading
 ==================
 
-R uses two own data formats - RDA and RDS - which you can use to save data to and laod data from. Here's a quick overview:
+R uses two own data formats - RDA and RDS - which you can use to save data to and load data from. Here's a quick overview:
 
 +-------------------+-----------------+--------------------+
 | Data format       | RDA             | RDS                |

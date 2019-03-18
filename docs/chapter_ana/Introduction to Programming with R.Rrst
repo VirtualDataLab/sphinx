@@ -538,19 +538,19 @@ text <- c('green', 'purple', 'blue', 'green', 'blue', 'red')
 Now, the core effect found by :cite:`Stroop1935` is that the reaction is slower, when the color and the text are incongruent. We can use the logical relations shown in `Commenting and basic functionality`_ to generate a logical vector:
 
 .. {r}
-congruency <- color == text
+cong <- color == text
 .. ..
 
 In `Commenting and basic functionality`_ we saw how comparisons work, when we compare two elements. And incredible positive about R is that most things (e.g. functions and mathematical operations) also work when applied to entire vectors or matrices of data. What happened in this instance, is that the elements in :code:`color` and the elements in :code:`text` were compared one-by-one: is the first element in :code:`color` the same as the first element in :code:`text`? Is the second element in :code:`color` the same as the second element in :code:`text`? And so on... This results in a logical vector of the same length as the two original vectors, because they were compared element-wise:
 
 .. {r}
-congruency
+cong
 .. ..
 
 As you can see, this is a logical vector:
 
 .. {r}
-is.logical(congruency)
+is.logical(cong)
 .. ..
 
 
@@ -714,7 +714,7 @@ is.list(mat)
 Combining :code:`color` and :code:`text` worked, because both are of the same type (:code:`character`). However, the data we have is also numeric (the reaction times) and logical (the indicator of congruence). If you combine all of them using the :code:`cbind` command, the following will happen:
 
 .. {r}
-mat <- cbind(color, text, congruency, react)
+mat <- cbind(color, text, cong, react)
 mat
 .. ..
 
@@ -723,7 +723,7 @@ All vectors were combined, but they were all converted to the most general type 
 This is why, in most cases you will encounter with behavioral data, :code:`data.frame`s are the type of storage needed. You can combine the four vectors like this:
 
 .. {r}
-dat <- data.frame(color, text, congruency, react)
+dat <- data.frame(color, text, cong, react)
 .. ..
 
 This results in a :code:`data.frame` with six rows and four columns. You can check this with the specific functions :code:`nrow` and :code:`ncol`, or get a general overview with:
@@ -736,7 +736,7 @@ dat
 As you can see, R automatically converts character vectors to factors! This is because that is what is most often desired. As with (almost) all behavior of R, you can adjust this. As we saw in `Functions and arguments`_, this is only a matter of identifying the correct argument and changing its value. You can check :code:`help(data.frame)` and will see that the argument we are looking for is aptly named :code:`stringsAsFactors`. So:
 
 .. {r}
-dat2 <- data.frame(color, text, congruency, react, stringsAsFactors = FALSE)
+dat2 <- data.frame(color, text, cong, react, stringsAsFactors = FALSE)
 .. ..
 
 will provide us with a :code:`data.frame` in which the character vectors remain as such. We can check:
@@ -757,7 +757,7 @@ In this case the :code:`:` is a shorthand for :code:`seq(1, 5, 1)`, meaning a se
 Combining this five-entry vector with our other variables results in an error:
 
 .. {r}
-data.frame(color, text, congruency, react, five)
+data.frame(color, text, cong, react, five)
 .. ..
 
 which shows you that :code:`data.frame`s need all their variables to be of the same length. This makes sense, when you think about what the data represents: usually each row of a data set is a person or trial, why would some trials have less variables than others? But, say the reaction timed out for the sixth trial, this does not result in a shorter vector, but simply in that instance being a missing value - :code:`NA` in R verbiage. You can achieve this by:
@@ -776,7 +776,7 @@ One final word of caution: in R there is a special exception to the "must be of 
 
 .. {r}
 three <- 1:3
-data.frame(color, text, congruency, react, three)
+data.frame(color, text, cong, react, three)
 .. ..
 
 The final way of storing data is simultaneously the least efficient and most regularly used form: :code:`lists`. The latter is the case because most functions return lists as results. For very large data sets I would advise against using list, because they tend to slow everything down quite drastically. In general, if it is at all possible to simplify your data into a data type that is above it in the table I presented at the beginning of this section, you should probably do it.
@@ -784,7 +784,7 @@ The final way of storing data is simultaneously the least efficient and most reg
 Nevertheless, lists are useful, because you can combine all types of information and data. A simple case is a list of different vectors:
 
 .. {r}
-lst <- list(color, text, congruency, react)
+lst <- list(color, text, cong, react)
 str(lst)
 .. ..
 
@@ -837,13 +837,13 @@ react[c(1, 1, 2)]
 The selection we performed up until here was based on the numeric representation of an elements position in a vector. You can also use :code:`character` and :code:`logical` vectors to select elements. We will see how this works for :code:`character` vectors in a second, but the logical vector provides an immense amount of flexibility. Recall the vector we constructed to indicate, whether text and color are the same (i.e. whether it is a congruent condition). We can now use this vector to logically select the elements of any other vector that is also six elements long. So, to select the reaction times for congruent conditions:
 
 .. {r}
-react[congruency]
+react[cong]
 .. ..
 
 For the incongruent conditions, we can simply use the :code:`!` to negate the logical vector:
 
 .. {r}
-react[!congruency]
+react[!cong]
 .. ..
 
 Because vectors are one-dimensional, selecting elements from them requires only one information. Most data are stored in two (or more) dimensional objects, however. As shown in `Combining data`_, there are four standard variants of data storage. First, let's look at the matrix of colors and texts:
@@ -877,7 +877,7 @@ mat[c(1, 4), 1]
 Again, this selection procedure is not limited to numeric vectors, but can also be performed using logical or character vectors. As an example for the use of logical vectors, we can select all rows of the matrix, which are congruent conditions:
 
 .. {r}
-mat[congruency, ]
+mat[cong, ]
 .. ..
 
 Character vectors can be used for selection, if the dimensions of a matrix have names. Let's check:
@@ -900,14 +900,14 @@ As we discussed in `Combining data`_, matrices only work in a limited number of 
 dat[1, 4]        # 1st row, 4th column
 dat[, 3]         # All of the 3rd column
 dat[c(2, 3), 3]  # Elements 2 and 3 of the 3rd column
-dat[congruency, ]      # Only rows for which congruency == TRUE
+dat[cong, ]      # Only rows for which cong == TRUE
 .. ..
 
 Remember, that this can be combined with the creation of objects discussed. So, if you want to perform some analyses separately for congruent and incongruent stimuli, you can just created two new :code:`data.frame`s, which contain only parts of the originals:
 
 .. {r}
-con <- dat[congruency, ]
-inc <- dat[!congruency, ]
+con <- dat[cong, ]
+inc <- dat[!cong, ]
 .. ..
 
 This has the potential to make it much easier to handle subsets of data, when you perform a lot of analyses on certain parts, but not others.
@@ -1192,4 +1192,3 @@ References
 .. bibliography::
 
   references.bib
-
