@@ -1105,7 +1105,7 @@ the resulting levels are not really helpful. In this case, you can provide new l
 
 
 
-Let's take a quick look at how this works: there are four levels (1, 2, 3, 4) from the conversion of the numeric vector. These four levels can be provided with new labels (blue, green, purple, red). Thus, it is important that there are actually four levels, which we assign to the levels attribute. We don't need to assign the values for each observation of the variable, but only the unique levels.
+Let's take a quick look at how this works: there are four levels (1, 2, 3, 4) from the conversion of the numeric vector. These four levels can be provided with new labels (blue, green, purple, red). Thus, it is important that there are actually four levels, which we assign to the levels attribute. We don't need to assign the values for each observation of the variable, only the unique levels.
 
 Now, as I've noted, normal factors encode nominal scales. You can also encode ordinal variables with the :code:`ordered` type. Say we ordered the colors by their wavelengths: purple (with the shortest wavelength), blue, green, red.
 
@@ -1352,7 +1352,7 @@ Combining :code:`color` and :code:`text` worked, because both are of the same ty
 
 
 
-All vectors were combined, but they were all converted to the most general type of vector of the three: :code:`character`. This is bad, because you loose the numeric information in the variable :code:`react` and can not use it for calculations and thus statistical analysis.
+All vectors were combined, but they were all converted to the most general type of vector of the three: :code:`character`. This is bad, because you loose the numeric information in the variable :code:`react` and can not use it for calculations and statistical analysis.
 
 This is why, in most cases you will encounter with behavioral data, :code:`data.frame`s are the type of storage needed. You can combine the four vectors like this:
 
@@ -1432,7 +1432,7 @@ will provide us with a :code:`data.frame` in which the character vectors remain 
 
 
 
-The three type discussed so far all assume that the vectors we combine are of the same length. What happens when they are not? Let's generate a vector with five entries. Because we have not particular data for this example, we can just fill it with a sequence from 1 though 5.
+The three types discussed so far all assume that the vectors we combine are of the same length. What happens when they are not? Let's generate a vector with five entries. Because we have not particular data for this example, we can just fill it with a sequence from 1 though 5.
 
 
 
@@ -1499,7 +1499,7 @@ which shows you that :code:`data.frame`s need all their variables to be of the s
 
 
 
-One final word of caution: in R there is a special exception to the "must be of the same length rule". An exception is made when the shorter vector is a divisor of the longer vector. In that instance, the shorter vector is repeated until the data is filled. Let's take the vector of 1 through 3 as an example:
+One final word of caution: in R there is a special exception to the "must be of the same length"-rule. An exception is made when the shorter vector is a divisor of the longer vector. In that instance, the shorter vector is repeated until the data is filled. Let's take the vector of 1 through 3 as an example:
 
 
 
@@ -1521,6 +1521,8 @@ One final word of caution: in R there is a special exception to the "must be of 
     ## 6  green    red FALSE  1304     3
 
 
+
+so you will need be careful when adding new variables: always check whether the new data is actually what you intended.
 
 The final way of storing data is simultaneously the least efficient and most regularly used form: :code:`lists`. The latter is the case because most functions return lists as results. For very large data sets I would advise against using list, because they tend to slow everything down quite drastically. In general, if it is at all possible to simplify your data into a data type that is above it in the table I presented at the beginning of this section, you should probably do it.
 
@@ -1662,7 +1664,7 @@ of course, you do not need to create an object for the selection vector, you can
 
 
 
-The selection we performed up until here was based on the numeric representation of an elements position in a vector. You can also use :code:`character` and :code:`logical` vectors to select elements. We will see how this works for :code:`character` vectors in a second, but the logical vector provides an immense amount of flexibility. Recall the vector we constructed to indicate, whether text and color are the same (i.e. whether it is a congruent condition). We can now use this vector to logically select the elements of any other vector that is also six elements long. So, to select the reaction times for congruent conditions:
+The selection we performed up until here was based on the numeric representation of an element's position in a vector. You can also use :code:`character` and :code:`logical` vectors to select elements. We will see how this works for :code:`character` vectors in a second, but the logical vector provides an immense amount of flexibility. Recall the vector we constructed to indicate, whether text and color are the same (i.e. whether it is a congruent condition). We can now use this vector to logically select the elements of any other vector that is also six elements long. So, to select the reaction times for congruent conditions:
 
 
 
@@ -1763,7 +1765,7 @@ In R, as is usual, the first dimension of matrices is the row and the second dim
 
 
 
-It is possible to select elements in matrices by using a one-dimensional notation:  :code:`mat[7]` will return the seventh overall element, first counting through all rows of the first column, then continuing with second column and so on. However, I would strongly advise to use the two-dimensional version of selecting data from matrices for now.
+It is possible to select elements in matrices by using a one-dimensional notation:  :code:`mat[7]` will return the seventh overall element, first counting through all rows of the first column, then continuing with second column and so on. However, I would strongly advise you to use the two-dimensional version of selecting data from matrices for now.
 
 The two-dimensional selection procedure is, of course, extendable to arrays of more than two dimensions, where you simply provide more arguments to the brackets (e.g. :code:`[3, 1, 4]` will select the 4th row, 1st column, 4th layer). If you want to select more than one element, you would need to provide vectors determining your selection along on dimension. So, let's say you want the 1st and 4th element of the 1st column:
 
@@ -1893,7 +1895,7 @@ As we discussed in `Combining data`_, matrices only work in a limited number of 
 
 
 
-Remember, that this can be combined with the creation of objects discussed. So, if you want to perform some analyses separately for congruent and incongruent stimuli, you can just created two new :code:`data.frame`s, which contain only parts of the originals:
+Remember, that this can be combined with the creation of objects discussed. So, if you want to perform some analyses separately for congruent and incongruent stimuli, you can just create two new :code:`data.frame`s, which contain only parts of the originals:
 
 
 
@@ -1946,7 +1948,7 @@ If you are more comfortable with using functions instead of the brackets or the 
 Adding new data
 ===============
 
-We have now seen how to combine separate objects to one data set and how to select and extract specific information in those data sets. The last step is to add new information to already existing data.
+We have now seen how to combine separate objects to one data set and how to select and extract specific information from those data sets. The last step is to add new information to already existing data.
 
 As we have seen above, we can use :code:`cbind` or :code:`rbind` to combine multiple vectors either by column or by row. This also works for adding columns and rows to pre-existing matrices. Additionally, we already saw that the :code:`data.frame` function can be used either to combine vectors into multiple columns of a :cdoe:`data.frame` or to add vectors to existing ones.
 
@@ -2028,7 +2030,7 @@ This variable now exists only in the data set. It does not exist freely in the e
 
 
 
-This is especially useful, when you are handling many data set simultaneously, because it can help you avoid overwriting information you may have needed. Instead a variable is assigned straight to the :code:`data.frame` it is related to.
+This is especially useful, when you are handling many data sets simultaneously, because it can help you avoid overwriting information you may have needed. Instead a variable is assigned straight to the :code:`data.frame` it is related to.
 
 Adding a new variable this way has the benefit of it being named in the process. You could also use the bracket notation to get this done. In our case the :code:`data.frame` now consists of 5 columns:
 
@@ -2270,7 +2272,7 @@ In all functions which relate to loading, importing, saving, and exporting data,
 
 
 
-Of course, your current working directory have a different name. Generally, I would recommend setting up a folder for each project you are working on and then using that folder as your working directory. This saves you the time of typing in absolute paths and prevents you from accidentally storing files somewhere, where you need to look for them or accidentally overwrite something (again, R will not warn you, if a file already exists). You can set your working directory by using
+Of course, your current working directory will have a different name. Generally, I would recommend setting up a folder for each project you are working on and then using that folder as your working directory. This saves you the time of typing in absolute paths and prevents you from accidentally storing files somewhere, where you need to look for them or accidentally overwrite something (again, R will not warn you, if a file already exists). You can set your working directory by using
 
 
 
@@ -2280,7 +2282,7 @@ Of course, your current working directory have a different name. Generally, I wo
 
 
 
-In the easiest case you can simply navigate to your folder using your file system and copying its location (listed in its properties). Windows users should be aware: Windows uses backslashes :code:`\` to denote subfolders, while R uses forwardslashes :code:`/`. So, if you copy the folder location on a Windows machine you will need to replace all the :code:`\` with :code:`/` in your filepaths.
+In the easiest case you can simply navigate to your folder using your file system and copy its location (listed in its properties). Windows users should be aware: Windows uses backslashes :code:`\` to denote subfolders, while R uses forwardslashes :code:`/`. So, if you copy the folder location on a Windows machine you will need to replace all the :code:`\` with :code:`/` in your filepaths.
 
 If you want to see which files are in your working directory, you can use
 
