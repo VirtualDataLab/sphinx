@@ -94,11 +94,17 @@ them the frequentist approach or objective probability and most terms, concepts
 and techniques we use in statistics today (`Dienes, 2008`_).
 
 The most dominant name in this upcoming approach would become Sir Ronald Fisher 
-(1890-1962), a geneticist, who coined the terms ‘null hypothesis’ and 
-‘significance’, and suggested a p-value of .05 as an arbitrary level to judge a 
-result statistically significant (`Dienes, 2008`_). After working for years on 
+(1890-1962), a geneticist, who coined the terms ‘null hypothesis’
+and 'significance' (`Dienes, 2008`_). Though often deemed the originator of the
+tradition of using p < .05 as an arbitrary level to judge results as
+statistically significant, Fisher (1926, p. 85) was open in suggesting that
+each researcher should select a threshold in relation to the specific study.
+As a matter of fact, Gigerenzer et al. (`Gigerenzer, 2004`_; p. 392)
+suggest that "Fisher thought that using a routine 5% level of significance
+indicated lack of statistical thinking".
+Fisher, after working for years on 
 randomization, sampling theory, experimental designs, tests of significance and 
-analysis of variance he published a revolutionary manual for 
+analysis of variance, published a revolutionary manual for 
 non-statisticians – Statistical Methods for Research Workers (`Fisher, 
 1925`_). This manual was a game changer and helped to turn the frequentist 
 approach into the state of the art for years to come.
@@ -721,6 +727,11 @@ Gigerenzer, G. (1993). The superego, the ego, and the id in statistical
 reasoning. In G. Keren & C. Lewis (Eds.), A handbook for data analysis in the 
 behavorial sciences: Vol. 1 Methodological issues (pp. 311-339). Hillsdale, NJ: 
 Erlbaum.
+
+Gigerenzer, G., Krauss, S., & Vitouch, O. (2004). The null ritual: 
+What you always wanted to know about null hypothesis testing but were afraid 
+to ask. In Handbook on Quantitative Methods in the Social Sciences. 
+Sage, Thousand Oaks, CA.
 
 Gliner, J. A., Vaske, J. J., & Morgan, G. A. (2001). Null hypothesis 
 significance testing: effect size matters. Human Dimensions of Wildlife, 6(4), 
