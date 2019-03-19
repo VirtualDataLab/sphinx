@@ -105,13 +105,14 @@ approach into the state of the art for years to come.
 
 Aside from (or maybe because of) his smart mind, Fisher was in a constant 
 ad-hominem feud with his colleagues, especially Karl Pearson (1857-1936) – a 
-fanatical eugenicist and name-giver of the Pearson correlation, his son Egon 
+British mathematician and biostatistician and the name-giver
+of the Pearson correlation, his son Egon 
 Pearson (1895-1980), a statistician, and his colleague Jerzy Neyman 
 (1894-1981), a mathematician (`McGrayne, 2011`_). The last two developed the 
 ideas of hypothesis testing and statistical inference (`Pearson & Neyman, 1928`_; 
 `Neyman & Pearson 1933`_). Even though Pearson and Neyman had a heated and 
 ongoing feud with Fisher, the three of them still became the ‘godfathers’ 
-of the so called objective probability approach and with it the still most 
+of the so called *objective probability* approach and with it the still most 
 ubiquitous method in the social and behavioral sciences - null hypothesis 
 significance testing (NHST; `Cumming et al., 2007`_, `Perezgonzalez, 2015`_).
 Now that we have an idea on the who is who of probability, let´s go and have a 
