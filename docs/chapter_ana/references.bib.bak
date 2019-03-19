@@ -56,4 +56,14 @@
   url     = {http://www.yorku.ca/pclassic/Stroop},
 }
 
+@Article{MacLeod1991,
+  author  = {Colin M. MacLeod},
+  title   = {Half a Century of Research on the Stroop Effect: An Integrative Review},
+  journal = {Psychological Bulletin},
+  year    = {1991},
+  volume  = {109},
+  number  = {2},
+  pages   = {163-203},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

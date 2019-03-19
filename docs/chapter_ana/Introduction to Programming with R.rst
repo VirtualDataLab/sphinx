@@ -35,7 +35,7 @@ A lot of software is limited to what has been implemented by the developers. Thi
 
 There are hundreds of resources and websites containing tutorials, guides, comparisons of approaches, and assistance. Of course, R comes with help-files and examples and there is `an extensive list of FAQs<https://cran.r-project.org/doc/FAQ/R-FAQ.html>`_, but as is the case with most programming languages, the premier resource for specific questions is `stack overflow<https://stackoverflow.com/>`_. As I am writing this, there are currently 278380 questions tagged "R" on stack overflow, most of them with well-meaning, detailed responses.
 
-But before we can get to experts' opinions on stack overflow, there are some additional resources you can check, if the presentation in this volume leaves you with open questions. Maybe one of the websites that is visited most often in the early stages of learning R is the `Quick-R website by DataCamp<https://www.statmethods.net/>`_, where you will get quick answers to some of the early questions in an alternative way to our presentation here. Another way you may want to try to learn the first steps of R is through online courses like `Harvard's "Statistics and R"<https://online-learning.harvard.edu/course/statistics-and-r>`_ or `DataCamp's interactive "Introduction to R"<https://www.datacamp.com/courses/free-introduction-to-r>`_. There are also a lot of other courses out there, most of which are not free, however. Our hope is, of course, that you will be in no need for such resources once you are done with this and the following sections, but it cannot hurt, to have alternatives.
+But before we can get to experts' opinions on stack overflow, there are some additional resources you can check, if the presentation in this volume leaves you with open questions. Maybe one of the websites that is visited most often in the early stages of learning R is the `Quick-R website by DataCamp<https://www.statmethods.net/>`_, where you will get quick answers to some of the early questions in an alternative way to our presentation here. Another way you may want to try to learn the first steps of R is through online courses like `Harvard's "Statistics and R"<https://online-learning.harvard.edu/course/statistics-and-r>`_ or `DataCamp's interactive "Introduction to R"<https://www.datacamp.com/courses/free-introduction-to-r>`_. There are also a lot of other courses out there, most of which are not free, however. Our hope is, of course, that you will be in no need for such resources once you are done with this and the following sections, but it cannot hurt to have alternatives.
 
 6. Everyone uses it
 
@@ -172,13 +172,13 @@ Using the :code:`citation()` function provides you with an overview and a BibTeX
 RStudio
 =======
 
-The official way to interface with R is either via command line (if you are using OS X or Linux) or using the R GUI (if you are using Windows). Both approaches are very limited in their depiction of information and some might even want to call them ugly. This is why there are multiple frontends you can use for R. For those of you, who are already proficient in Emacs, there is `ESS (Emacs Speaks Statistics)<http://ess.r-project.org/>`_, which allows you to interact not only with R, but with a lot of other statistical languages as well. For those who enjoy a more customizable interface, I would highly recommend `Atom<https://atom.io/>`_, which allows you to interface with Python and R in the same environment and comes with integrated git-functionality. `Here is a quick description of how to get both working in Atom<https://jstaf.github.io/2018/03/25/atom-ide.html>`_. However, the most widespread IDE for R is, by far, RStudio.
+The official way to interface with R is either via command line (if you are using OS X or Linux) or using the R GUI (if you are using Windows). Both approaches are very limited in their depiction of information and some might even want to call them ugly. This is why there are multiple frontends you can use for R. For those of you, who are already proficient in Emacs, there is `ESS (Emacs Speaks Statistics)<http://ess.r-project.org/>`_, which allows you to interact not only with R, but with a lot of other statistical programming languages as well. For those who enjoy a more customizable interface, I would highly recommend `Atom<https://atom.io/>`_, which allows you to interface with Python and R in the same environment and comes with integrated git-functionality. `Here is a quick description of how to get both working in Atom<https://jstaf.github.io/2018/03/25/atom-ide.html>`_. However, the most widespread IDE for R is, by far, RStudio.
 
 RStudio is a company based in Boston, MA, developing a variety of different products centered around R. Their initial product was the IDE RStudio, which provides a much nicer GUI for R, than the original. The benefit of RStudio over the other possibilities I talked about above is that it is specifically designed for R and all of its little quirks. Thus, it is not a multi-purpose programming tool, but is focused on giving you the easiest and most intuitive way to interact with R, making it a good tool for learning and using R. Beyond that it works identically across all platforms (Windows, OS X, and Linux), making it a good tool for teaching. It also integrates some extensions on R (like R-Markdown for reporting), which we will get into later in this volume.
 
 To install RStudio, simply `visit its download page<https://www.rstudio.com/products/rstudio/download/#download>`_ and choose the appropriate version for your system. Be aware, that RStudio is simply a frontend and requires you to have installed R as described in the previous section. In contrast to R, RStudio comes with an integrated possibility of updating - this does not update R, however! So you will still need to check for a new version every three months or so, if you are working on a Windows or OS X machine.
 
-Everything we will do in R in the following sections can be done without RStudio, using either just the command-line version of R or any other IDE. Using RStudio is simply a recommendation, to ease your way into using R.
+Everything we will do in R in the following sections can be done without RStudio, using either just the command-line version of R or any other IDE. Using RStudio is simply a recommendation to ease your way into using R.
 
 When you start up RStudio, the first thing you should do is to open a new R script. You can do this with :kbd:`Ctrl+Shift+n` (or :kbd:`Cmd+Shift+n`, if you are using OS X) or via :menuselection:`File --> New File --> R Script`. After doing so, your RStudio window should look something like this:
 
@@ -186,7 +186,7 @@ When you start up RStudio, the first thing you should do is to open a new R scri
 
   RStudio just after opening a new R script.
 
-There are four basic panes in this window. In the top left you have the R script you just opened. This is the spot, where you can generate your code. Writing the code does not do anything at first until it is executed. You can run the R code either by clicking the Run-button (in the top right of this pane) or by using :kbd:`Ctrl+Enter`. For example, typing in :code:`3 + 4` and executing it will send the command (3 + 4) to the console (the pane on the bottom left). Here you should then have:
+There are four basic panes in this window. In the top left you have the R script you just opened. This is the spot where you can generate your code. Writing the code does not do anything until it is executed. You can run the R code either by clicking the Run-button (in the top right of this pane) or by using :kbd:`Ctrl+Enter`. For example, typing in :code:`3 + 4` and executing it will send the command (3 + 4) to the console (the pane on the bottom left). Here you should then have:
 
 
 
@@ -221,7 +221,7 @@ Let's start out with some basics of R code. Because the goal of using R is to wr
 Commenting and basic functionality
 ==================================
 
-Use comments for everything. I can not stress this enough. Comments are your way of communicating to others and - most often the more important case - to your future self, what you are doing why. This goes beyond simple small comments and extends to structuring your code. RStudio does a good job of encouraging this, by allowing you to collapse entire sections of your code, if you are currently not interested in looking at it. For the most basic structure, I would recommend using the simple comment character :code:`#` for small comments and notes. For section titles I recommend beginning the title with :code:`####` and ending it with :code:`----`. RStudio will automatically recognize this as the section header, but even if you are using something else, this will help you keep your code organized and readable. Let's see how this works with some simple calculations in R:
+Use comments for everything. I can not stress this enough. Comments are your way of communicating to others and - most often the more important case - to your future self, what you are doing and why. This goes beyond simple small comments and extends to structuring your code. RStudio does a good job of encouraging this, by allowing you to collapse entire sections of your code, if you are currently not interested in looking at it. For the most basic structure, I would recommend using the simple comment character :code:`#` for small comments and notes. For section titles I recommend beginning the title with :code:`####` and ending it with :code:`----`. RStudio will automatically recognize this as the section header, but even if you are using something else, this will help you keep your code organized and readable. Let's see how this works with some simple calculations in R:
 
 
 
@@ -239,7 +239,7 @@ Use comments for everything. I can not stress this enough. Comments are your way
 
 Here the section is titled "Simple calculations" and each type of calculation is described in a short comment. Now, this may be overkill, but you get the point.
 
-As you can see, I have always left a space between the numbers and the operations. R does not care about empty space. You can even use indentation to help you organize your code without changing the functionality of your code. Beyond this, you do not need to end lines with any specific character - a simple line break ends a line. It is generally recommended to write R as you would write normal sentences, using appropriate spaces to enhance the readability of your code. If you want a detailed style guide for R code, there are `general recommendations published by Google<https://google.github.io/styleguide/Rguide.xml>`_
+As you can see, I have always left a space between the numbers and the operations. R does not care about empty space. You can even use indentation to help you organize your code without changing the functionality of your code. Beyond this, you do not need to end lines with any specific character - a simple line break ends a line. It is generally recommended to write R as you would write normal sentences, using appropriate spaces to enhance the readability of your code. If you want a detailed style guide for R code, there are `general recommendations published by Google<https://google.github.io/styleguide/Rguide.xml>`_.
 
 Now, as we have seen before, executing the basic calculations in your code will result in you receiving a copy of the code you executed, as well as a numeric result in your console. Let's take the division example:
 
@@ -328,7 +328,7 @@ which can be read as "not (3 equals 4)". Because the parentheses are evaluated f
 Functions and arguments
 =======================
 
-What we have looked at so far as simple calculations and equality/inequality checks. These are somewhat special, because the deviate from the "normal way" of doing things in R. Normally, you use functions in R. Using the basic addition shown above, you would write:
+What we have looked at so far are simple calculations and equality/inequality checks. These are somewhat special, because the deviate from the "normal way" of doing things in R. Normally, you use functions in R. Using the basic addition shown above, you would write:
 
 
 
@@ -398,7 +398,7 @@ As you can see, this returns the natural logarithm of 100. However, what if I wa
 
 
 
-Let us untangle how this works: remember your school math: :math:`\log_{\text{base}} \text{argument} = \text{answer}`. So, the :code:`log` function takes the argument as its first argument and the base as its second argument. Now, because most people simply can not remember the correct order of all arguments for all functions, there is a second way of using functions:
+Let us untangle how this works. Remember your school math: :math:`\log_{\text{base}} \text{argument} = \text{answer}`. So, the :code:`log` function takes the :math:`\text{argument}` as its first argument and the :math:`\text{base}` as its second argument. Now, because most people simply cannot remember the correct order of all arguments for the unbelievable number of functions you can use in R, there is a second way of using functions:
 
 
 
@@ -430,7 +430,7 @@ In this approach, you need to name the arguments, but are now free to provide th
 
 
 
-How can you ever know the names and order of a function? There are a few different possibilities, the quickest one is probably:
+How can you ever know the names and order of the arguments to a function? There are a few different possibilities, the quickest one is probably:
 
 
 
@@ -465,7 +465,7 @@ So, let's look at the help for the logarithm:
 
 
 
-opens up the help file for the :code:`log` function. You can scroll through this help, but here is a short rundown of how basic layout of any R help file:
+opens up the help file for the :code:`log` function. You can scroll through this help, but here is a short rundown of the basic layout of any R help file:
 
 *Description*: Usually a very short overview of what the function does.
 
@@ -520,7 +520,7 @@ Messages are simply a sign of a chatty programmer. Often times they provide info
 
 
 
-This makes sense, if you are running long scripts or writing your own functions and want to produce some output to give you a progress update, for example.
+This makes sense if you are running long scripts or writing your own functions and want to produce some output to give you a progress update, for example.
 
 The second tier are warnings:
 
@@ -686,7 +686,7 @@ which evaluates the :code:`sum` and then passes its results to :code:`sqrt`. As 
 uses the object :code:`my_num` as an argument in the square-root function and then stores the result in a new object called :code:`my_root`.
 
 Again, *we* decided how to name this object. Instead of naming it :code:`my_num`, we could have named it :code:`cheesecake` or :code:`captain_marvel`. Of course these names would not be very descriptive and would probably confuse us in the future as well as others trying to use the code.
-If you are using RStudio you have probably realized that both objects have appeared in the Environment tab of top-right pane. RStudio give you continuous information on what you are currently working with. Any object in the global environment (the one you are currently working in) can be accessed, used, and overwritten. The traditional R way of looking at your environment is
+If you are using RStudio you have probably realized that both objects have appeared in the Environment tab of top-right pane. RStudio gives you continuous information on what you are currently working with. Any object in the global environment (the one you are currently working in) can be accessed, used, and overwritten. The traditional R way of looking at your environment is
 
 
 
@@ -751,11 +751,11 @@ where you simply provide the entire environment (as produced by :code:`ls`) as a
 Handling data
 *************
 
-As you saw in the previous section, objects are where results and numbers are stored. Data you assess is no different, it is only bigger. As discussed in Chapter XX, variables are the basis of assessing behavior and multiple variables are combined into datasets.
+As you saw in the previous section, objects are where results and numbers are stored. Data you assess is no different, it is only bigger. As discussed in an earlier chapter, variables are the basis of assessing behavior and multiple variables are combined into datasets.
 
 R is extremely rarely used to manually input any data. Most of the time it is either imported from a program you used to assess your experimental data (e.g. from Psychopy), downloaded from a provider you used for assessing data online (from Limesurvey, Unipark, or something similar) or transferred from a different source of data storage (e.g. from an Excel-Sheet). Nevertheless, knowing how data can be created in R can be an incredible help to understanding how data is structured, when it comes from somewhere else.
 
-One more important thing before we continue. In case you were testing all of the previous commands directly in the console, I would like to remind you that we have a script open. This should be used for writing down and commenting the code from this exercise. Do not forget to regularly save it, as you would any other work in progress. You can copy-paste the commands from the following sections into your script, give them a descriptive comment and execute them right from the editor. Just select the row you would like to execute and hit the Run button. You can also use the Ctrl + Enter shortcut (Cmd + Enter on Macs).
+One more important thing before we continue. In case you were testing all of the previous commands directly in the console, I would like to remind you that we have a script open. This should be used for writing down and commenting the code from this exercise. Do not forget to regularly save it, as you would any other work in progress. You can copy-paste the commands from the following sections into your script, give them a descriptive comment and execute them right from the editor. Just select the row you would like to execute and hit the Run button. You can also use the :kbd:`Ctrl + Enter` shortcut (:kbd:`Cmd + Enter` on Macs).
 
 Vectors
 =======
@@ -871,7 +871,7 @@ In general, the :code:`is.` prefix can be combined with all types of data storag
 
 
 
-As you can see, this produces a warning (see `Messages, warnings, and errors`_) and the resulting vector contains only :code:`NA`. This is R's way of encoding the absence of information and is short for *not available*. This occurs, because R has no idea how to transform the word :code:`'green'` into a number. Using the basics of measurement theory that were discussed in Chapter XX, we know that what R is missing is some form of adequate relation. We will discuss how this is done in `Factors`_, but for now, let us continue with vectors.
+As you can see, this produces a warning (see `Messages, warnings, and errors`_) and the resulting vector contains only :code:`NA`. This is R's way of encoding the absence of information and is short for *not available*. This occurs, because R has no idea how to transform the word :code:`'green'` into a number. Using the basics of measurement theory that were discussed in an earlier chapter, we know that what R is missing is some form of adequate relation. We will discuss how this is done in `Factors`_, but for now, let us continue with vectors.
 
 Next to the color, the actual text we are presented with in the Stroop test is also quite important. So, we can generate another character vector:
 
@@ -893,7 +893,7 @@ Now, the core effect found by :cite:`Stroop1935` is that the reaction is slower,
 
 
 
-In `Commenting and basic functionality`_ we saw how comparisons work, when we compare two elements. And incredible positive about R is that most things (e.g. functions and mathematical operations) also work when applied to entire vectors or matrices of data. What happened in this instance, is that the elements in :code:`color` and the elements in :code:`text` were compared one-by-one: is the first element in :code:`color` the same as the first element in :code:`text`? Is the second element in :code:`color` the same as the second element in :code:`text`? And so on... This results in a logical vector of the same length as the two original vectors, because they were compared element-wise:
+In `Commenting and basic functionality`_ we saw how comparisons work, when we compare two elements. An incredible positive about R is that most things (e.g. functions and mathematical operations) also work when applied to entire vectors or matrices of data. What happened in this instance, is that the elements in :code:`color` and the elements in :code:`text` were compared one-by-one: is the first element in :code:`color` the same as the first element in :code:`text`? Is the second element in :code:`color` the same as the second element in :code:`text`? And so on... This results in a logical vector of the same length as the two original vectors, because they were compared element-wise:
 
 
 
@@ -1034,7 +1034,7 @@ The dual storage of information makes it, so that factors can easily be converte
 
 
 
-whichever is more relevant at the moment. However, even though there are numbers associated with each level, the values order of the values is arbitrary, meaning normal factors encode nominal scales. You can even change which level comes first, i.e. which level is the reference level, by using:
+whichever is more relevant at the moment. However, even though there are numbers associated with each level, the order of the values is arbitrary, meaning normal factors encode nominal scales. You can even change which level comes first, i.e. which level is the reference level, by using:
 
 
 
@@ -1105,7 +1105,7 @@ the resulting levels are not really helpful. In this case, you can provide new l
 
 
 
-Let's take a quick look at how this works: there are four levels (1, 2, 3, 4) from the conversion of the numeric vector. These four levels can be provided with new labels (blue, green, purple, red). Thus, it is important that there are actually four levels, which we assign to levels attribute. We don't need to assign the values for each observation of the variable, but only the unique levels.
+Let's take a quick look at how this works: there are four levels (1, 2, 3, 4) from the conversion of the numeric vector. These four levels can be provided with new labels (blue, green, purple, red). Thus, it is important that there are actually four levels, which we assign to the levels attribute. We don't need to assign the values for each observation of the variable, but only the unique levels.
 
 Now, as I've noted, normal factors encode nominal scales. You can also encode ordinal variables with the :code:`ordered` type. Say we ordered the colors by their wavelengths: purple (with the shortest wavelength), blue, green, red.
 
