@@ -457,13 +457,15 @@ it will work ever again. Not unless you already assume induction, that is’
 swan argument, comes from the time that the British went to Australia. Guess 
 what they found? Of course, they found black swans.
 
-The second interesting mind here is Karl Popper, who wrote a lot about the 
-philosophy of science and what distinguishes science from non-science. Popper 
-argued against positivism and with it inductive thinking and his philosophy 
-was fallibilism. In a nutshell (because `Chapter 1.2`_ is dealing with this in 
-a much deeper way): You cannot say something is true, you can only falsify 
-statements. Popper agreed with Hume’s statements (e.g. `Popper, 1934`_). For 
-him a theory would in a best case scenario always be a guess, nothing more. 
+The second interesting mind here is Karl Popper, who essentially started the
+research field of philosophy of science by attempting to formalize what
+distinguishes science from non-science. Popper 
+argued against positivism and with it inductive thinking. His alternative philosophy 
+was *fallibilism*. In a nutshell (because `Chapter 1.2`_ is dealing with this in 
+a much deeper way): You cannot verify a theory - say a theory is true;
+you can only falsify theory. In this, Popper agreed with Hume’s pessimism on
+induction (e.g. `Popper, 1934`_). For him a theory would in a best case scenario
+always be a guess, nothing more. 
 Maybe his reasoning had something to do with the fact that during his youth one 
 of the most dominant theories – Newtonian physics – was replaced by 
 relativity and quantum physics. With that, something that many people believed 
