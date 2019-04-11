@@ -466,10 +466,29 @@ a much deeper way): You cannot verify a theory - say a theory is true;
 you can only falsify theory. In this, Popper agreed with Hume’s pessimism on
 induction (e.g. `Popper, 1934`_). For him a theory would in a best case scenario
 always be a guess, nothing more. 
-Maybe his reasoning had something to do with the fact that during his youth one 
-of the most dominant theories – Newtonian physics – was replaced by 
-relativity and quantum physics. With that, something that many people believed 
-to be established was suddenly false (`Dienes, 2008`_).
+
+As [Popper would later explain](https://www.youtube.com/watch?v=ZO2az5Eb3H0),
+a major contributor to his theory was a series of events that occured in his youth.
+On one hand, the young Popper admired how science had resolved the conflict between
+Newtonian Mechanics, and Einstein's Theory of Relativity. 
+In 1919, a [daring experiment](https://en.wikipedia.org/wiki/Solar_eclipse_of_May_29,_1919)
+brought forceful support for Einstein's side. Einstein's theory had entailed
+that the gravitational pull of the sun should shift the visible appearance of
+remote stars around its disc - occluded by the eclipse of 1919 - would shift by
+a precise amount. The amount predicted by Einstein was slightly larger than that
+predicted by Newtonian physics. When the results arrived, Einstein's predictions
+were found to have withstood this test: Relativity was found to *not* conflict
+with empirical results. The test of Einstein's theory had not rejected, and
+thereby corroborate (as Popper would later call it), the theory. The similarities
+to null hypothesis testing are evident.
+
+In contrast, Popper was disappointed with a growing dogmatism he found
+in his Marxist friends. They seemed disinterested in any contradictory evidence -
+only confirmation was what concerned them. Observing how much more succesful -
+epistemologically speaking - physics had been compared to Marxism, Popper suggested
+the latter model - and thus *falsificationism* - as the ideal according to which
+science should be judged: always aware of the impossibility of induction,
+always open, even embracing, the potential for falsification.
 
 As you can imagine, these two, especially Karl Popper, had a huge influence on 
 how people understood science in the 20th century, and why the school of 
