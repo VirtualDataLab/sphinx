@@ -86,7 +86,21 @@
 <li class="toctree-l2"><a class="reference internal" href="Setting up a scientific research environment.html">2.2. Setting up a scientific research environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Version Control, Git and Github.html">2.3. Version Control, Git and Github</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Docker.html">2.4. Docker</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.5. Introduction to Programming with Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.5. Introduction to Programming with Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-python">2.5.1. What is Python?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basics">2.5.2. Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modules">2.5.3. Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#help-and-descriptions">2.5.4. Help and Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variables-and-types">2.5.5. Variables and Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operators-and-comparisons">2.5.6. Operators and Comparisons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#control-flow">2.5.7. Control Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loops">2.5.8. Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">2.5.9. Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">2.5.10. Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exceptions">2.5.11. Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-i-o">2.5.12. File I/O</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../chapter_exp/Conducting Experiments.html">3. Conducting Experiments</a></li>
@@ -165,6 +179,244 @@
             
   <div class="section" id="introduction-to-programming-with-python">
 <h1>2.5. Introduction to Programming with Python<a class="headerlink" href="#introduction-to-programming-with-python" title="Permalink to this headline">¶</a></h1>
+<p>This section is meant as a general introduction to Python and is by far not
+complete.The goal of this section is to give a short introduction to Python
+and help beginners to get familiar with this programming language.</p>
+<div class="section" id="what-is-python">
+<h2>2.5.1. What is Python?<a class="headerlink" href="#what-is-python" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Python is a simple and powerful programming language.</dt>
+<dd><ul class="first last simple">
+<li>what it can be used for in a scientific way:</li>
+</ul>
+</dd>
+</dl>
+<p>For an introduction to statistics in python take a look at this interactive tutorial:</p>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/aylinsgl/Binder_test/master?filepath=05_python_statistics.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" /></a>
+<p>For an introduction to visualization take a look at this interactive tutorial:</p>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/aylinsgl/Binder_test/master?filepath=02_python_visualization.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" /></a>
+</div>
+<div class="section" id="basics">
+<h2>2.5.2. Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="modules">
+<h2>2.5.3. Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>Most of the functionality in Python is provided by modules.
+To use a module in a Python program it first has to be imported. A module can be imported using the import statement. For example, to import the module math,
+which contains many standard mathematical functions, we can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+<p>This includes the whole module and makes it available for use later in the program. For example, we can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Importing the whole module is often times unnecessary and can lead to longer loading time or increase the memory consumption. Alternative to the previous method, we can also chose to import only a few selected functions from a module by explicitly listing which ones we want to import:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is also possible to give an imported module or symbol your own access name with the as additional:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">pi</span> <span class="k">as</span> <span class="n">number_pi</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">number_pi</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="help-and-descriptions">
+<h2>2.5.4. Help and Descriptions<a class="headerlink" href="#help-and-descriptions" title="Permalink to this headline">¶</a></h2>
+<p>Using the function help we can get a description of almost all functions.
+Imagine we do not know what the math.log()-function is doing or how to use it…
+we can just call the help function and find out.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="variables-and-types">
+<h2>2.5.5. Variables and Types<a class="headerlink" href="#variables-and-types" title="Permalink to this headline">¶</a></h2>
+<p><strong>Variable Names</strong></p>
+<p>Variable names in Python can contain alphanumerical characters a-z, A-Z, 0-9 and
+some special characters such as an underscore. Normal variable names must start
+with a letter. By convention, variable names start with a lower-case letter,
+and Class names start with a capital letter. Don’t worry if you do not know what Classes are yet. We will get to that later.</p>
+<p>In addition, there are a number of Python keywords that cannot be used as
+variable names. These keywords are:</p>
+<p>and, as, assert, break, class, continue, def, del, elif, else, except, exec,
+finally, for, from, global, if, import, in, is, lambda, not, or, pass, print,
+raise, return, try, while, with, yield</p>
+<p>Note: Be aware of the keyword lambda, which could easily be a natural variable
+name in a scientific program. But being a keyword, it cannot be used as a
+variable name.</p>
+<p><strong>Indentation</strong>
+Whitespace is important in Python. Actually, whitespace at the beginning of the
+line is important. This is called indentation. Leading whitespace (spaces and
+tabs) at the beginning of the logical line is used to determine the indentation level of the logical line, which in turn is used to determine the grouping of statements.</p>
+<p>This means that statements which go together must have the same indentation.
+Each such set of statements is called a block. We will see examples of how blocks are important later on. One thing you should remember is that wrong indentation rises IndentationError.</p>
+<p><strong>Comments</strong></p>
+<p><strong>Assigning Variables</strong></p>
+<p>The assignment operator in Python is =. Python is a dynamically typed language,
+so we do not need to specify the type of a variable when we create one.
+Assigning a value to a new variable creates the variable.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># assigning x to 1.0 and y to 3</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p><strong>Data Types</strong>
+Although not explicitly specified, a variable does have a type associated with it. The type is derived form the value it was assigned and defines the operations
+that can be done with a specific variable. Python has five standard data types.</p>
+<dl class="docutils">
+<dt>You can check the data type with: ::</dt>
+<dd># check type of x
+type(x)</dd>
+</dl>
+<p><em>Numbers</em></p>
+<p>This data type stores numerical data and python supports different numerical
+data types including:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># integer</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># float</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+<p><em>String</em></p>
+<p>Strings are the variable type that is used for storing text messages. They are
+an array of characters and are indicated through either single or
+double quotation marks.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># string</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;This is a string&quot;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s1">&#39;This also is a string&#39;</span>
+</pre></div>
+</div>
+<p>Strings can be formatted and handled in multiple ways. For example, we can index
+a string using []:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this gives us the first character in s (&quot;T&quot;)</span>
+<span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Heads up MATLAB user: Indexing starts at 0!</p>
+<p>We can extract a part of a string using the syntax [start:stop], which extracts characters between index start and stop. This is called <em>slicing</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">Lists</span><span class="o">*</span>
+</pre></div>
+</div>
+<p>A list entails items separated by commas and enclosed in square brackets [].:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># list</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><em>Tupels</em></p>
+<p>Tupels are very similar to lists. The main difference is that tupels are enclosed
+in parentheses and cannot be updated after they have been assigned.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># tupel</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Dictionaries</em></p>
+</div>
+<div class="section" id="operators-and-comparisons">
+<h2>2.5.6. Operators and Comparisons<a class="headerlink" href="#operators-and-comparisons" title="Permalink to this headline">¶</a></h2>
+<p>Operators can change the value of operands. Python contains different types of
+operators and we will touch on two fundamental ones: Arithmetic and comparison
+operators.</p>
+<p><strong>Arithmetic Operators</strong></p>
+<p>Arithmetic operators include:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>Addition</td>
+</tr>
+<tr class="row-even"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>Subtraction</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>Multiplication</td>
+</tr>
+<tr class="row-even"><td>/</td>
+<td>Division</td>
+</tr>
+<tr class="row-odd"><td>%</td>
+<td>Modulo</td>
+</tr>
+<tr class="row-even"><td><a href="#id1"><span class="problematic" id="id2">**</span></a></td>
+<td>Power</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Comparison Operators</strong></p>
+<p>These operators are used to compare their operands. They return either “true” or
+“false” depending if the condition under which the operands are compared applies
+or not.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>==</td>
+<td>evaluates if operands are equal</td>
+</tr>
+<tr class="row-even"><td>!=</td>
+<td>evaluates if operands are not equal</td>
+</tr>
+<tr class="row-odd"><td>&gt;</td>
+<td>evaluates if left operand is greater than the right operand</td>
+</tr>
+<tr class="row-even"><td>&lt;</td>
+<td>evaluates if right operand is greater than the left operand</td>
+</tr>
+<tr class="row-odd"><td>&gt;=</td>
+<td>evaluates if left operand is greater or equal than the right operand</td>
+</tr>
+<tr class="row-even"><td>&lt;=</td>
+<td>evaluates if right operand is greater or equal than the left operand</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="control-flow">
+<h2>2.5.7. Control Flow<a class="headerlink" href="#control-flow" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="loops">
+<h2>2.5.8. Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="functions">
+<h2>2.5.9. Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="classes">
+<h2>2.5.10. Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="exceptions">
+<h2>2.5.11. Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="file-i-o">
+<h2>2.5.12. File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
