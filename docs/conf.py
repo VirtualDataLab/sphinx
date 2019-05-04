@@ -159,13 +159,14 @@ texinfo_documents = [
 # -- Extension configuration -------------------------------------------------
 
 ## enable markdown
+extensions = ['recommonmark']
 from recommonmark.parser import CommonMarkParser
 
 source_parsers = {
     '.md': CommonMarkParser,
 }
 
-source_suffix = ['.rst', '.md']
+source_suffix = ['.rst', '.md', '.rmd']
 
 
 ## for citations

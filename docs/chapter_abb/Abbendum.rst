@@ -10,7 +10,7 @@ Subchapters
 
    Data wrangling
    Multivariate Analysis and Machine Learning
-   Special methods
+   special methods/special methods
    Neuroscience
    Eye tracking
    Online Experiments
