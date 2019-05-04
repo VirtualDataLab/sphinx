@@ -1,5 +1,0 @@
-Online Experiments
-^^^^^^^^^^^^^^^^^^
-
-Mechanical Turk
-###############
