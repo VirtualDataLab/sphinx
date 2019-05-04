@@ -10,4 +10,4 @@ Subchapters
 
    Origins of Epistemology: from Socrates to Descartes
    Fallibilism and Falsificationism: Hume and Popper
-   What is probability? Bayes contra Hume
+   What is probability

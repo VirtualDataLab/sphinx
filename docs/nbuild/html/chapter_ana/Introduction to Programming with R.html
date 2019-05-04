@@ -24,6 +24,7 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -84,7 +85,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../chapter_comp/Computer stuff.html">2. Computer stuff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapter_exp/Conducting Experiments.html">3. Conducting Experiments</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="Analysing Experimental Data.html">4. Analysing Experimental Data</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. Introduction to Programming with R</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. Introduction to Programming with R</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-r">4.1.1. Why R?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gathering-your-tools">4.1.2. Gathering your tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-r-core">The R-Core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rstudio">RStudio</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#some-first-wobbly-steps">4.1.3. Some first, wobbly steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#commenting-and-basic-functionality">Commenting and basic functionality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions-and-arguments">Functions and arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getting-and-using-help">Getting and using help</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#messages-warnings-and-errors">Messages, warnings, and errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#objects-and-the-environment">Objects and the Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-data">4.1.4. Handling data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vectors">Vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factors">Factors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#combining-data">Combining data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extracting-data">Extracting data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-new-data">Adding new data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-data-into-and-out-of-r">4.1.5. Getting data into and out of R</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#saving-and-loading">Saving and loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#importing-and-exporting">Importing and exporting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#closing-words">4.1.6. Closing words</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">4.1.7. References</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="Basic Visualisation.html">4.2. Basic Visualisation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Descriptive Statistics.html">4.3. Descriptive Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="The Generalized Linear Model.html">4.4. The Generalized Linear Model</a></li>
@@ -165,6 +197,1402 @@
             
   <div class="section" id="introduction-to-programming-with-r">
 <h1>4.1. Introduction to Programming with R<a class="headerlink" href="#introduction-to-programming-with-r" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Martin Schultze</td>
+</tr>
+</tbody>
+</table>
+<p>Perhaps the question I am confronted with most when teaching statistics courses to psychology undergrads is “Why should I need this, when I become a therapist”? That’s a difficult one to answer in a single sentence, but I will give it a try, nonetheless: “Because everything we know in psychology - and the social sciences in general - is connected to empirical data”. Well, it was a first try. As the previous sections of this volume have shown you, in scientific psychology we strive to test our claims using data. Testing our claims (ideally) leads to appropriate theories becoming successful and inappropriate theories being discarded. When you are working with patients or clients, would you not rather use techniques that have been proven to be successful in reducing negative symptoms?</p>
+<p>Even more baffling to many of you, now reading these words, is the idea of learning a programming language like R in the first year of studying psychology. But the same reasons for learning statistics in general apply to learning R. To move from observations to conclusions requires multiple steps: encoding observations in data, organizing data, describing data, and testing hypotheses using data. The previous section showed you how to collect data in experimental settings using Python. In this and the following sections we will try to turn the data we gathered into conclusions about our hypotheses by using R - a multi-purpose tool that can be used for almost anything data-related.</p>
+<div class="section" id="why-r">
+<h2>4.1.1. Why R?<a class="headerlink" href="#why-r" title="Permalink to this headline">¶</a></h2>
+<p>Many blogs are filled with heaps of reasons to use R over other software that was traditionally more prominent in the behavioral and social sciences. Here’s a rundown of the “best of”:</p>
+<ol class="arabic simple">
+<li>It’s free</li>
+</ol>
+<p>This is the obvious one: R costs you nothing to obtain or use. A lot of other software for data analysis requires you to either buy a specific version or rent a yearly license. R, on the other hand, you can simply download, install, and use. R is developed and maintained by <a href="#id25"><span class="problematic" id="id26">`non-profit foundation&lt;https://www.r-project.org/foundation/&gt;`_</span></a>, meaning it is free of commercial interests.</p>
+<ol class="arabic simple" start="2">
+<li>It’s free</li>
+</ol>
+<p>Yes, I’ve said this already, but this time it has a different meaning. This “free” pertains to the <a href="#id27"><span class="problematic" id="id28">`definition of free software as proposed by GNU&lt;https://www.gnu.org/philosophy/free-sw.en.html&gt;`_</span></a>, which can be boiled down to the phrase “the users have the freedom to run, copy, distribute, study, change and improve the software”. This means that R is an open source software and this applies not only to the R-core itself, but also to the packages, which you can obtain via the official repository. This allows everyone to see what is actually happening - e.g. which formulas are used to compute statistics - and catch mistakes in the software before you publish research that is flawed (see [Eklund2016] for what may happen, when software is not open for such checks).</p>
+<ol class="arabic simple" start="3">
+<li>Researchers develop their tools in R and make them available as R packages</li>
+</ol>
+<p>One important aspect of doing research is using the correct tools. Correct is often understood to simply mean “not wrong”, but in science there is a lot of nuance to “not wrong”. Some approaches may simply become outdated, because newer alternatives are available or because someone has developed an adapted version which is better suited for your specific case. Currently, many new methodological developments are implemented as R packages and made available for anyone to use. Commercial software is often slower to react, because there is not enough demand for the approach you might need, in order to implement it into a specific software. Thus, R is a more direct channel to current developments in analysis tools. To be able to use newly developed analysis tools comes with a few caveats, of course, because you lose the vetting process performed by commercial providers.</p>
+<ol class="arabic simple" start="4">
+<li>You can develop your own approach and implement it in R</li>
+</ol>
+<p>A lot of software is limited to what has been implemented by the developers. This is where R can really shine, because it allows you to implement whatever analysis you want, as long as you are able to formulate it in the R language. Because the most basic building blocks of R are simply mathematical operations and relations there is almost no limit to what you can implement. Be aware, that this does not mean that R is the best tool to implement whatever it is, you’re trying to implement; it simply means it is a tool that makes it possible at least.</p>
+<ol class="arabic simple" start="5">
+<li>The community</li>
+</ol>
+<p>There are hundreds of resources and websites containing tutorials, guides, comparisons of approaches, and assistance. Of course, R comes with help-files and examples and there is <a href="#id29"><span class="problematic" id="id30">`an extensive list of FAQs&lt;https://cran.r-project.org/doc/FAQ/R-FAQ.html&gt;`_</span></a>, but as is the case with most programming languages, the premier resource for specific questions is <a href="#id31"><span class="problematic" id="id32">`stack overflow&lt;https://stackoverflow.com/&gt;`_</span></a>. As I am writing this, there are currently 278380 questions tagged “R” on stack overflow, most of them with well-meaning, detailed responses.</p>
+<p>But before we can get to experts’ opinions on stack overflow, there are some additional resources you can check, if the presentation in this volume leaves you with open questions. Maybe one of the websites that is visited most often in the early stages of learning R is the <a href="#id33"><span class="problematic" id="id34">`Quick-R website by DataCamp&lt;https://www.statmethods.net/&gt;`_</span></a>, where you will get quick answers to some of the early questions in an alternative way to our presentation here. Another way you may want to try to learn the first steps of R is through online courses like <a href="#id35"><span class="problematic" id="id36">`Harvard's &quot;Statistics and R&quot;&lt;https://online-learning.harvard.edu/course/statistics-and-r&gt;`_</span></a> or <a href="#id37"><span class="problematic" id="id38">`DataCamp's interactive &quot;Introduction to R&quot;&lt;https://www.datacamp.com/courses/free-introduction-to-r&gt;`_</span></a>. There are also a lot of other courses out there, most of which are not free, however. Our hope is, of course, that you will be in no need for such resources once you are done with this and the following sections, but it cannot hurt to have alternatives.</p>
+<ol class="arabic simple" start="6">
+<li>Everyone uses it</li>
+</ol>
+<p>As, no doubt, your parents have told you on multiple occasions, this is perhaps the single worst argument on the planet to do something: “Would you jump off a bridge, if your friends did it?” Well, in this case, you might want to, because one of the core necessities for open and reproducible science is communicating your work. Not just results and conclusions, but also how you got there. As I stated above, R can be used for basically all steps between assessing data and producing manuscripts and if others use it, it may be necessary for you to be able to read what they wrote, to gain an understanding of how they structured, analyzed, and visualized their data. On the other hand, writing R code also allows other people to retrace the steps you took, because many people can read it. In 2017, Python and R were among the fastest growing programming languages - measured by the number of Stackoverflow views of questions tagged for either one of those languages ([Robinson2017a], [Robinson2017b]). On <a href="#id39"><span class="problematic" id="id40">`Bob Muenchen's Website r4stats&lt;http://r4stats.com/&gt;`_</span></a> you will find a continuously updated Article with current numbers on the popularity of R ([Muenchen2019]), where it is among the most sought after skills in job descriptions and the second most common software cited in scientific articles.</p>
+</div>
+<div class="section" id="gathering-your-tools">
+<h2>4.1.2. Gathering your tools<a class="headerlink" href="#gathering-your-tools" title="Permalink to this headline">¶</a></h2>
+<p>Enough chit-chat about the benefits of R - chances are, that if you are still reading at this point, I do not need to convince you any further to use it. So, let us begin by gathering the necessary materials:</p>
+<div class="section" id="the-r-core">
+<h3>The R-Core<a class="headerlink" href="#the-r-core" title="Permalink to this headline">¶</a></h3>
+<p>The best way to get R is to simply grab it directly from its provider. R itself and most utensils you can add on to it are gathered in what is called CRAN (Comprehensive R Archive Network). For some nice 90s nostalgia you can visit the <a href="#id41"><span class="problematic" id="id42">`CRAN website&lt;https://cran.r-project.org/&gt;`_</span></a> directly, but we also provide short descriptions of how to <a class="reference internal" href="#install-r-on-windows">Install R on Windows</a>, <a class="reference internal" href="#install-r-on-mac-os-x">Install R on Mac OS X</a>, and <a class="reference internal" href="#install-r-on-ubuntu">Install R on Ubuntu</a> below. And for those of you who do not want to run the risk of R withdrawal symptoms: <a href="#id43"><span class="problematic" id="id44">`here's a link to a short description of how to install it on an Android device&lt;https://selbydavid.com/2017/12/29/r-android/&gt;`_</span></a>.</p>
+<div class="section" id="install-r-on-windows">
+<h4>Install R on Windows<a class="headerlink" href="#install-r-on-windows" title="Permalink to this headline">¶</a></h4>
+<p>Installing R on Windows machines is pretty straightforward. The CRAN Website provides you with an executable for the installation of the latest stable R Version, which you can <a href="#id45"><span class="problematic" id="id46">`download here&lt;https://cran.r-project.org/bin/windows/base/release.htm&gt;`_</span></a>. The only thing you have to keep in mind is that R does not perform automatic updates. That’s where it becomes a bit tricky: it is advisable to check for a new R version every now and again - a good estimate going by <a href="#id47"><span class="problematic" id="id48">`the R version history&lt;https://cran.r-project.org/bin/windows/base/old/&gt;`_</span></a> is every three months. To update R it is recommended to install a new R version alongside your current version, just in case the new R version broke something that worked before. For some more details on this procedure (and many others), feel free to check the <a href="#id49"><span class="problematic" id="id50">`R for Windows FAQ&lt;https://cran.r-project.org/bin/windows/base/rw-FAQ.html&gt;`_</span></a></p>
+</div>
+<div class="section" id="install-r-on-mac-os-x">
+<h4>Install R on Mac OS X<a class="headerlink" href="#install-r-on-mac-os-x" title="Permalink to this headline">¶</a></h4>
+<p>Current versions of R are only available for OS X 10.11 (El Capitan) and above. Since this OS is now five years old, the newer versions should cover most users, but if you are among those running an older version of OS X, you will need to install either R Version 3.3.3 (OS X 10.9 and 10.10) or R Version 3.2.1 (OS X 10.6 to 10.8). All three versions can be <a href="#id51"><span class="problematic" id="id52">`found here&lt;https://cran.r-project.org/bin/macosx/&gt;`_</span></a>.</p>
+<p>Prior to installing R on OS X 10.8 or above, you will need to install XQuartz. Simply <a href="#id53"><span class="problematic" id="id54">`download the dmg-file from the XQuartz-Website&lt;https://www.xquartz.org/&gt;`_</span></a> and follow the instructions provided in the installer. Afterwards, please restart your computer, before installing R.</p>
+<p>To install R after having installed XQuartz, again simply download the <a href="#id55"><span class="problematic" id="id56">`installer provided by CRAN&lt;https://cran.r-project.org/bin/macosx/&gt;`_</span></a> and run it. Should you be asked to install XCode during this process, please do so. As was the case with R for Windows, R does not perform automatic updates, so you should check for a new version every three months or so.</p>
+</div>
+<div class="section" id="install-r-on-ubuntu">
+<h4>Install R on Ubuntu<a class="headerlink" href="#install-r-on-ubuntu" title="Permalink to this headline">¶</a></h4>
+<p>R can be installed from the repositories for many Linux distributions. We will cover the case for Ubuntu here, but you can find an online tutorial for installing R on RedHat on <a href="#id57"><span class="problematic" id="id58">`this blog&lt;https://blog.sellorm.com/2017/11/11/basic-installation-of-r-on-redhat-linux-7/&gt;`_</span></a>, for example.</p>
+<p>To install R on a Ubuntu machine, you will need sudo-permissions. Because R is part of the Ubuntu repositories, you can simply install it via:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">r</span><span class="o">-</span><span class="n">base</span>
+</pre></div>
+</div>
+<p>However, this will provide you with an outdated version of R in most cases. To obtain the new version of R (and have it update automatically), there are some additional hoops. First, you need to add the necessary GPG key:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">adv</span> <span class="o">--</span><span class="n">keyserver</span> <span class="n">keyserver</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span> <span class="o">--</span><span class="n">recv</span><span class="o">-</span><span class="n">keys</span> <span class="n">E298A3A825C0D65DFD57CBB651716619E084DAB9</span>
+</pre></div>
+</div>
+<p>Then, you need to add the R repository to your sources list. Depending on the Ubuntu release you are running, this may look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="s1">&#39;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/&#39;</span>
+</pre></div>
+</div>
+<p>if you are running Bionic Beaver, or like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="s1">&#39;deb https://cloud.r-project.org/bin/linux/ubuntu cosmic-cran35/&#39;</span>
+</pre></div>
+</div>
+<p>if you are running Cosmic Cuttlefish. If you are running a different release, simply replace the <code class="code docutils literal notranslate"><span class="pre">bionic</span></code> or <code class="code docutils literal notranslate"><span class="pre">cosmic</span></code> by the name of your version.</p>
+<p>Because this changes the <code class="code docutils literal notranslate"><span class="pre">/etc/apt/sources.list</span></code> file, you will need to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+</pre></div>
+</div>
+<p>which may take a few seconds. Afterwards, you can install R using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">r</span><span class="o">-</span><span class="n">base</span>
+</pre></div>
+</div>
+<p>which should provide you with the current version. In contrast to installing R on Windows or OS X, this will provide you with automatic updates for R.</p>
+</div>
+<div class="section" id="running-r-for-the-first-time">
+<h4>Running R for the first time<a class="headerlink" href="#running-r-for-the-first-time" title="Permalink to this headline">¶</a></h4>
+<p>To run R, either open a terminal (for the OS X and Linux users out there) or run the RGUI program you just installed on your Windows machine. You should be greeted by a wall of text, looking something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## R version 3.5.3 (2019-03-11) -- &quot;Great Truth&quot;</span>
+<span class="c1">## Copyright (C) 2019 The R Foundation for Statistical Computing</span>
+<span class="c1">## Platform: x86_64-pc-linux-gnu (64-bit)</span>
+
+<span class="c1">## R is free software and comes with ABSOLUTELY NO WARRANTY.</span>
+<span class="c1">## You are welcome to redistribute it under certain conditions.</span>
+<span class="c1">## Type &#39;license()&#39; or &#39;licence()&#39; for distribution details.</span>
+
+<span class="c1">##   Natural language support but running in an English locale</span>
+
+<span class="c1">## R is a collaborative project with many contributors.</span>
+<span class="c1">## Type &#39;contributors()&#39; for more information and</span>
+<span class="c1">## &#39;citation()&#39; on how to cite R or R packages in publications.</span>
+
+<span class="c1">## Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or</span>
+<span class="c1">## &#39;help.start()&#39; for an HTML browser interface to help.</span>
+<span class="c1">## Type &#39;q()&#39; to quit R.</span>
+</pre></div>
+</div>
+<p>There’s a few things to pick apart here, so let’s start at the top:</p>
+<ul class="simple">
+<li><code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">Version</span></code> obviously states the current version of R you are using, with its release date and nickname. I have tried and tried to figure it out, but, as shared by <a href="#id59"><span class="problematic" id="id60">`MattBagg on Stackoverflow&lt;https://stackoverflow.com/questions/13478375/is-there-any-authoritative-documentation-on-r-release-nicknames&gt;`_</span></a>, there is apparently no system in the nicknames.</li>
+<li><code class="code docutils literal notranslate"><span class="pre">free</span> <span class="pre">software</span></code>: we talked about this above - R is free and free, so you may do with it whatever pleases you. When redistributing it, however, you should keep the license in mind.</li>
+<li><code class="code docutils literal notranslate"><span class="pre">ABSOLUTELY</span> <span class="pre">NO</span> <span class="pre">WARRANTY</span></code>: this is the big reason some companies are still hesitant to use R in high-stakes situations. If your results are wrong because there is an error somewhere in the R-package you are using to perform your analysis, there is no one you can (legally) blame, but yourself for not checking the code thoroughly enough. Now keep in mind, that this is very rare, because most researchers publishing R packages do not just throw any half-baked ideas on CRAN, because their reputations are also tied to their work. The idea is simply, if you want to be sure everything is correct, check for yourself.</li>
+<li><code class="code docutils literal notranslate"><span class="pre">how</span> <span class="pre">to</span> <span class="pre">cite</span> <span class="pre">R</span> <span class="pre">or</span> <span class="pre">R</span> <span class="pre">packages</span> <span class="pre">in</span> <span class="pre">publications</span></code>: this is the last point I want to highlight. Many people pour years of their lives into making the procedures work that you can then use for free. Please reward their work by citing them correctly, if your are using it. As a matter of fact, let us make this the first R command we perform:</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">citation</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##</span>
+<span class="c1">## To cite R in publications use:</span>
+<span class="c1">##</span>
+<span class="c1">##   R Core Team (2019). R: A language and environment for</span>
+<span class="c1">##   statistical computing. R Foundation for Statistical Computing,</span>
+<span class="c1">##   Vienna, Austria. URL https://www.R-project.org/.</span>
+<span class="c1">##</span>
+<span class="c1">## A BibTeX entry for LaTeX users is</span>
+<span class="c1">##</span>
+<span class="c1">##   @Manual{,</span>
+<span class="c1">##     title = {R: A Language and Environment for Statistical Computing},</span>
+<span class="c1">##     author = {{R Core Team}},</span>
+<span class="c1">##     organization = {R Foundation for Statistical Computing},</span>
+<span class="c1">##     address = {Vienna, Austria},</span>
+<span class="c1">##     year = {2019},</span>
+<span class="c1">##     url = {https://www.R-project.org/},</span>
+<span class="c1">##   }</span>
+<span class="c1">##</span>
+<span class="c1">## We have invested a lot of time and effort in creating R, please</span>
+<span class="c1">## cite it when using it for data analysis. See also</span>
+<span class="c1">## &#39;citation(&quot;pkgname&quot;)&#39; for citing R packages.</span>
+</pre></div>
+</div>
+<p>Using the <code class="code docutils literal notranslate"><span class="pre">citation()</span></code> function provides you with an overview and a BibTeX source for citing R. If your analysis was performed in R, please use this function to cite it correctly.</p>
+</div>
+</div>
+<div class="section" id="rstudio">
+<h3>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a></h3>
+<p>The official way to interface with R is either via command line (if you are using OS X or Linux) or using the R GUI (if you are using Windows). Both approaches are very limited in their depiction of information and some might even want to call them ugly. This is why there are multiple frontends you can use for R. For those of you, who are already proficient in Emacs, there is <a href="#id61"><span class="problematic" id="id62">`ESS (Emacs Speaks Statistics)&lt;http://ess.r-project.org/&gt;`_</span></a>, which allows you to interact not only with R, but with a lot of other statistical programming languages as well. For those who enjoy a more customizable interface, I would highly recommend <a href="#id63"><span class="problematic" id="id64">`Atom&lt;https://atom.io/&gt;`_</span></a>, which allows you to interface with Python and R in the same environment and comes with integrated git-functionality. <a href="#id65"><span class="problematic" id="id66">`Here is a quick description of how to get both working in Atom&lt;https://jstaf.github.io/2018/03/25/atom-ide.html&gt;`_</span></a>. However, the most widespread IDE for R is, by far, RStudio.</p>
+<p>RStudio is a company based in Boston, MA, developing a variety of different products centered around R. Their initial product was the IDE RStudio, which provides a much nicer GUI for R, than the original. The benefit of RStudio over the other possibilities I talked about above is that it is specifically designed for R and all of its little quirks. Thus, it is not a multi-purpose programming tool, but is focused on giving you the easiest and most intuitive way to interact with R, making it a good tool for learning and using R. Beyond that it works identically across all platforms (Windows, OS X, and Linux), making it a good tool for teaching. It also integrates some extensions on R (like R-Markdown for reporting), which we will get into later in this volume.</p>
+<p>To install RStudio, simply <a href="#id67"><span class="problematic" id="id68">`visit its download page&lt;https://www.rstudio.com/products/rstudio/download/#download&gt;`_</span></a> and choose the appropriate version for your system. Be aware, that RStudio is simply a frontend and requires you to have installed R as described in the previous section. In contrast to R, RStudio comes with an integrated possibility of updating - this does not update R, however! So you will still need to check for a new version every three months or so, if you are working on a Windows or OS X machine.</p>
+<p>Everything we will do in R in the following sections can be done without RStudio, using either just the command-line version of R or any other IDE. Using RStudio is simply a recommendation to ease your way into using R.</p>
+<p>When you start up RStudio, the first thing you should do is to open a new R script. You can do this with <kbd class="kbd docutils literal notranslate">Ctrl+Shift+n</kbd> (or <kbd class="kbd docutils literal notranslate">Cmd+Shift+n</kbd>, if you are using OS X) or via <span class="menuselection">File ‣ New File ‣ R Script</span>. After doing so, your RStudio window should look something like this:</p>
+<div class="figure" id="id24">
+<img alt="../_images/rstudio_splash.png" src="../_images/rstudio_splash.png" />
+<p class="caption"><span class="caption-text">RStudio just after opening a new R script.</span></p>
+</div>
+<p>There are four basic panes in this window. In the top left you have the R script you just opened. This is the spot where you can generate your code. Writing the code does not do anything until it is executed. You can run the R code either by clicking the Run-button (in the top right of this pane) or by using <kbd class="kbd docutils literal notranslate">Ctrl+Enter</kbd>. For example, typing in <code class="code docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span></code> and executing it will send the command (3 + 4) to the console (the pane on the bottom left). Here you should then have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="o">+</span><span class="mi">4</span>
+</pre></div>
+</div>
+<p>as a mirror of what you executed and</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 7</span>
+</pre></div>
+</div>
+<p>as the result. The layout will be a bit different from what you see on this website: your commands should be preceded by a prompt <code class="code docutils literal notranslate"><span class="pre">&gt;</span></code> and, by default, be in blue, while the result should be in black. Throughout the sections of this volume dealing with R, results will always be preceded by the double hash: <code class="code docutils literal notranslate"><span class="pre">##</span></code>.</p>
+<p>These two panes are what you would find in almost any frontend you could use to interact with R. Where RStudio starts to shine is the remaining two. In the top-right you see a pane labeled “Environment”. The other two tabs of this pane are rarely of relevance, so just concentrate on the Environment for now. This pane shows you everything that is currently active in R. We will get into this in a second, but believe me: this makes the first steps in R much easier, because you always have a quick overview of all data you are currently working with. To bottom-right pane has five tabs - all of which are relevant. “Files” gives you the possibility to navigate and open files in R. “Plots” is pretty much self explanatory and we will be generating some nice plots soon. The next tab (the one opened by default) is called “Packages” and gives you an overview of all the extensions for R that are currently installed. You can install new ones and load the ones you have installed from here, but we will be looking at more reproducible way of handling packages in a bit. Perhaps the single most important tab here is the one labeled “Help”. Whenever you want to know how a function works, what it does, or how to interpret its output, the help will be opened here.</p>
+<p>We have only just started to scrape the surface of what RStudio is and what it can do. If you want some more information on it, the documentation provided by RStudio is great. There are tons of <a href="#id69"><span class="problematic" id="id70">`webinars for specific topics&lt;https://resources.rstudio.com/webinars&gt;`_</span></a>, there is a <a href="#id71"><span class="problematic" id="id72">`quick overview of how to learn to use RStudio online&lt;https://www.rstudio.com/online-learning/&gt;`_</span></a>, and best of all, there are <a href="#id73"><span class="problematic" id="id74">`a lot cheat-sheets for RStudio and the packages developed by the RStudio team&lt;https://www.rstudio.com/resources/cheatsheets/&gt;`_</span></a>. From here on, we will not be focusing on RStudio, but more on the core functionality of R. Feel free to do everything we do in the upcoming sections in RStudio, however.</p>
+</div>
+</div>
+<div class="section" id="some-first-wobbly-steps">
+<h2>4.1.3. Some first, wobbly steps<a class="headerlink" href="#some-first-wobbly-steps" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start out with some basics of R code. Because the goal of using R is to write code that leads to reproducible data analysis and results, there are some things you need to know about the general use of R, which we will combine with some hands-on code writing. So, if you have not opened R yet, it is probably time to do so now.</p>
+<div class="section" id="commenting-and-basic-functionality">
+<h3>Commenting and basic functionality<a class="headerlink" href="#commenting-and-basic-functionality" title="Permalink to this headline">¶</a></h3>
+<p>Use comments for everything. I can not stress this enough. Comments are your way of communicating to others and - most often the more important case - to your future self, what you are doing and why. This goes beyond simple small comments and extends to structuring your code. RStudio does a good job of encouraging this, by allowing you to collapse entire sections of your code, if you are currently not interested in looking at it. For the most basic structure, I would recommend using the simple comment character <code class="code docutils literal notranslate"><span class="pre">#</span></code> for small comments and notes. For section titles I recommend beginning the title with <code class="code docutils literal notranslate"><span class="pre">####</span></code> and ending it with <code class="code docutils literal notranslate"><span class="pre">----</span></code>. RStudio will automatically recognize this as the section header, but even if you are using something else, this will help you keep your code organized and readable. Let’s see how this works with some simple calculations in R:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Simple calculations ----</span>
+
+<span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>   <span class="c1"># Addition</span>
+<span class="mi">3</span> <span class="o">-</span> <span class="mi">4</span>   <span class="c1"># Subtraction</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>   <span class="c1"># Multiplication</span>
+<span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span>   <span class="c1"># Division</span>
+<span class="mi">3</span> <span class="o">^</span> <span class="mi">4</span>   <span class="c1"># Powers</span>
+</pre></div>
+</div>
+<p>Here the section is titled “Simple calculations” and each type of calculation is described in a short comment. Now, this may be overkill, but you get the point.</p>
+<p>As you can see, I have always left a space between the numbers and the operations. R does not care about empty space. You can even use indentation to help you organize your code without changing the functionality of your code. Beyond this, you do not need to end lines with any specific character - a simple line break ends a line. It is generally recommended to write R as you would write normal sentences, using appropriate spaces to enhance the readability of your code. If you want a detailed style guide for R code, there are <a href="#id75"><span class="problematic" id="id76">`general recommendations published by Google&lt;https://google.github.io/styleguide/Rguide.xml&gt;`_</span></a>.</p>
+<p>Now, as we have seen before, executing the basic calculations in your code will result in you receiving a copy of the code you executed, as well as a numeric result in your console. Let’s take the division example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span>   <span class="c1"># Division</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 0.75</span>
+</pre></div>
+</div>
+<p>Of course, numeric results are just one kind of result you can obtain from R. As you have seen above, we are often also interested in logical returns. In R, these work something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Logical relations ----</span>
+
+<span class="mi">3</span> <span class="o">==</span> <span class="mi">4</span>   <span class="c1"># Equal?</span>
+<span class="mi">3</span> <span class="o">!=</span> <span class="mi">4</span>   <span class="c1"># Unequal?</span>
+<span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">4</span>    <span class="c1"># Greater than?</span>
+<span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">4</span>    <span class="c1"># Smaller than?</span>
+<span class="mi">3</span> <span class="o">&gt;=</span> <span class="mi">4</span>   <span class="c1"># Greater or equal?</span>
+<span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">4</span>   <span class="c1"># Smaller or equal?</span>
+</pre></div>
+</div>
+<p>The first one, as you should expect, returns</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">==</span> <span class="mi">4</span>   <span class="c1"># Equal?</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] FALSE</span>
+</pre></div>
+</div>
+<p>and the second one returns</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">!=</span> <span class="mi">4</span>   <span class="c1"># Unequal?</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] TRUE</span>
+</pre></div>
+</div>
+<p>Internally, <code class="code docutils literal notranslate"><span class="pre">TRUE</span></code> is coded as a 1, while <code class="code docutils literal notranslate"><span class="pre">FALSE</span></code> is coded as a 0. Besides making sense, this also results in a lot of nice properties, we will be making use of soon. One quick tip: as with most programming languages the <code class="code docutils literal notranslate"><span class="pre">!</span></code> denotes negation in R, so you could also construct a more complicated version of <code class="code docutils literal notranslate"><span class="pre">!=</span></code> by hand:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!(3 == 4)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] TRUE</span>
+</pre></div>
+</div>
+<p>which can be read as “not (3 equals 4)”. Because the parentheses are evaluated first, they return a <code class="code docutils literal notranslate"><span class="pre">FALSE</span></code> and this result is negated by <code class="code docutils literal notranslate"><span class="pre">!</span></code>, leading to the final <code class="code docutils literal notranslate"><span class="pre">TRUE</span></code>. Why would you ever need this? Well, we will see.</p>
+</div>
+<div class="section" id="functions-and-arguments">
+<h3>Functions and arguments<a class="headerlink" href="#functions-and-arguments" title="Permalink to this headline">¶</a></h3>
+<p>What we have looked at so far are simple calculations and equality/inequality checks. These are somewhat special, because the deviate from the “normal way” of doing things in R. Normally, you use functions in R. Using the basic addition shown above, you would write:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 10</span>
+</pre></div>
+</div>
+<p>but the way more akin to how R works in all other instances is by using the <code class="code docutils literal notranslate"><span class="pre">sum</span></code> function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 10</span>
+</pre></div>
+</div>
+<p>Now, from this simple example you can already derive the basics of how functions work in R. The general structure is always</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span><span class="p">(</span><span class="n">argument1</span><span class="p">,</span> <span class="n">argument2</span><span class="p">,</span> <span class="n">argument3</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, the name of a function is written first and all the arguments the function requires are passed to it in parentheses, separated by commas. The <code class="code docutils literal notranslate"><span class="pre">sum</span></code> function is special in a way, because it can basically take an infinite number of arguments. Let’s look at a more prototypical function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 4.60517</span>
+</pre></div>
+</div>
+<p>As you can see, this returns the natural logarithm of 100. However, what if I want a logarithm with a different base? Because we are using 100 as the example, the simplest logarithm would be of base 10:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 2</span>
+</pre></div>
+</div>
+<p>Let us untangle how this works. Remember your school math: <span class="math notranslate nohighlight">\(\log_{\text{base}} \text{argument} = \text{answer}\)</span>. So, the <code class="code docutils literal notranslate"><span class="pre">log</span></code> function takes the <span class="math notranslate nohighlight">\(\text{argument}\)</span> as its first argument and the <span class="math notranslate nohighlight">\(\text{base}\)</span> as its second argument. Now, because most people simply cannot remember the correct order of all arguments for the unbelievable number of functions you can use in R, there is a second way of using functions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 2</span>
+</pre></div>
+</div>
+<p>In this approach, you need to name the arguments, but are now free to provide them in any order you wish:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="p">(</span><span class="n">base</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 2</span>
+</pre></div>
+</div>
+<p>How can you ever know the names and order of the arguments to a function? There are a few different possibilities, the quickest one is probably:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## function (x, base = exp(1))</span>
+<span class="c1">## NULL</span>
+</pre></div>
+</div>
+<p>So what does this mean? The function <code class="code docutils literal notranslate"><span class="pre">log</span></code> has two possible arguments: <code class="code docutils literal notranslate"><span class="pre">x</span></code> and <code class="code docutils literal notranslate"><span class="pre">base</span></code>. However, what <code class="code docutils literal notranslate"><span class="pre">base</span> <span class="pre">=</span> <span class="pre">exp(1)</span></code> tells you, is that there is a default in place for the <code class="code docutils literal notranslate"><span class="pre">base</span></code>-argument. So, if you do not provide a value for this argument, the default is used. In this case <span class="math notranslate nohighlight">\(e\)</span> is defined for the exponential function <code class="code docutils literal notranslate"><span class="pre">exp</span></code>, but not separately. So if you use the <code class="code docutils literal notranslate"><span class="pre">log</span></code>-function, <code class="code docutils literal notranslate"><span class="pre">exp(1)</span></code> is evaluated and passed to <code class="code docutils literal notranslate"><span class="pre">log</span></code> as an argument. This already shows you that functions can be nested in R: the <code class="code docutils literal notranslate"><span class="pre">exp</span></code>-function needs to be evaluated to provide an argument for <code class="code docutils literal notranslate"><span class="pre">log</span></code>, so it must be evaluated first. This leads to the same simple principle you find in equations, which can make complicated R code frustrating to read: nested functions are evaluated from the inside out. There are several ways to avoid this, which we will get to in bit.</p>
+</div>
+<div class="section" id="getting-and-using-help">
+<h3>Getting and using help<a class="headerlink" href="#getting-and-using-help" title="Permalink to this headline">¶</a></h3>
+<p>While we used <code class="code docutils literal notranslate"><span class="pre">args</span></code> to get a quick overview of the arguments for the logarithm in R in the previous section, R actually comes with a very good integrated help system. For any function you know the name of, you can simply use the <code class="code docutils literal notranslate"><span class="pre">help</span></code> function. In most cases, this is opened in a new window or pane, which means you can have the help opened at all times. I would encourage you not to be shy about your usage of <code class="code docutils literal notranslate"><span class="pre">help</span></code>. It is a much better, efficient way of learning R than typing and retyping arguments over and over. If you are using RStudio, Atom, or something similar, there is also often some form of auto-completion to help you with functions and their arguments. If it is too much effort for you to type <code class="code docutils literal notranslate"><span class="pre">help(function)</span></code>, you can also use <code class="code docutils literal notranslate"><span class="pre">?function</span></code> to achieve the same result.</p>
+<p>So, let’s look at the help for the logarithm:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>opens up the help file for the <code class="code docutils literal notranslate"><span class="pre">log</span></code> function. You can scroll through this help, but here is a short rundown of the basic layout of any R help file:</p>
+<p><em>Description</em>: Usually a very short overview of what the function does.</p>
+<p><em>Usage</em>: The basic structure of the function. This contains all of the arguments you can use. In some cases, like the one you are currently looking at, this may contain multiple functions that are documented together, because they work in the same way.  As we discussed above, if an argument is followed by <code class="code docutils literal notranslate"><span class="pre">=</span> <span class="pre">something</span></code>, it has a fixed default. If you do not provide a value for that argument, the default is used. Conversely, this also means that any argument not followed by the equals-sign does not have a default an <em>must</em> be provided.</p>
+<p><em>Arguments</em>: This shows you a list of all the arguments the function accepts with a brief description of what they do and which format they must adhere to.</p>
+<p><em>Details</em>: Additional information you may want. For functions that perform complex analysis, this may contain a detailed description of the procedure with appropriate citations.</p>
+<p><em>Values</em>: A list of all the output a function produces. In R results of functions are often much bigger than what is printed, when you use them. The values listed here are all the values that are returned, even though you may not see or interact with them on a regular basis.</p>
+<p><em>See Also</em>: If you did not find what you were looking for, maybe these similar functions can help you.</p>
+<p><em>Examples</em>: Maybe the most important section. All documentation in R must ship with minimal working examples. Often the list of arguments can be overwhelming, so you may want to scroll to the bottom to look at the examples in order to see the functions in action. What you can do is copy examples and paste them into your R script to execute them. Basically, this is the same as asking the judges to hear the word in sentence when you were contestant in a spelling bee.</p>
+<div class="section" id="apropos">
+<h4>Apropos<a class="headerlink" href="#apropos" title="Permalink to this headline">¶</a></h4>
+<p><code class="code docutils literal notranslate"><span class="pre">apropos</span></code> is function you can use instead of <code class="code docutils literal notranslate"><span class="pre">help</span></code>. Using <code class="code docutils literal notranslate"><span class="pre">help</span></code> requires you to know the exact, specific name of the function you need help with. Most of the time that is not the situation you need help in. Often the actual name of a function eludes you, which is where <code class="code docutils literal notranslate"><span class="pre">apropos</span></code> (or its short version <code class="code docutils literal notranslate"><span class="pre">??</span></code>) comes into play.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apropos</span><span class="p">(</span><span class="n">logarithm</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>should open a list of some possible functions you could have meant. From here, you can navigate the help files of these functions.</p>
+</div>
+</div>
+<div class="section" id="messages-warnings-and-errors">
+<h3>Messages, warnings, and errors<a class="headerlink" href="#messages-warnings-and-errors" title="Permalink to this headline">¶</a></h3>
+<p>There is no way around it: mistakes happen. When using R, especially in the learning phases, you will produce code that is incorrect, produces errors, or does not do what you expected it to. It is important to know, that this is nothing to be afraid of. One of the advantages of R is that it is made for people who are not professional programmers, so it is rather forgiving in how mistakes can be handled. Because you can execute R code a line at a time, you can avoid the anxious time spent waiting for your code to compile before punishing you with error messages. Instead, you get an immediate feedback on what you did wrong - always think of this, when you are struggling through countless R errors.</p>
+<p>On a fundamental level, R has three ways (in addition to just producing correct output) to communicate with you: messages, warnings, and errors.</p>
+<p>Messages are simply a sign of a chatty programmer. Often times they provide information about the options with which you invoked a function or tell you about a package being in a beta-State. The startup we looked at in the section <a class="reference internal" href="#running-r-for-the-first-time">Running R for the first time</a>, was such a message: it gives you additional information. You can produce messages yourself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">message</span><span class="p">(</span><span class="s1">&#39;I am peckish.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## I am peckish.</span>
+</pre></div>
+</div>
+<p>This makes sense if you are running long scripts or writing your own functions and want to produce some output to give you a progress update, for example.</p>
+<p>The second tier are warnings:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;I am hungry.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Warning: I am hungry.</span>
+</pre></div>
+</div>
+<p>Warnings indicate that something probably did not go as planned. This means that the function you called still produced output, but you should check to see, whether it is really what you wanted. You can produce a warning for the logarithm-example by</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Warning in log(-1): NaNs produced</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] NaN</span>
+</pre></div>
+</div>
+<p>This still produces output (<code class="code docutils literal notranslate"><span class="pre">NaN</span></code>, meaning ‘Not a Number’), but tells you that something went awry in a warning message. If you produce a lot of warnings (more than 10, by default) R will simply say something like <code class="code docutils literal notranslate"><span class="pre">There</span> <span class="pre">were</span> <span class="pre">11</span> <span class="pre">warnings</span> <span class="pre">(use</span> <span class="pre">warnings()</span> <span class="pre">to</span> <span class="pre">see</span> <span class="pre">them)</span></code>. Then, executing <code class="code docutils literal notranslate"><span class="pre">warnings()</span></code> will give you a detailed output about the warnings you produced. If you really produce a lot of warnings (more than 50, by default) R will stop counting them and only return the first 50 when you invoke <code class="code docutils literal notranslate"><span class="pre">warnings()</span></code>.</p>
+<p>The third tier are errors. Errors mean, that the function you called was aborted and that no output was produced. A typical error is providing the wrong arguments to functions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="p">(</span><span class="n">argument</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Error in eval(expr, envir, enclos): argument &quot;x&quot; is missing, with no default</span>
+</pre></div>
+</div>
+<p>Just like messages and warnings, you can also produce them yourself</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="p">(</span><span class="s1">&#39;I am starving.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Error in eval(expr, envir, enclos): I am starving.</span>
+</pre></div>
+</div>
+<p>Note that errors are produced using the <code class="code docutils literal notranslate"><span class="pre">stop</span></code> function, not with a function called <code class="code docutils literal notranslate"><span class="pre">error</span></code>. This underlines that the code is stopped at that point. If you are writing a function this means that the execution of the function is aborted at that point and that the error-message you provided is returned. In long scripts this does not mean, that the next line will not be executed, however! Because the next line is a new command, R will simply continue on without having produced the previous results, which can often result in very long chains of errors.</p>
+<p>The text produced by warnings and errors is written to be useful in all cases, in which they can occur, so it often does not seem all that helpful. However, once you develop a better understanding of the inner workings of R, you will start noticing that they actually tell you exactly what the problem is.</p>
+</div>
+<div class="section" id="objects-and-the-environment">
+<h3>Objects and the Environment<a class="headerlink" href="#objects-and-the-environment" title="Permalink to this headline">¶</a></h3>
+<p>Now we are really getting into the bread and butter of R. What we saw above - typing in a function and getting a result printed out - is less frequently of interest in R than storing results of a function and using them again in some other fashion. It is also where R gains a leg-up on many of its competitors in the market of data analysis software. Storing results from one type of analysis and then using these as the data for a different type of analysis gives you the flexibility of doing whatever you want with R. Its implementation is also extremely intuitive, so let us take a look:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_num</span> <span class="o">&lt;-</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, you did not get a result. The result of the <code class="code docutils literal notranslate"><span class="pre">sum</span></code> is simply stored in the object called <code class="code docutils literal notranslate"><span class="pre">my_num</span></code>. The arrow <code class="code docutils literal notranslate"><span class="pre">&lt;-</span></code> assigns the result of the right side to whatever object is on the left side. This also works in reverse:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">my_num</span>
+</pre></div>
+</div>
+<p>but the first version is much more common, because it allows you to see the objects you have created faster. One important thing that just happened, that I want to draw your attention to, is that there was no warning whatsoever. In R objects are simply overwritten if you assign new content to them, so it is best to be very aware of the names for objects that you have already used. This makes it doubly important to use distinctive names for your objects (the other reason being that you want to know what is happening). The <a href="#id77"><span class="problematic" id="id78">`Google Styleguide for R&lt;https://google.github.io/styleguide/Rguide.xml&gt;`_</span></a> that I mentioned above also contains some guidelines on how you should name your objects. These are only guidelines, however, and objects can have any name that does not start in a number.</p>
+<p>Now that results are in an object, how do we get access to them? The easiest way is to simply write the name of the object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_num</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 10</span>
+</pre></div>
+</div>
+<p>which is shorthand for writing <code class="code docutils literal notranslate"><span class="pre">print(my_num)</span></code> or <code class="code docutils literal notranslate"><span class="pre">(my_num)</span></code>. But the goal of assigning values and results to objects is to be able to pass them on to other functions. So, in this simple example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sqrt</span><span class="p">(</span><span class="n">my_num</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 3.162278</span>
+</pre></div>
+</div>
+<p>passes our object to a function. This is essentially the same as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 3.162278</span>
+</pre></div>
+</div>
+<p>which evaluates the <code class="code docutils literal notranslate"><span class="pre">sum</span></code> and then passes its results to <code class="code docutils literal notranslate"><span class="pre">sqrt</span></code>. As you have probably guessed, there is no end to the possibilities of nesting functions or creating objects. So</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_root</span> <span class="o">&lt;-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">my_num</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>uses the object <code class="code docutils literal notranslate"><span class="pre">my_num</span></code> as an argument in the square-root function and then stores the result in a new object called <code class="code docutils literal notranslate"><span class="pre">my_root</span></code>.</p>
+<p>Again, <em>we</em> decided how to name this object. Instead of naming it <code class="code docutils literal notranslate"><span class="pre">my_num</span></code>, we could have named it <code class="code docutils literal notranslate"><span class="pre">cheesecake</span></code> or <code class="code docutils literal notranslate"><span class="pre">captain_marvel</span></code>. Of course these names would not be very descriptive and would probably confuse us in the future as well as others trying to use the code.
+If you are using RStudio you have probably realized that both objects have appeared in the Environment tab of top-right pane. RStudio gives you continuous information on what you are currently working with. Any object in the global environment (the one you are currently working in) can be accessed, used, and overwritten. The traditional R way of looking at your environment is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;my_num&quot;  &quot;my_root&quot;</span>
+</pre></div>
+</div>
+<p>which lists all objects and functions that you have created. If your workspace has gotten out of hand, you can also list only some objects with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span><span class="p">(</span><span class="n">pattern</span> <span class="o">=</span> <span class="s1">&#39;num&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;my_num&quot;</span>
+</pre></div>
+</div>
+<p>This shows you all objects which contain <code class="code docutils literal notranslate"><span class="pre">num</span></code> in their name. Removing objects from your workspace is also quite simple:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span><span class="p">(</span><span class="n">my_num</span><span class="p">)</span>
+<span class="n">ls</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;my_root&quot;</span>
+</pre></div>
+</div>
+<p>Again, notice that you do not get a warning - the object simply disappears - so you might want to be rather careful with using <code class="code docutils literal notranslate"><span class="pre">rm</span></code>. If you want everything in your workspace to disappear and start over with a blank slate, you can combine <code class="code docutils literal notranslate"><span class="pre">rm</span></code> and <code class="code docutils literal notranslate"><span class="pre">ls</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span><span class="p">(</span><span class="nb">list</span> <span class="o">=</span> <span class="n">ls</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>where you simply provide the entire environment (as produced by <code class="code docutils literal notranslate"><span class="pre">ls</span></code>) as an argument to <code class="code docutils literal notranslate"><span class="pre">rm</span></code>.</p>
+</div>
+</div>
+<div class="section" id="handling-data">
+<h2>4.1.4. Handling data<a class="headerlink" href="#handling-data" title="Permalink to this headline">¶</a></h2>
+<p>As you saw in the previous section, objects are where results and numbers are stored. Data you assess is no different, it is only bigger. As discussed in an earlier chapter, variables are the basis of assessing behavior and multiple variables are combined into datasets.</p>
+<p>R is extremely rarely used to manually input any data. Most of the time it is either imported from a program you used to assess your experimental data (e.g. from Psychopy), downloaded from a provider you used for assessing data online (from Limesurvey, Unipark, or something similar) or transferred from a different source of data storage (e.g. from an Excel-Sheet). Nevertheless, knowing how data can be created in R can be an incredible help to understanding how data is structured, when it comes from somewhere else.</p>
+<p>One more important thing before we continue. In case you were testing all of the previous commands directly in the console, I would like to remind you that we have a script open. This should be used for writing down and commenting the code from this exercise. Do not forget to regularly save it, as you would any other work in progress. You can copy-paste the commands from the following sections into your script, give them a descriptive comment and execute them right from the editor. Just select the row you would like to execute and hit the Run button. You can also use the <kbd class="kbd docutils literal notranslate">Ctrl + Enter</kbd> shortcut (<kbd class="kbd docutils literal notranslate">Cmd + Enter</kbd> on Macs).</p>
+<div class="section" id="vectors">
+<h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h3>
+<p>So let us build a minimal example: say you observed reaction times of five participants in a <a href="#id79"><span class="problematic" id="id80">`Stroop test&lt;http://www.yorku.ca/pclassic/Stroop/&gt;`_</span></a> ([Stroop1935]), one of the classics of experimental psychology. The basic idea is best conveyed in a picture:</p>
+<div class="figure">
+<img alt="../_images/stroop.png" src="../_images/stroop.png" />
+</div>
+<p>The Stroop effect is the difference between the time it takes you to correctly name the color a word is printed in, when the word and text color match versus when they do not (see [MacLeod1991] for an overview over the first 50 years of its existence). If you want to see how it works, you can check your performance in an online version on <a href="#id81"><span class="problematic" id="id82">`Open Cognition Lab&lt;http://opencoglab.org/stroop/&gt;`_</span></a>, for example.</p>
+<p>Now, let’s say you measured six reaction times manually, by administering a minimal version of the Stroop to a friend. The times could be (in milliseconds) 597, 1146, 497, 938, 1080, and 1304. To input data as one vector in R, you can use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">react</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="mi">597</span><span class="p">,</span> <span class="mi">1146</span><span class="p">,</span> <span class="mi">497</span><span class="p">,</span> <span class="mi">938</span><span class="p">,</span> <span class="mi">1080</span><span class="p">,</span> <span class="mi">1304</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Calling the <code class="code docutils literal notranslate"><span class="pre">help</span></code> function on <code class="code docutils literal notranslate"><span class="pre">c</span></code> (as discussed in <a class="reference internal" href="#getting-and-using-help">Getting and using help</a>) reveals that it is a basic function to combine all arguments (in this case six reaction times) into a single object. This object is a vector: a one-dimensional array of information, which is of the same type. You can find out what type of vector you just stored your information in in multiple ways. We can use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class</span><span class="p">(</span><span class="n">react</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;numeric&quot;</span>
+</pre></div>
+</div>
+<p>to start, because that provides us with the most basic information about the object <code class="code docutils literal notranslate"><span class="pre">react</span></code>: it is a numeric vector. Using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">react</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##  num [1:6] 597 1146 497 938 1080 ...</span>
+</pre></div>
+</div>
+<p>we obtain a bit more detailed information about the <em>structure</em> of the object: it is numeric (<code class="code docutils literal notranslate"><span class="pre">num</span></code>), it contains the elements one through six (<code class="code docutils literal notranslate"><span class="pre">[1:6]</span></code>), and we see a preview of this object, namely its first five elements.</p>
+<p>There are three general types of vectors in R:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Shorthand</th>
+<th class="head">Content</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">logical</span></code></td>
+<td><code class="code docutils literal notranslate"><span class="pre">logi</span></code></td>
+<td><code class="code docutils literal notranslate"><span class="pre">TRUE</span></code> or <code class="code docutils literal notranslate"><span class="pre">FALSE</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal notranslate"><span class="pre">numeric</span></code></td>
+<td><code class="code docutils literal notranslate"><span class="pre">num</span></code></td>
+<td>Any type of number</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">character</span></code></td>
+<td><code class="code docutils literal notranslate"><span class="pre">chr</span></code></td>
+<td>Any combination of letters and numbers</td>
+</tr>
+</tbody>
+</table>
+<p>Continuing with the Stroop example, the color of the text that was presented is relevant information. We could encode this in a character vector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">color</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can check whether this is a <code class="code docutils literal notranslate"><span class="pre">character</span></code> vector with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] TRUE</span>
+</pre></div>
+</div>
+<p>In general, the <code class="code docutils literal notranslate"><span class="pre">is.</span></code> prefix can be combined with all types of data storage in R, to check whether it is of that type. The same goes for <code class="code docutils literal notranslate"><span class="pre">as.</span></code> which can be used for a simple attempt to convert data from one type to another. For the vector-types we have seen, you could use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">as</span><span class="o">.</span><span class="n">numeric</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Warning: NAs introduced by coercion</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] NA NA NA NA NA NA</span>
+</pre></div>
+</div>
+<p>As you can see, this produces a warning (see <a class="reference internal" href="#messages-warnings-and-errors">Messages, warnings, and errors</a>) and the resulting vector contains only <code class="code docutils literal notranslate"><span class="pre">NA</span></code>. This is R’s way of encoding the absence of information and is short for <em>not available</em>. This occurs, because R has no idea how to transform the word <code class="code docutils literal notranslate"><span class="pre">'green'</span></code> into a number. Using the basics of measurement theory that were discussed in an earlier chapter, we know that what R is missing is some form of adequate relation. We will discuss how this is done in <a class="reference internal" href="#factors">Factors</a>, but for now, let us continue with vectors.</p>
+<p>Next to the color, the actual text we are presented with in the Stroop test is also quite important. So, we can generate another character vector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, the core effect found by [Stroop1935] is that the reaction is slower, when the color and the text are incongruent. We can use the logical relations shown in <a class="reference internal" href="#commenting-and-basic-functionality">Commenting and basic functionality</a> to generate a logical vector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cong</span> <span class="o">&lt;-</span> <span class="n">color</span> <span class="o">==</span> <span class="n">text</span>
+</pre></div>
+</div>
+<p>In <a class="reference internal" href="#commenting-and-basic-functionality">Commenting and basic functionality</a> we saw how comparisons work, when we compare two elements. An incredible positive about R is that most things (e.g. functions and mathematical operations) also work when applied to entire vectors or matrices of data. What happened in this instance, is that the elements in <code class="code docutils literal notranslate"><span class="pre">color</span></code> and the elements in <code class="code docutils literal notranslate"><span class="pre">text</span></code> were compared one-by-one: is the first element in <code class="code docutils literal notranslate"><span class="pre">color</span></code> the same as the first element in <code class="code docutils literal notranslate"><span class="pre">text</span></code>? Is the second element in <code class="code docutils literal notranslate"><span class="pre">color</span></code> the same as the second element in <code class="code docutils literal notranslate"><span class="pre">text</span></code>? And so on… This results in a logical vector of the same length as the two original vectors, because they were compared element-wise:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cong</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE</span>
+</pre></div>
+</div>
+<p>As you can see, this is a logical vector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">logical</span><span class="p">(</span><span class="n">cong</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] TRUE</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="factors">
+<h3>Factors<a class="headerlink" href="#factors" title="Permalink to this headline">¶</a></h3>
+<p>R’s way of storing variables with a nominal or ordinal scale is a type of special vector called a <code class="code docutils literal notranslate"><span class="pre">factor</span></code>. These factors have the special property of being numeric while also storing information about what each numeric value means. Take the color variable from our example: we can convert the character vector containing the colors of the presented to a factor by using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">color_fac</span> <span class="o">&lt;-</span> <span class="k">as</span><span class="o">.</span><span class="n">factor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and to obtain some overview of what this now looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">color_fac</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##  Factor w/ 4 levels &quot;blue&quot;,&quot;green&quot;,..: 2 3 1 3 4 2</span>
+</pre></div>
+</div>
+<p>As you can see, this factor contains numeric values (<code class="code docutils literal notranslate"><span class="pre">2</span> <span class="pre">3</span> <span class="pre">1</span> <span class="pre">3</span> <span class="pre">4</span> <span class="pre">2</span></code>), but also encodes what each of these numbers mean, by assigning levels. To see all levels of a factor, you can use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">levels</span><span class="p">(</span><span class="n">color_fac</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;blue&quot;   &quot;green&quot;  &quot;purple&quot; &quot;red&quot;</span>
+</pre></div>
+</div>
+<p>As you can probably guess, the numeric values are assigned by the way these levels are ordered. Because the original we converted to a factor was a character vector, these levels are ordered alphabetically. Specifically, all unique values of the vector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unique</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;green&quot;  &quot;purple&quot; &quot;blue&quot;   &quot;red&quot;</span>
+</pre></div>
+</div>
+<p>are ordered and then used as the levels of the factor. Printing the contents of the factor returns the levels, which are associated with each value, not the number that is stored:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">color_fac</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] green  purple blue   purple red    green</span>
+<span class="c1">## Levels: blue green purple red</span>
+</pre></div>
+</div>
+<p>which is much more useful, because we will rarely have code-book lying next to our screen where we can look up what each number means. Additionally printing a factor returns the <em>possible</em> values, meaning all levels of the factor. Be aware that this makes it possible to have levels of factors, which are not realized in the data.</p>
+<p>The dual storage of information makes it, so that factors can easily be converted to <code class="code docutils literal notranslate"><span class="pre">numeric</span></code> or <code class="code docutils literal notranslate"><span class="pre">character</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">as</span><span class="o">.</span><span class="n">numeric</span><span class="p">(</span><span class="n">color_fac</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 2 3 1 3 4 2</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">as</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="n">color_fac</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;green&quot;  &quot;purple&quot; &quot;blue&quot;   &quot;purple&quot; &quot;red&quot;    &quot;green&quot;</span>
+</pre></div>
+</div>
+<p>whichever is more relevant at the moment. However, even though there are numbers associated with each level, the order of the values is arbitrary, meaning normal factors encode nominal scales. You can even change which level comes first, i.e. which level is the reference level, by using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">color_fac</span> <span class="o">&lt;-</span> <span class="n">relevel</span><span class="p">(</span><span class="n">color_fac</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This command overwrites the original object <code class="code docutils literal notranslate"><span class="pre">color_fac</span></code> with a new version, where <code class="code docutils literal notranslate"><span class="pre">'green'</span></code> is the first level. All other levels are simply moved back:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">levels</span><span class="p">(</span><span class="n">color_fac</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;green&quot;  &quot;blue&quot;   &quot;purple&quot; &quot;red&quot;</span>
+</pre></div>
+</div>
+<p>If your original is a character vector, the strings are simply used as the levels. If your original vector is numeric, this does not really help you. Take the numeric version of our colors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">color_num</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and convert it to a factor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">color_fac2</span> <span class="o">&lt;-</span> <span class="k">as</span><span class="o">.</span><span class="n">factor</span><span class="p">(</span><span class="n">color_num</span><span class="p">)</span>
+<span class="n">levels</span><span class="p">(</span><span class="n">color_fac2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot;</span>
+</pre></div>
+</div>
+<p>the resulting levels are not really helpful. In this case, you can provide new levels to the object.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">levels</span><span class="p">(</span><span class="n">color_fac2</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">color_fac2</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] green  purple blue   purple red    green</span>
+<span class="c1">## Levels: blue green purple red</span>
+</pre></div>
+</div>
+<p>Let’s take a quick look at how this works: there are four levels (1, 2, 3, 4) from the conversion of the numeric vector. These four levels can be provided with new labels (blue, green, purple, red). Thus, it is important that there are actually four levels, which we assign to the levels attribute. We don’t need to assign the values for each observation of the variable, only the unique levels.</p>
+<p>Now, as I’ve noted, normal factors encode nominal scales. You can also encode ordinal variables with the <code class="code docutils literal notranslate"><span class="pre">ordered</span></code> type. Say we ordered the colors by their wavelengths: purple (with the shortest wavelength), blue, green, red.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">color_ord</span> <span class="o">&lt;-</span> <span class="k">as</span><span class="o">.</span><span class="n">ordered</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+<span class="n">color_ord</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] green  purple blue   purple red    green</span>
+<span class="c1">## Levels: blue &lt; green &lt; purple &lt; red</span>
+</pre></div>
+</div>
+<p>Well that’s not what we wanted. I will leave it up to you to find out how the correct order of colors can be achieved in this case! At this point, all you need, is to be aware that unordered (i.e. nominal) and ordered (i.e. ordinal) variables can both be used in R. As a matter of fact, this is one of the many cases in R, where one is simply a special version of the other:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">factor</span><span class="p">(</span><span class="n">color_ord</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] TRUE</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">ordered</span><span class="p">(</span><span class="n">color_fac</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] FALSE</span>
+</pre></div>
+</div>
+<p>meaning that <code class="code docutils literal notranslate"><span class="pre">ordered</span></code> is a special case of <code class="code docutils literal notranslate"><span class="pre">factor</span></code>.</p>
+</div>
+<div class="section" id="combining-data">
+<h3>Combining data<a class="headerlink" href="#combining-data" title="Permalink to this headline">¶</a></h3>
+<p>As a result of the section on <a class="reference internal" href="#vectors">Vectors</a>, we have four different objects in our environment, which all relate to the same thing. Naturally, the best idea would be to combine them somehow. As with vectors, there are multiple types of storing data sets in R, but their relationships are a bit more complicated. Let’s get a general overview:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Content</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">matrix</span></code></td>
+<td>Vectors of the same length and type (two dimensional)</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal notranslate"><span class="pre">array</span></code></td>
+<td>Vectors of the same length and type (n-dimensional)</td>
+</tr>
+<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">data.frame</span></code></td>
+<td>Vectors of the same length</td>
+</tr>
+<tr class="row-odd"><td><code class="code docutils literal notranslate"><span class="pre">list</span></code></td>
+<td>Any objects</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the types are more specialized the further to they are to the top of the table. More specialized types restrict your possibilities of combining arbitrary information, but make storing and handling data more efficient in terms of computational power. Especially when handling abstrusely large data (such as raw fMRI or genetical data), I would highly recommend using matrices. Matrices are especially useful, because you can simply apply matrix-algebra to them, making computation and data analysis much easier.</p>
+<p>As you can probably tell from the table, a <code class="code docutils literal notranslate"><span class="pre">matrix</span></code> is a special case of an <code class="code docutils literal notranslate"><span class="pre">array</span></code> - the two dimensional one. Less obvious is the fact that :code:<a href="#id8"><span class="problematic" id="id9">`</span></a>data.frame`s are special cases of :code:<a href="#id10"><span class="problematic" id="id11">`</span></a>list`s, i.e. the one where all content is of exactly the same length.</p>
+<p>Let’s begin by constructing a matrix. For this, we need to ensure that the objects we intend to combine are of the same type and of the same length:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;character&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;character&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">length</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 6</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">length</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 6</span>
+</pre></div>
+</div>
+<p>or, more simply:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="o">==</span> <span class="n">class</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] TRUE</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">length</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="o">==</span> <span class="n">length</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] TRUE</span>
+</pre></div>
+</div>
+<p>If we want to combine these two to a matrix, there are multiple ways, but the two main approaches are, by either using the <code class="code docutils literal notranslate"><span class="pre">matrix</span></code> function or by using <code class="code docutils literal notranslate"><span class="pre">cbind</span></code>. We will use the second approach here, but I encourage you to take a look at <code class="code docutils literal notranslate"><span class="pre">help(matrix)</span></code> and try this approach to reconstruct what is happening here.</p>
+<p>The function <code class="code docutils literal notranslate"><span class="pre">cbind</span></code> refers to <em>binding</em> vectors together as multiple <em>columns</em>. Traditionally, data frames are organized in such a fashion, that columns represent different variables, while rows represent different observations (e.g. people). If you wanted to combine data from different people that were observed on the same number of variables (e.g. the six reaction times of two different people) you would use <code class="code docutils literal notranslate"><span class="pre">rbind</span></code>, for <em>binding</em> multiple <em>rows</em>. In our case, we can combine <code class="code docutils literal notranslate"><span class="pre">text</span></code> and <code class="code docutils literal notranslate"><span class="pre">color</span></code> to a matrix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span> <span class="o">&lt;-</span> <span class="n">cbind</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting object is a matrix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;matrix&quot;</span>
+</pre></div>
+</div>
+<p>but - because matrices are special cases of arrays - it is also an array!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] TRUE</span>
+</pre></div>
+</div>
+<p>What matrices are not, is special cases of :code:<a href="#id12"><span class="problematic" id="id13">`</span></a>data.frame`s or :code:<a href="#id14"><span class="problematic" id="id15">`</span></a>list`s:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] FALSE</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] FALSE</span>
+</pre></div>
+</div>
+<p>Combining <code class="code docutils literal notranslate"><span class="pre">color</span></code> and <code class="code docutils literal notranslate"><span class="pre">text</span></code> worked, because both are of the same type (<code class="code docutils literal notranslate"><span class="pre">character</span></code>). However, the data we have is also numeric (the reaction times) and logical (the indicator of congruence). If you combine all of them using the <code class="code docutils literal notranslate"><span class="pre">cbind</span></code> command, the following will happen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span> <span class="o">&lt;-</span> <span class="n">cbind</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">cong</span><span class="p">,</span> <span class="n">react</span><span class="p">)</span>
+<span class="n">mat</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##      color    text     cong    react</span>
+<span class="c1">## [1,] &quot;green&quot;  &quot;green&quot;  &quot;TRUE&quot;  &quot;597&quot;</span>
+<span class="c1">## [2,] &quot;purple&quot; &quot;purple&quot; &quot;TRUE&quot;  &quot;1146&quot;</span>
+<span class="c1">## [3,] &quot;blue&quot;   &quot;blue&quot;   &quot;TRUE&quot;  &quot;497&quot;</span>
+<span class="c1">## [4,] &quot;purple&quot; &quot;green&quot;  &quot;FALSE&quot; &quot;938&quot;</span>
+<span class="c1">## [5,] &quot;red&quot;    &quot;blue&quot;   &quot;FALSE&quot; &quot;1080&quot;</span>
+<span class="c1">## [6,] &quot;green&quot;  &quot;red&quot;    &quot;FALSE&quot; &quot;1304&quot;</span>
+</pre></div>
+</div>
+<p>All vectors were combined, but they were all converted to the most general type of vector of the three: <code class="code docutils literal notranslate"><span class="pre">character</span></code>. This is bad, because you loose the numeric information in the variable <code class="code docutils literal notranslate"><span class="pre">react</span></code> and can not use it for calculations and statistical analysis.</p>
+<p>This is why, in most cases you will encounter with behavioral data, :code:<a href="#id16"><span class="problematic" id="id17">`</span></a>data.frame`s are the type of storage needed. You can combine the four vectors like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">cong</span><span class="p">,</span> <span class="n">react</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This results in a <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code> with six rows and four columns. You can check this with the specific functions <code class="code docutils literal notranslate"><span class="pre">nrow</span></code> and <code class="code docutils literal notranslate"><span class="pre">ncol</span></code>, or get a general overview with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## &#39;data.frame&#39;:    6 obs. of  4 variables:</span>
+<span class="c1">##  $ color: Factor w/ 4 levels &quot;blue&quot;,&quot;green&quot;,..: 2 3 1 3 4 2</span>
+<span class="c1">##  $ text : Factor w/ 4 levels &quot;blue&quot;,&quot;green&quot;,..: 2 3 1 2 1 4</span>
+<span class="c1">##  $ cong : logi  TRUE TRUE TRUE FALSE FALSE FALSE</span>
+<span class="c1">##  $ react: num  597 1146 497 938 1080 ...</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##    color   text  cong react</span>
+<span class="c1">## 1  green  green  TRUE   597</span>
+<span class="c1">## 2 purple purple  TRUE  1146</span>
+<span class="c1">## 3   blue   blue  TRUE   497</span>
+<span class="c1">## 4 purple  green FALSE   938</span>
+<span class="c1">## 5    red   blue FALSE  1080</span>
+<span class="c1">## 6  green    red FALSE  1304</span>
+</pre></div>
+</div>
+<p>As you can see, R automatically converts character vectors to factors! This is because that is what is most often desired. As with (almost) all behavior of R, you can adjust this. As we saw in <a class="reference internal" href="#functions-and-arguments">Functions and arguments</a>, this is only a matter of identifying the correct argument and changing its value. You can check <code class="code docutils literal notranslate"><span class="pre">help(data.frame)</span></code> and will see that the argument we are looking for is aptly named <code class="code docutils literal notranslate"><span class="pre">stringsAsFactors</span></code>. So:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat2</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">cong</span><span class="p">,</span> <span class="n">react</span><span class="p">,</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will provide us with a <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code> in which the character vectors remain as such. We can check:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">dat2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## &#39;data.frame&#39;:    6 obs. of  4 variables:</span>
+<span class="c1">##  $ color: chr  &quot;green&quot; &quot;purple&quot; &quot;blue&quot; &quot;purple&quot; ...</span>
+<span class="c1">##  $ text : chr  &quot;green&quot; &quot;purple&quot; &quot;blue&quot; &quot;green&quot; ...</span>
+<span class="c1">##  $ cong : logi  TRUE TRUE TRUE FALSE FALSE FALSE</span>
+<span class="c1">##  $ react: num  597 1146 497 938 1080 ...</span>
+</pre></div>
+</div>
+<p>The three types discussed so far all assume that the vectors we combine are of the same length. What happens when they are not? Let’s generate a vector with five entries. Because we have not particular data for this example, we can just fill it with a sequence from 1 though 5.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">five</span> <span class="o">&lt;-</span> <span class="mi">1</span><span class="p">:</span><span class="mi">5</span>
+<span class="n">five</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 1 2 3 4 5</span>
+</pre></div>
+</div>
+<p>In this case the <code class="code docutils literal notranslate"><span class="pre">:</span></code> is a shorthand for <code class="code docutils literal notranslate"><span class="pre">seq(1,</span> <span class="pre">5,</span> <span class="pre">1)</span></code>, meaning a sequence is generated from 1 through 5 in steps of 1. With the <code class="code docutils literal notranslate"><span class="pre">seq</span></code> function you can generate all kinds of sequences - feel free to check <code class="code docutils literal notranslate"><span class="pre">help(seq)</span></code>.</p>
+<p>Combining this five-entry vector with our other variables results in an error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">cong</span><span class="p">,</span> <span class="n">react</span><span class="p">,</span> <span class="n">five</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Error in data.frame(color, text, cong, react, five): arguments imply differing number of rows: 6, 5</span>
+</pre></div>
+</div>
+<p>which shows you that <code class="code docutils literal notranslate"><span class="pre">data.frame`s</span> <span class="pre">need</span> <span class="pre">all</span> <span class="pre">their</span> <span class="pre">variables</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">length.</span> <span class="pre">This</span> <span class="pre">makes</span> <span class="pre">sense,</span> <span class="pre">when</span> <span class="pre">you</span> <span class="pre">think</span> <span class="pre">about</span> <span class="pre">what</span> <span class="pre">the</span> <span class="pre">data</span> <span class="pre">represents:</span> <span class="pre">usually</span> <span class="pre">each</span> <span class="pre">row</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">data</span> <span class="pre">set</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">person</span> <span class="pre">or</span> <span class="pre">trial,</span> <span class="pre">why</span> <span class="pre">would</span> <span class="pre">some</span> <span class="pre">trials</span> <span class="pre">have</span> <span class="pre">less</span> <span class="pre">variables</span> <span class="pre">than</span> <span class="pre">others?</span> <span class="pre">But,</span> <span class="pre">say</span> <span class="pre">the</span> <span class="pre">reaction</span> <span class="pre">timed</span> <span class="pre">out</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">sixth</span> <span class="pre">trial,</span> <span class="pre">this</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">result</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">shorter</span> <span class="pre">vector,</span> <span class="pre">but</span> <span class="pre">simply</span> <span class="pre">in</span> <span class="pre">that</span> <span class="pre">instance</span> <span class="pre">being</span> <span class="pre">a</span> <span class="pre">missing</span> <span class="pre">value</span> <span class="pre">-</span> <span class="pre">:code:`NA</span></code> in R verbiage. You can achieve this by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">five</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="n">five</span><span class="p">,</span> <span class="n">NA</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="code docutils literal notranslate"><span class="pre">NA`s</span> <span class="pre">can</span> <span class="pre">be</span> <span class="pre">used</span> <span class="pre">in</span> <span class="pre">any</span> <span class="pre">type</span> <span class="pre">of</span> <span class="pre">vector</span> <span class="pre">-</span> <span class="pre">they</span> <span class="pre">do</span> <span class="pre">not</span> <span class="pre">change</span> <span class="pre">the</span> <span class="pre">type</span> <span class="pre">of</span> <span class="pre">vector,</span> <span class="pre">they</span> <span class="pre">simply</span> <span class="pre">represent</span> <span class="pre">the</span> <span class="pre">absence</span> <span class="pre">of</span> <span class="pre">information.</span> <span class="pre">This</span> <span class="pre">turns</span> <span class="pre">the</span> <span class="pre">vector</span> <span class="pre">into</span> <span class="pre">a</span> <span class="pre">vector</span> <span class="pre">with</span> <span class="pre">six</span> <span class="pre">entries,</span> <span class="pre">the</span> <span class="pre">last</span> <span class="pre">of</span> <span class="pre">which</span> <span class="pre">is</span> <span class="pre">:code:`NA</span></code>. If you are adding a vector to a <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code>, you do not need to enter all vectors, by the way. You can add a vector to an already existing <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">five</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##    color   text  cong react five</span>
+<span class="c1">## 1  green  green  TRUE   597    1</span>
+<span class="c1">## 2 purple purple  TRUE  1146    2</span>
+<span class="c1">## 3   blue   blue  TRUE   497    3</span>
+<span class="c1">## 4 purple  green FALSE   938    4</span>
+<span class="c1">## 5    red   blue FALSE  1080    5</span>
+<span class="c1">## 6  green    red FALSE  1304   NA</span>
+</pre></div>
+</div>
+<p>One final word of caution: in R there is a special exception to the “must be of the same length”-rule. An exception is made when the shorter vector is a divisor of the longer vector. In that instance, the shorter vector is repeated until the data is filled. Let’s take the vector of 1 through 3 as an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">three</span> <span class="o">&lt;-</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">cong</span><span class="p">,</span> <span class="n">react</span><span class="p">,</span> <span class="n">three</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##    color   text  cong react three</span>
+<span class="c1">## 1  green  green  TRUE   597     1</span>
+<span class="c1">## 2 purple purple  TRUE  1146     2</span>
+<span class="c1">## 3   blue   blue  TRUE   497     3</span>
+<span class="c1">## 4 purple  green FALSE   938     1</span>
+<span class="c1">## 5    red   blue FALSE  1080     2</span>
+<span class="c1">## 6  green    red FALSE  1304     3</span>
+</pre></div>
+</div>
+<p>so you will need be careful when adding new variables: always check whether the new data is actually what you intended.</p>
+<p>The final way of storing data is simultaneously the least efficient and most regularly used form: <code class="code docutils literal notranslate"><span class="pre">lists</span></code>. The latter is the case because most functions return lists as results. For very large data sets I would advise against using list, because they tend to slow everything down quite drastically. In general, if it is at all possible to simplify your data into a data type that is above it in the table I presented at the beginning of this section, you should probably do it.</p>
+<p>Nevertheless, lists are useful, because you can combine all types of information and data. A simple case is a list of different vectors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lst</span> <span class="o">&lt;-</span> <span class="nb">list</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">cong</span><span class="p">,</span> <span class="n">react</span><span class="p">)</span>
+<span class="nb">str</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## List of 4</span>
+<span class="c1">##  $ : chr [1:6] &quot;green&quot; &quot;purple&quot; &quot;blue&quot; &quot;purple&quot; ...</span>
+<span class="c1">##  $ : chr [1:6] &quot;green&quot; &quot;purple&quot; &quot;blue&quot; &quot;green&quot; ...</span>
+<span class="c1">##  $ : logi [1:6] TRUE TRUE TRUE FALSE FALSE FALSE</span>
+<span class="c1">##  $ : num [1:6] 597 1146 497 938 1080 ...</span>
+</pre></div>
+</div>
+<p>The structure of this looks eerily similar to that of the <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code> we looked at before. That is because, as mentioned, :code:<a href="#id18"><span class="problematic" id="id19">`</span></a>data.frame`s are simply special lists. The difference is that you can store anything in your list, even other lists!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meta_list</span> <span class="o">&lt;-</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;Person 1&#39;</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span>
+<span class="nb">str</span><span class="p">(</span><span class="n">meta_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## List of 3</span>
+<span class="c1">##  $ : chr &quot;Person 1&quot;</span>
+<span class="c1">##  $ :List of 4</span>
+<span class="c1">##   ..$ : chr [1:6] &quot;green&quot; &quot;purple&quot; &quot;blue&quot; &quot;purple&quot; ...</span>
+<span class="c1">##   ..$ : chr [1:6] &quot;green&quot; &quot;purple&quot; &quot;blue&quot; &quot;green&quot; ...</span>
+<span class="c1">##   ..$ : logi [1:6] TRUE TRUE TRUE FALSE FALSE FALSE</span>
+<span class="c1">##   ..$ : num [1:6] 597 1146 497 938 1080 ...</span>
+<span class="c1">##  $ :&#39;data.frame&#39;:        6 obs. of  4 variables:</span>
+<span class="c1">##   ..$ color: Factor w/ 4 levels &quot;blue&quot;,&quot;green&quot;,..: 2 3 1 3 4 2</span>
+<span class="c1">##   ..$ text : Factor w/ 4 levels &quot;blue&quot;,&quot;green&quot;,..: 2 3 1 2 1 4</span>
+<span class="c1">##   ..$ cong : logi [1:6] TRUE TRUE TRUE FALSE FALSE FALSE</span>
+<span class="c1">##   ..$ react: num [1:6] 597 1146 497 938 1080 ...</span>
+</pre></div>
+</div>
+<p>In many cases, the results of functions are rather complicated lists. For example, the result of a regression in R is a list of 13 elements of various types and sizes, so it is useful to know how to interact with lists, even if your own data should ideally be stored in a different format.</p>
+</div>
+<div class="section" id="extracting-data">
+<h3>Extracting data<a class="headerlink" href="#extracting-data" title="Permalink to this headline">¶</a></h3>
+<p>In the previous two sections the focus was on combining data into larger objects. While this is normally what you do when gathering data, inspecting specific information is just as important, especially because, as noted above, results that are output by analysis functions are often lists.</p>
+<p>Let us start with the simplest case: extracting an element from a vector. The four vectors we generated in the section <a class="reference internal" href="#vectors">Vectors</a> all contain six elements. Take a closer look at the structure of the reaction times:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">react</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##  num [1:6] 597 1146 497 938 1080 ...</span>
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">[1:6]</span></code> tells you that this vector contains elements one through six. The brackets indicate how to subset these elements. For example, if you want to see the fourth element of this vector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">react</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 938</span>
+</pre></div>
+</div>
+<p>This returns the fourth element. In R the brackets <code class="code docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> are the most basic way of selecting specific elements in any object. What you write in those brackets then determines what you select. You can also explicitly deselect something that is not of interest to you:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">react</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1]  597 1146  497 1080 1304</span>
+</pre></div>
+</div>
+<p>The important thing to keep in mind here, is that this selection works, like most things in R, for vectors just as well as it does for single elements. So creating a selection vector can help:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sel</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">react</span><span class="p">[</span><span class="n">sel</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1]  597  497 1080</span>
+</pre></div>
+</div>
+<p>of course, you do not need to create an object for the selection vector, you can pass it directly (i.e. <code class="code docutils literal notranslate"><span class="pre">react[c(1,</span> <span class="pre">3,</span> <span class="pre">5)]</span></code>) and it will have the same effect. This works according to the same principle we discussed in <a class="reference internal" href="#functions-and-arguments">Functions and arguments</a>: functions can be nested in functions and, because they are evaluated from the inside out, their results will be used as the argument. In this case the <code class="code docutils literal notranslate"><span class="pre">c</span></code> function is evaluated and its result (the vector) is passed to the brackets. In case you were wondering: you can also use this to select the same element multiple times.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">react</span><span class="p">[</span><span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1]  597  597 1146</span>
+</pre></div>
+</div>
+<p>The selection we performed up until here was based on the numeric representation of an element’s position in a vector. You can also use <code class="code docutils literal notranslate"><span class="pre">character</span></code> and <code class="code docutils literal notranslate"><span class="pre">logical</span></code> vectors to select elements. We will see how this works for <code class="code docutils literal notranslate"><span class="pre">character</span></code> vectors in a second, but the logical vector provides an immense amount of flexibility. Recall the vector we constructed to indicate, whether text and color are the same (i.e. whether it is a congruent condition). We can now use this vector to logically select the elements of any other vector that is also six elements long. So, to select the reaction times for congruent conditions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">react</span><span class="p">[</span><span class="n">cong</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1]  597 1146  497</span>
+</pre></div>
+</div>
+<p>For the incongruent conditions, we can simply use the <code class="code docutils literal notranslate"><span class="pre">!</span></code> to negate the logical vector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>react[!cong]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1]  938 1080 1304</span>
+</pre></div>
+</div>
+<p>Because vectors are one-dimensional, selecting elements from them requires only one information. Most data are stored in two (or more) dimensional objects, however. As shown in <a class="reference internal" href="#combining-data">Combining data</a>, there are four standard variants of data storage. First, let’s look at the matrix of colors and texts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span> <span class="o">&lt;-</span> <span class="n">cbind</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="n">mat</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##      color    text</span>
+<span class="c1">## [1,] &quot;green&quot;  &quot;green&quot;</span>
+<span class="c1">## [2,] &quot;purple&quot; &quot;purple&quot;</span>
+<span class="c1">## [3,] &quot;blue&quot;   &quot;blue&quot;</span>
+<span class="c1">## [4,] &quot;purple&quot; &quot;green&quot;</span>
+<span class="c1">## [5,] &quot;red&quot;    &quot;blue&quot;</span>
+<span class="c1">## [6,] &quot;green&quot;  &quot;red&quot;</span>
+</pre></div>
+</div>
+<p>This matrix has six rows and two columns, so to select any single element we need to locate it along these two dimensions. So to select the “red” text, we need to navigate to the 6th row and the 2nd column:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##  text</span>
+<span class="c1">## &quot;red&quot;</span>
+</pre></div>
+</div>
+<p>In R, as is usual, the first dimension of matrices is the row and the second dimension is the columns. Thus, the brackets we use as our “selection function”, now take two arguments. If we want all elements along one dimension we can use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">]</span>     <span class="c1"># All elements of the 1st row</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##   color    text</span>
+<span class="c1">## &quot;green&quot; &quot;green&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span><span class="p">[,</span> <span class="mi">1</span><span class="p">]</span>     <span class="c1"># All elements of the 1st column</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;green&quot;  &quot;purple&quot; &quot;blue&quot;   &quot;purple&quot; &quot;red&quot;    &quot;green&quot;</span>
+</pre></div>
+</div>
+<p>It is possible to select elements in matrices by using a one-dimensional notation:  <code class="code docutils literal notranslate"><span class="pre">mat[7]</span></code> will return the seventh overall element, first counting through all rows of the first column, then continuing with second column and so on. However, I would strongly advise you to use the two-dimensional version of selecting data from matrices for now.</p>
+<p>The two-dimensional selection procedure is, of course, extendable to arrays of more than two dimensions, where you simply provide more arguments to the brackets (e.g. <code class="code docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">1,</span> <span class="pre">4]</span></code> will select the 4th row, 1st column, 4th layer). If you want to select more than one element, you would need to provide vectors determining your selection along on dimension. So, let’s say you want the 1st and 4th element of the 1st column:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span><span class="p">[</span><span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;green&quot;  &quot;purple&quot;</span>
+</pre></div>
+</div>
+<p>Again, this selection procedure is not limited to numeric vectors, but can also be performed using logical or character vectors. As an example for the use of logical vectors, we can select all rows of the matrix, which are congruent conditions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span><span class="p">[</span><span class="n">cong</span><span class="p">,</span> <span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##      color    text</span>
+<span class="c1">## [1,] &quot;green&quot;  &quot;green&quot;</span>
+<span class="c1">## [2,] &quot;purple&quot; &quot;purple&quot;</span>
+<span class="c1">## [3,] &quot;blue&quot;   &quot;blue&quot;</span>
+</pre></div>
+</div>
+<p>Character vectors can be used for selection, if the dimensions of a matrix have names. Let’s check:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dimnames</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [[1]]</span>
+<span class="c1">## NULL</span>
+<span class="c1">##</span>
+<span class="c1">## [[2]]</span>
+<span class="c1">## [1] &quot;color&quot; &quot;text&quot;</span>
+</pre></div>
+</div>
+<p>This is actually the first time we see a function returning a list! The information we can glean from it is that the first dimension (the rows) has <code class="code docutils literal notranslate"><span class="pre">NULL</span></code> names - so no names here. The second dimension (the columns) contains the names color and text. These names were simply inherited from the names of the objects we used <code class="code docutils literal notranslate"><span class="pre">cbind</span></code> on.</p>
+<p>So, knowing the names, we can use a character vector to select columns from this matrix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span><span class="p">[,</span> <span class="s1">&#39;color&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;green&quot;  &quot;purple&quot; &quot;blue&quot;   &quot;purple&quot; &quot;red&quot;    &quot;green&quot;</span>
+</pre></div>
+</div>
+<p>As we discussed in <a class="reference internal" href="#combining-data">Combining data</a>, matrices only work in a limited number of situations and <code class="code docutils literal notranslate"><span class="pre">data.frame`s</span> <span class="pre">are</span> <span class="pre">much</span> <span class="pre">more</span> <span class="pre">widespread.</span> <span class="pre">Then</span> <span class="pre">why</span> <span class="pre">did</span> <span class="pre">we</span> <span class="pre">just</span> <span class="pre">spend</span> <span class="pre">so</span> <span class="pre">much</span> <span class="pre">time</span> <span class="pre">on</span> <span class="pre">matrices?</span> <span class="pre">Well,</span> <span class="pre">because</span> <span class="pre">a</span> <span class="pre">:code:`data.frame</span></code> is just as two-dimensional as a matrix, so the same procedures we discussed for matrices also work for them.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>        <span class="c1"># 1st row, 4th column</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 597</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[,</span> <span class="mi">3</span><span class="p">]</span>         <span class="c1"># All of the 3rd column</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># Elements 2 and 3 of the 3rd column</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] TRUE TRUE</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="n">cong</span><span class="p">,</span> <span class="p">]</span>      <span class="c1"># Only rows for which cong == TRUE</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##    color   text cong react</span>
+<span class="c1">## 1  green  green TRUE   597</span>
+<span class="c1">## 2 purple purple TRUE  1146</span>
+<span class="c1">## 3   blue   blue TRUE   497</span>
+</pre></div>
+</div>
+<p>Remember, that this can be combined with the creation of objects discussed. So, if you want to perform some analyses separately for congruent and incongruent stimuli, you can just create two new :code:<a href="#id20"><span class="problematic" id="id21">`</span></a>data.frame`s, which contain only parts of the originals:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>con &lt;- dat[cong, ]
+inc &lt;- dat[!cong, ]
+</pre></div>
+</div>
+<p>This has the potential to make it much easier to handle subsets of data, when you perform a lot of analyses on certain parts, but not others.</p>
+<p>Next to the procedures for matrices, the procedures for lists also work on <code class="code docutils literal notranslate"><span class="pre">data.frame`s,</span> <span class="pre">because</span> <span class="pre">they</span> <span class="pre">are</span> <span class="pre">very</span> <span class="pre">specific</span> <span class="pre">types</span> <span class="pre">of</span> <span class="pre">lists.</span> <span class="pre">The</span> <span class="pre">most</span> <span class="pre">prominent</span> <span class="pre">way</span> <span class="pre">of</span> <span class="pre">selection</span> <span class="pre">from</span> <span class="pre">:code:`data.frame`s</span> <span class="pre">is</span> <span class="pre">by</span> <span class="pre">using</span> <span class="pre">the</span> <span class="pre">:code:`$</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dat$react
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1]  597 1146  497  938 1080 1304</span>
+</pre></div>
+</div>
+<p>This type of selection can be read as “in <code class="code docutils literal notranslate"><span class="pre">dat</span></code>, select variable <code class="code docutils literal notranslate"><span class="pre">react</span></code>”. This is used in extremely many R scripts, because this allows us to store combined data and then quickly pick a single variable for which we want to calculate some statistics. This procedure also works for lists and can even be extended to cases where multiple <code class="code docutils literal notranslate"><span class="pre">$</span></code> are used in sequence. Say you have multiple data frames in a list. In that situation you can select a variable in a data frame in a list by <code class="code docutils literal notranslate"><span class="pre">list_name$data_name$variable_name</span></code>. However, keep in mind, that for the <code class="code docutils literal notranslate"><span class="pre">$</span></code> approach to work, all elements you are trying to select must be named! For <code class="code docutils literal notranslate"><span class="pre">data.frame`s,</span> <span class="pre">R</span> <span class="pre">generates</span> <span class="pre">names</span> <span class="pre">automatically</span> <span class="pre">(:code:`V1</span></code>, <code class="code docutils literal notranslate"><span class="pre">V2</span></code>, and so on, if you do not provide names), but this is not the case for regular lists.</p>
+<p>To see the names of the variables in your data set, you can simply use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">names</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;color&quot; &quot;text&quot;  &quot;cong&quot;  &quot;react&quot;</span>
+</pre></div>
+</div>
+<p>If you are more comfortable with using functions instead of the brackets or the <code class="code docutils literal notranslate"><span class="pre">$</span></code>, you can also use the <code class="code docutils literal notranslate"><span class="pre">subset</span></code> function, which allows you to achieve the same results. If you are interested in seeing how that function works, I encourage you to take a look at <code class="code docutils literal notranslate"><span class="pre">help(subset)</span></code>.</p>
+</div>
+<div class="section" id="adding-new-data">
+<h3>Adding new data<a class="headerlink" href="#adding-new-data" title="Permalink to this headline">¶</a></h3>
+<p>We have now seen how to combine separate objects to one data set and how to select and extract specific information from those data sets. The last step is to add new information to already existing data.</p>
+<p>As we have seen above, we can use <code class="code docutils literal notranslate"><span class="pre">cbind</span></code> or <code class="code docutils literal notranslate"><span class="pre">rbind</span></code> to combine multiple vectors either by column or by row. This also works for adding columns and rows to pre-existing matrices. Additionally, we already saw that the <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code> function can be used either to combine vectors into multiple columns of a <a href="#id22"><span class="problematic" id="id23">:cdoe:`data.frame`</span></a> or to add vectors to existing ones.</p>
+<p>You can also use the approaches for identifying single rows and columns to add new data. Perhaps the most common scenario is adding new variables to a data set. Say we want to use the deviation of a reaction time from a person’s normal reaction time in our analyses, instead of the raw time we measured. This could have the advantage of controlling for person-specific variables that influence the overall reaction time, but not deviations in our experiment. As such a baseline we can use the arithmetic mean of the reaction times as a placeholder for a person’s average reaction time:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mean(dat$react)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 927</span>
+</pre></div>
+</div>
+<p>So, to compute the deviation from the mean on each reaction time:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dat$react - mean(dat$react)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] -330  219 -430   11  153  377</span>
+</pre></div>
+</div>
+<p>This is again a vector of 6. We could create an object by using the <code class="code docutils literal notranslate"><span class="pre">&lt;-</span></code>, but that would not add the variable to the <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code>. It would simply become a free floating object in our environment. To keep data organized, it is better to store them together in a single object.</p>
+<p>There are now multiple ways to achieve the goal of adding a new variable to the <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code>, but the one you will probably encounter most often is by using the <code class="code docutils literal notranslate"><span class="pre">$</span></code> notation. Let’s say the new variable is supposed to be called <code class="code docutils literal notranslate"><span class="pre">dif</span></code>, for difference. Let’s see whether this variable already exists in the data set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dat$dif
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## NULL</span>
+</pre></div>
+</div>
+<p>As you may have guessed, it doesn’t. This means, we can simply create it by assigning values to it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dat$dif &lt;- dat$react - mean(dat$react)
+</pre></div>
+</div>
+<p>This works just like it does for creating objects in the environment. If we use a name that does not exist, the variable is created. If we use a name of a variable that exists within the <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code>, it is overwritten without warning.</p>
+<p>This variable now exists only in the data set. It does not exist freely in the environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dif</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Error in eval(expr, envir, enclos): object &#39;dif&#39; not found</span>
+</pre></div>
+</div>
+<p>This is especially useful, when you are handling many data sets simultaneously, because it can help you avoid overwriting information you may have needed. Instead a variable is assigned straight to the <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code> it is related to.</p>
+<p>Adding a new variable this way has the benefit of it being named in the process. You could also use the bracket notation to get this done. In our case the <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code> now consists of 5 columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncol</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] 5</span>
+</pre></div>
+</div>
+<p>So, if we were to add a new variable it would be most logical to add it as the 6th, or generally speaking, the <code class="code docutils literal notranslate"><span class="pre">ncol(dat)</span> <span class="pre">+</span> <span class="pre">1</span></code> column:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dat[, ncol(dat) + 1] &lt;- dat$react - mean(dat$react)
+dat
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##    color   text  cong react  dif   V6</span>
+<span class="c1">## 1  green  green  TRUE   597 -330 -330</span>
+<span class="c1">## 2 purple purple  TRUE  1146  219  219</span>
+<span class="c1">## 3   blue   blue  TRUE   497 -430 -430</span>
+<span class="c1">## 4 purple  green FALSE   938   11   11</span>
+<span class="c1">## 5    red   blue FALSE  1080  153  153</span>
+<span class="c1">## 6  green    red FALSE  1304  377  377</span>
+</pre></div>
+</div>
+<p>This adds the variable in the appropriate spot, but does not provide it with a name. Instead it gets the generic name V6. You could then name it manually, by assigning a name via the <code class="code docutils literal notranslate"><span class="pre">names</span></code> function. Because the result of <code class="code docutils literal notranslate"><span class="pre">names</span></code> is a vector, you can assign the name for this specific variable, by selecting the appropriate element:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">names</span><span class="p">(</span><span class="n">dat</span><span class="p">)[</span><span class="n">ncol</span><span class="p">(</span><span class="n">dat</span><span class="p">)]</span> <span class="o">&lt;-</span> <span class="s1">&#39;dif2&#39;</span>
+<span class="n">names</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;color&quot; &quot;text&quot;  &quot;cong&quot;  &quot;react&quot; &quot;dif&quot;   &quot;dif2&quot;</span>
+</pre></div>
+</div>
+<p>Because this variable is the same as the variable we added previously, it makes no sense to keep both of them. To remove a variable from a <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code>, it needs to be overwritten with nothing. As you may have noticed, R represents nothing with <code class="code docutils literal notranslate"><span class="pre">NULL</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dat$dif2 &lt;- NULL
+dat
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##    color   text  cong react  dif</span>
+<span class="c1">## 1  green  green  TRUE   597 -330</span>
+<span class="c1">## 2 purple purple  TRUE  1146  219</span>
+<span class="c1">## 3   blue   blue  TRUE   497 -430</span>
+<span class="c1">## 4 purple  green FALSE   938   11</span>
+<span class="c1">## 5    red   blue FALSE  1080  153</span>
+<span class="c1">## 6  green    red FALSE  1304  377</span>
+</pre></div>
+</div>
+<p>Using the bracket approach, we can also add new rows to our <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code>. The only thing we need to keep in mind here, is that the vectors must be constructed correctly, for the <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code> to accept them. First, let’s remove the new <code class="code docutils literal notranslate"><span class="pre">dif</span></code> variable, so we can return to our original <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dat$dif &lt;- NULL
+str(dat)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## &#39;data.frame&#39;:    6 obs. of  4 variables:</span>
+<span class="c1">##  $ color: Factor w/ 4 levels &quot;blue&quot;,&quot;green&quot;,..: 2 3 1 3 4 2</span>
+<span class="c1">##  $ text : Factor w/ 4 levels &quot;blue&quot;,&quot;green&quot;,..: 2 3 1 2 1 4</span>
+<span class="c1">##  $ cong : logi  TRUE TRUE TRUE FALSE FALSE FALSE</span>
+<span class="c1">##  $ react: num  597 1146 497 938 1080 ...</span>
+</pre></div>
+</div>
+<p>this <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code> now consists of our four original variables. To add a new row, much like we added a new column, we can simply assign values to the <code class="code docutils literal notranslate"><span class="pre">nrow(dat)</span> <span class="pre">+</span> <span class="pre">1</span></code> row:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="n">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">]</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">TRUE</span><span class="p">,</span> <span class="mi">627</span><span class="p">)</span>
+<span class="n">dat</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##    color   text  cong react</span>
+<span class="c1">## 1  green  green  TRUE   597</span>
+<span class="c1">## 2 purple purple  TRUE  1146</span>
+<span class="c1">## 3   blue   blue  TRUE   497</span>
+<span class="c1">## 4 purple  green FALSE   938</span>
+<span class="c1">## 5    red   blue FALSE  1080</span>
+<span class="c1">## 6  green    red FALSE  1304</span>
+<span class="c1">## 7    red    red  TRUE   627</span>
+</pre></div>
+</div>
+<p>Be aware that we are only allowed to add rows that fulfill all the requirements of our <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code>: they must be of the correct length (i.e. the number of columns of the <code class="code docutils literal notranslate"><span class="pre">data.frame</span></code>) and the values in each spot must be compatible with the variables. Factors generally prove most problematic in such situations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="n">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">]</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mi">844</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Warning in `[&lt;-.factor`(`*tmp*`, iseq, value = &quot;orange&quot;): invalid factor</span>
+<span class="c1">## level, NA generated</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##    color   text  cong react</span>
+<span class="c1">## 1  green  green  TRUE   597</span>
+<span class="c1">## 2 purple purple  TRUE  1146</span>
+<span class="c1">## 3   blue   blue  TRUE   497</span>
+<span class="c1">## 4 purple  green FALSE   938</span>
+<span class="c1">## 5    red   blue FALSE  1080</span>
+<span class="c1">## 6  green    red FALSE  1304</span>
+<span class="c1">## 7    red    red  TRUE   627</span>
+<span class="c1">## 8   &lt;NA&gt; purple FALSE   844</span>
+</pre></div>
+</div>
+<p>Factors in <code class="code docutils literal notranslate"><span class="pre">data.frame`s</span> <span class="pre">only</span> <span class="pre">accept</span> <span class="pre">values</span> <span class="pre">with</span> <span class="pre">are</span> <span class="pre">contained</span> <span class="pre">in</span> <span class="pre">their</span> <span class="pre">levels.</span> <span class="pre">If</span> <span class="pre">we</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">add</span> <span class="pre">the</span> <span class="pre">last</span> <span class="pre">row</span> <span class="pre">we</span> <span class="pre">first</span> <span class="pre">need</span> <span class="pre">to</span> <span class="pre">add</span> <span class="pre">:code:</span></code>’orange’` as a level of <code class="code docutils literal notranslate"><span class="pre">color</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>levels(dat$color) &lt;- c(levels(dat$color), &#39;orange&#39;)
+levels(dat$color)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;blue&quot;   &quot;green&quot;  &quot;purple&quot; &quot;red&quot;    &quot;orange&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="n">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span> <span class="p">]</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mi">844</span><span class="p">)</span>
+<span class="n">dat</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##    color   text  cong react</span>
+<span class="c1">## 1  green  green  TRUE   597</span>
+<span class="c1">## 2 purple purple  TRUE  1146</span>
+<span class="c1">## 3   blue   blue  TRUE   497</span>
+<span class="c1">## 4 purple  green FALSE   938</span>
+<span class="c1">## 5    red   blue FALSE  1080</span>
+<span class="c1">## 6  green    red FALSE  1304</span>
+<span class="c1">## 7    red    red  TRUE   627</span>
+<span class="c1">## 8 orange purple FALSE   844</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-data-into-and-out-of-r">
+<h2>4.1.5. Getting data into and out of R<a class="headerlink" href="#getting-data-into-and-out-of-r" title="Permalink to this headline">¶</a></h2>
+<p>Up until this point, everything we have discussed was handled by R internally. If you followed along with all the examples your workspace should look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##  [1] &quot;color&quot;      &quot;color_fac&quot;  &quot;color_fac2&quot; &quot;color_num&quot;  &quot;color_ord&quot;</span>
+<span class="c1">##  [6] &quot;con&quot;        &quot;cong&quot;       &quot;dat&quot;        &quot;dat2&quot;       &quot;five&quot;</span>
+<span class="c1">## [11] &quot;inc&quot;        &quot;lst&quot;        &quot;mat&quot;        &quot;meta_list&quot;  &quot;react&quot;</span>
+<span class="c1">## [16] &quot;sel&quot;        &quot;text&quot;       &quot;three&quot;</span>
+</pre></div>
+</div>
+<p>Most of it is junk that we don’t need, but we may want to keep the data frame containing the results of the Stroop trials.</p>
+<p>In all functions which relate to loading, importing, saving, and exporting data, R requires filepaths to be specified. This means that you would need to determine the entire path in an absolute sense, every time you interact with a file. This can get quite annoying, so there is a specific way, R handles relative paths, which is called the working directory. (For those of you familiar with the terminal in Mac OS X and Linux or the command line in Windows, this is the same way directories are handled in those.) This is simply the directory you are currently working in - if you want to save or load any file in this specific directory, you can simply provide the filename. To see what your current working directory is, you can use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">getwd</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;/home/martin/smobsc/docs/chapter_ana&quot;</span>
+</pre></div>
+</div>
+<p>Of course, your current working directory will have a different name. Generally, I would recommend setting up a folder for each project you are working on and then using that folder as your working directory. This saves you the time of typing in absolute paths and prevents you from accidentally storing files somewhere, where you need to look for them or accidentally overwrite something (again, R will not warn you, if a file already exists). You can set your working directory by using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setwd</span><span class="p">(</span><span class="s1">&#39;PATH/TO/YOUR/DIRECTORY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the easiest case you can simply navigate to your folder using your file system and copy its location (listed in its properties). Windows users should be aware: Windows uses backslashes <code class="code docutils literal notranslate"><span class="pre">\`</span> <span class="pre">to</span> <span class="pre">denote</span> <span class="pre">subfolders,</span> <span class="pre">while</span> <span class="pre">R</span> <span class="pre">uses</span> <span class="pre">forwardslashes</span> <span class="pre">:code:</span></code>/<cite>. So, if you copy the folder location on a Windows machine you will need to replace all the :code:</cite>` with <code class="code docutils literal notranslate"><span class="pre">/</span></code> in your filepaths.</p>
+<p>If you want to see which files are in your working directory, you can use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>to check. In most cases I highly recommend having an additional subfolder called “data” in the folder for your project. Then, you can use <code class="code docutils literal notranslate"><span class="pre">./data/</span></code> to save and load from there.</p>
+<div class="section" id="saving-and-loading">
+<h3>Saving and loading<a class="headerlink" href="#saving-and-loading" title="Permalink to this headline">¶</a></h3>
+<p>R uses two own data formats - RDA and RDS - which you can use to save data to and load data from. Here’s a quick overview:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="30%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Data format</th>
+<th class="head">RDA</th>
+<th class="head">RDS</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>File extension</td>
+<td>.rda, .RData</td>
+<td>.rds</td>
+</tr>
+<tr class="row-odd"><td>Save function</td>
+<td><code class="code docutils literal notranslate"><span class="pre">save</span></code></td>
+<td><code class="code docutils literal notranslate"><span class="pre">saveRDS</span></code></td>
+</tr>
+<tr class="row-even"><td>Load function</td>
+<td><code class="code docutils literal notranslate"><span class="pre">load</span></code></td>
+<td><code class="code docutils literal notranslate"><span class="pre">readRDS</span></code></td>
+</tr>
+<tr class="row-odd"><td>Objects saved</td>
+<td>Multiple</td>
+<td>Single</td>
+</tr>
+<tr class="row-even"><td>Loading behavior</td>
+<td>Restore objects
+in environment</td>
+<td>Assign loaded data
+to new object</td>
+</tr>
+</tbody>
+</table>
+<p>Generally speaking, RDA is best suited when you are storing multiple objects simultaneously and you do not need them separately. RDS on the other hand is best suited for use with single objects. Most people use RDA regardless of whether they are storing multiple objects or single objects, but we will look at both, because using RDS can be extremely beneficial when using the same routines multiple times - for example if you have a single data frame for each test subject.</p>
+<p>First, let’s look at how saving and loading RDAs works. For this example, we will save only the data frame <code class="code docutils literal notranslate"><span class="pre">dat</span></code> in our “data” subfolder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">save</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;./data/dat.rda&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now that we have saved what is relevant to us, let’s clear the entire environment, so we can be sure that loading actually loads a file and we are not just seeing the object we already had in our environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span><span class="p">(</span><span class="nb">list</span> <span class="o">=</span> <span class="n">ls</span><span class="p">())</span>
+<span class="n">ls</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## character(0)</span>
+</pre></div>
+</div>
+<p>Our environment is empty now. So, as stated above, loading the RDA should restore the object <code class="code docutils literal notranslate"><span class="pre">dat</span></code> in our environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./data/dat.rda&#39;</span><span class="p">)</span>
+<span class="n">ls</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## [1] &quot;dat&quot;</span>
+</pre></div>
+</div>
+<p>So that is all it takes to save and load in R. Let’s take a quick look at the alternative: RDS.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">saveRDS</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="s1">&#39;./data/dat.rds&#39;</span><span class="p">)</span>
+<span class="n">rm</span><span class="p">(</span><span class="nb">list</span> <span class="o">=</span> <span class="n">ls</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Loading an RDS requires you to assign the result to an object. This has the benefit that it allows you to use object names that are specific to the script you are working with to analyze your data, not to the one creating it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stroop</span> <span class="o">&lt;-</span> <span class="n">readRDS</span><span class="p">(</span><span class="s1">&#39;./data/dat.rds&#39;</span><span class="p">)</span>
+<span class="n">stroop</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##    color   text  cong react</span>
+<span class="c1">## 1  green  green  TRUE   597</span>
+<span class="c1">## 2 purple purple  TRUE  1146</span>
+<span class="c1">## 3   blue   blue  TRUE   497</span>
+<span class="c1">## 4 purple  green FALSE   938</span>
+<span class="c1">## 5    red   blue FALSE  1080</span>
+<span class="c1">## 6  green    red FALSE  1304</span>
+<span class="c1">## 7    red    red  TRUE   627</span>
+<span class="c1">## 8 orange purple FALSE   844</span>
+</pre></div>
+</div>
+<p>In general, I would recommend using RDS whenever possible. You might be wondering: if RDA can save multiple objects at once, why not save the entire environment? This is actually what RStudio asks you to do, when you close it. Don’t. The core idea of using a programming language like R is that you can use the script to recreate everything that was done. Relying on objects in your workspace that you cannot recreate using your script means that your data preparation and analyses cannot be reconstructed by anyone else.</p>
+</div>
+<div class="section" id="importing-and-exporting">
+<h3>Importing and exporting<a class="headerlink" href="#importing-and-exporting" title="Permalink to this headline">¶</a></h3>
+<p>Most of the programs used to assess data do not produce RDA or RDS data. Most often what this means is that you will have to import and clean data, then save it as RDA or RDS, and use those files for your analysis scripts. For a quick glance of how to import from the data-formats provided by SPSS, SAS, STATA, and so on, you can take a look at the overview provided on the <a href="#id83"><span class="problematic" id="id84">`Quick-R website&lt;https://www.statmethods.net/input/importingdata.html&gt;`_</span></a>. In this section we will take a more in-depth look at importing from text-formats, because they are also often what we get from Python-based assessments.</p>
+<p>The text-formats you will see most often are .csv, .txt, and .dat. While there is a specific function for .csv files (take a look at <code class="code docutils literal notranslate"><span class="pre">help(read.csv)</span></code> if you are interested), the general function <code class="code docutils literal notranslate"><span class="pre">read.table</span></code> can be used for all three types, so it is the best one to discuss here.</p>
+<p>The experiment that was discussed in the previous sections results in multiple .csv files - one for each participant. We will take a look at how to efficiently extract all of them in just a few lines of code in the next chapter, here we will concentrate on importing one of them.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">read.table</span></code> command is the first one we are looking at, that requires quite a few arguments to get it to do what we want. Let’s take a look at all the arguments (you could also use <code class="code docutils literal notranslate"><span class="pre">help(read.table)</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="p">(</span><span class="n">read</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## function (file, header = FALSE, sep = &quot;&quot;, quote = &quot;\&quot;&#39;&quot;, dec = &quot;.&quot;,</span>
+<span class="c1">##     numerals = c(&quot;allow.loss&quot;, &quot;warn.loss&quot;, &quot;no.loss&quot;), row.names,</span>
+<span class="c1">##     col.names, as.is = !stringsAsFactors, na.strings = &quot;NA&quot;,</span>
+<span class="c1">##     colClasses = NA, nrows = -1, skip = 0, check.names = TRUE,</span>
+<span class="c1">##     fill = !blank.lines.skip, strip.white = FALSE, blank.lines.skip = TRUE,</span>
+<span class="c1">##     comment.char = &quot;#&quot;, allowEscapes = FALSE, flush = FALSE,</span>
+<span class="c1">##     stringsAsFactors = default.stringsAsFactors(), fileEncoding = &quot;&quot;,</span>
+<span class="c1">##     encoding = &quot;unknown&quot;, text, skipNul = FALSE)</span>
+<span class="c1">## NULL</span>
+</pre></div>
+</div>
+<p>To know which settings to use, we need to know what our data files look like. Take a look at the first file, the contents should look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## text,is_lure,key,yes_key,rt,subject</span>
+<span class="c1">## Bier,neutral,l,a,2.1808581352200003,0</span>
+<span class="c1">## Dinosaurier,neutral,l,a,0.9811301231380001,0</span>
+<span class="c1">## Volkswagen,correct,a,a,1.0397160053299999,0</span>
+<span class="c1">## Sibirien,neutral,l,a,2.89859485626,0</span>
+</pre></div>
+</div>
+<p>We can see that the first line in our data file contains the variable names, meaning we have to set <code class="code docutils literal notranslate"><span class="pre">header</span> <span class="pre">=</span> <span class="pre">TRUE</span></code> in our <code class="code docutils literal notranslate"><span class="pre">read.table</span></code>. Additionally, the variables are separated by commas, meaning we should use <code class="code docutils literal notranslate"><span class="pre">sep</span> <span class="pre">=</span> <span class="pre">','</span></code>. Let’s see where this leaves us:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drm0</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s1">&#39;./data/0_recognized.csv&#39;</span><span class="p">,</span>
+  <span class="n">header</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="nb">str</span><span class="p">(</span><span class="n">drm0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## &#39;data.frame&#39;:    27 obs. of  6 variables:</span>
+<span class="c1">##  $ text   : Factor w/ 27 levels &quot;Achtung&quot;,&quot;Auto&quot;,..: 4 7 25 24 12 5 19 16 10 8 ...</span>
+<span class="c1">##  $ is_lure: Factor w/ 3 levels &quot;correct&quot;,&quot;lure&quot;,..: 3 3 1 3 1 1 3 1 3 3 ...</span>
+<span class="c1">##  $ key    : Factor w/ 2 levels &quot;a&quot;,&quot;l&quot;: 2 2 1 2 1 1 2 1 2 2 ...</span>
+<span class="c1">##  $ yes_key: Factor w/ 1 level &quot;a&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span>
+<span class="c1">##  $ rt     : num  2.181 0.981 1.04 2.899 2.87 ...</span>
+<span class="c1">##  $ subject: int  0 0 0 0 0 0 0 0 0 0 ...</span>
+</pre></div>
+</div>
+<p>This seems to have done what we wanted. Remember, there is no problem with simply trying things, running your code, to see what happens. As I stated above, it is one of the main benefits of using R: you do not have to compile your code.</p>
+<p>We looked at how you can save this file in an RDA or RDS format in the last section. You can also export it to text-formats to be able to use it in other software. To export, you can use <code class="code docutils literal notranslate"><span class="pre">write.table</span></code>, which works very similar to <code class="code docutils literal notranslate"><span class="pre">read.table</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="p">(</span><span class="n">write</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## function (x, file = &quot;&quot;, append = FALSE, quote = TRUE, sep = &quot; &quot;,</span>
+<span class="c1">##     eol = &quot;\n&quot;, na = &quot;NA&quot;, dec = &quot;.&quot;, row.names = TRUE, col.names = TRUE,</span>
+<span class="c1">##     qmethod = c(&quot;escape&quot;, &quot;double&quot;), fileEncoding = &quot;&quot;)</span>
+<span class="c1">## NULL</span>
+</pre></div>
+</div>
+<p>The first argument that is required is the object we want to export. In our case, this is <code class="code docutils literal notranslate"><span class="pre">drm0</span></code>. The second is, of course, the file we want to store it in. As you can read in the help-file for this function, <code class="code docutils literal notranslate"><span class="pre">append</span></code> indicates whether you want to add what you are exporting to the bottom of an already existing file. If this is set to <code class="code docutils literal notranslate"><span class="pre">FALSE</span></code>, files that already exist will simply be overwritten. To reproduce the file we imported, we would need to set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">write</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">drm0</span><span class="p">,</span> <span class="s1">&#39;./data/export.csv&#39;</span><span class="p">,</span>
+  <span class="n">quote</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span>
+  <span class="n">row</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This results in a file that looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## text,is_lure,key,yes_key,rt,subject</span>
+<span class="c1">## Bier,neutral,l,a,2.18085813522,0</span>
+<span class="c1">## Dinosaurier,neutral,l,a,0.981130123138,0</span>
+<span class="c1">## Volkswagen,correct,a,a,1.03971600533,0</span>
+<span class="c1">## Sibirien,neutral,l,a,2.89859485626,0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="closing-words">
+<h2>4.1.6. Closing words<a class="headerlink" href="#closing-words" title="Permalink to this headline">¶</a></h2>
+<p>In this chapter we took a “quick” glance at the basics of R. Starting to get along with R can feel pretty overwhelming at first, but always remember that there is no penalty for trying something and getting it wrong a couple of times. When seeing warnings and errors, don’t panic. Just remember to use <code class="code docutils literal notranslate"><span class="pre">help</span></code> frequently.</p>
+<p>If you followed along with all the examples in this chapter you should have a general idea of how to use R as a calculator (<a class="reference internal" href="#commenting-and-basic-functionality">Commenting and basic functionality</a>) and understand the basic rules of how to use functions (<a class="reference internal" href="#functions-and-arguments">Functions and arguments</a>). You should also know what objects are and how to create them (<a class="reference internal" href="#objects-and-the-environment">Objects and the Environment</a>). What we will need in the upcoming sections are basic skills in <a class="reference internal" href="#handling-data">Handling data</a>, so we can prepare our analyses.</p>
+<p>In the next chapter, we will dive into some more in-depth concepts of R, but if you want some other sources to broaden your knowledge, I would recommend starting with Hadley Wickhams <a href="#id85"><span class="problematic" id="id86">`Advanced R&lt;http://adv-r.had.co.nz/&gt;`_</span></a>. If your looking for answers to specific questions, check out <a href="#id87"><span class="problematic" id="id88">`R on stackoverflow&lt;https://stackoverflow.com/questions/tagged/r&gt;`_</span></a>.</p>
+</div>
+<div class="section" id="references">
+<h2>4.1.7. References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
