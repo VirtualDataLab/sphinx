@@ -8,9 +8,9 @@ Subchapters
    :maxdepth: 2
 
    Data wrangling
-   Linear and generalized linear mixed-models
+   Linear and generalized linear mixed-models/Linear and generalized linear mixed-models
    Multivariate Analysis and Machine Learning
-   special methods/special methods
+   Special methods/Special methods
    Neuroscience
    Eye tracking
    Online Experiments

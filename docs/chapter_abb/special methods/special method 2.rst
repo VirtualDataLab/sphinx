@@ -1,2 +1,2 @@
-special method 2
+Special method 2
 ^^^^^^^^^^^^^^^^

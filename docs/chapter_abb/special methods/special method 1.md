@@ -1,4 +1,4 @@
-# special method 1
+# Special method 1
 
 
 ## header 1
