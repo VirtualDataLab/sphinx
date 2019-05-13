@@ -1,6 +1,5 @@
-Abbendum
-^^^^^^^^
-bla bla
+Advanced Methods
+^^^^^^^^^^^^^^^^
 
 Subchapters
 
@@ -9,6 +8,7 @@ Subchapters
    :maxdepth: 2
 
    Data wrangling
+   Linear and generalized linear mixed-models
    Multivariate Analysis and Machine Learning
    special methods/special methods
    Neuroscience
