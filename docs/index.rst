@@ -19,6 +19,7 @@ Chapters
    chapter_exp/Conducting Experiments
    chapter_ana/Analysing Experimental Data
    chapter_res/Reporting the Results of Scientific Experiments
+   chapter_adv/Advanced Methods
    chapter_abb/Abbendum
    license
    help
