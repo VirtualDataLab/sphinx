@@ -1,6 +1,6 @@
 Special methods
 ^^^^^^^^^^^^^^^
-bla bla
+bla blah
 
 Subchapters
 
