@@ -7,7 +7,7 @@ Subchapters
 .. toctree::
    :maxdepth: 2
 
-   Introduction.md
+   Introduction to mixed-effects modeling.md
    Fixed and random effects.md
    Linear vs. generalized linear.md
    Contrast coding.md
