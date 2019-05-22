@@ -1,7 +1,7 @@
 Scientific Methods for Open Behavioral, Social and Cognitive Sciences
 ==================================================================================================
 :Editors: Sage Boettcher | Dejan Draschkow  | Jona Sassenhagen | Martin Schultze
-:Contributors: Aylin Kallmayer | Leah Kumle | Leila Zacharias
+:Maintainers: Aylin Kallmayer | Leah Kumle | Leila Zacharias
 :Citation: Boettcher, S.E.P., Draschkow, D., Sassenhagen, J., & Schultze, M. (Eds.). *Scientific Methods for Open Behavioral, Social and Cognitive Sciences*. https://doi.org/10.17605/OSF.IO/X4BCZ
 
 The movement towards open and reproducible science prides itself on its grassroots and bottom-up development. However, even in these transformative times, most junior scientists will not discover the value and functional nature of transparent scientific practice before their graduate studies. This discovery is accompanied by transition costs, bad practices, and wasted time. Our project aims at placing open and reproducible scientific methods at the heart of scientific education - the first undergraduate years. To accomplish this we will establish and edit a teaching book covering not only the theoretical foundations of scientific methods for social and cognitive sciences, but also the practical skills necessary for  transparent practice.
