@@ -1,6 +1,5 @@
 Philosophical Foundations
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-bla bla
 
 Subchapters
 
