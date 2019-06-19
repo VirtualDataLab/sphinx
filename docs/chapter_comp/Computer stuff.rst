@@ -1,6 +1,5 @@
 Computer stuff
 ^^^^^^^^^^^^^^
-bla bla
 
 Subchapters
 
