@@ -1,6 +1,9 @@
 Introduction to Programming with Python
 #######################################
 
+:Authors: Jona Sassenhagen
+:Citation: Sassenhagen, J. (2019). Conducting experiments. In S.E.P. Boettcher, D. Draschkow, J. Sassenhagen & M. Schultze (Eds.). Scientific Methods for Open Behavioral, Social and Cognitive Sciences. https://doi.org/10.17605/OSF.IO/HCJG9
+
 This section is meant as a general introduction to Python and is by far not
 complete. The goal of this section is to give a short introduction to Python
 and help beginners to get familiar with this programming language. We recommend
