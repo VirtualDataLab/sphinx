@@ -4,7 +4,7 @@ Introduction to Programming with R
 ##################################
 
 :Authors: Martin Schultze
-:Citation: Schultze, M. (2019). Analysing experimental data. In S.E.P. Boettcher, D. Draschkow, J. Sassenhagen & M. Schultze (Eds.). *Scientific Methods for Open Behavioral, Social and Cognitive Sciences*. https://doi.org/10.17605/OSF.IO/HCJG9
+:Citation: Schultze, M. (2019). Introduction to Programming with R. In S.E.P. Boettcher, D. Draschkow, J. Sassenhagen & M. Schultze (Eds.). *Scientific Methods for Open Behavioral, Social and Cognitive Sciences*. https://doi.org/10.17605/OSF.IO/HCJG9
 
 Perhaps the question I am confronted with most when teaching statistics courses to psychology undergrads is "Why should I need this, when I become a therapist"? That's a difficult one to answer in a single sentence, but I will give it a try, nonetheless: "Because everything we know in psychology - and the social sciences in general - is connected to empirical data". Well, it was a first try. As the previous sections of this volume have shown you, in scientific psychology we strive to test our claims using data. Testing our claims (ideally) leads to appropriate theories becoming successful and inappropriate theories being discarded. When you are working with patients or clients, would you not rather use techniques that have been proven to be successful in reducing negative symptoms?
 
@@ -144,15 +144,15 @@ There's a few things to pick apart here, so let's start at the top:
 
 ::
 
-    ## 
+    ##
     ## To cite R in publications use:
-    ## 
+    ##
     ##   R Core Team (2019). R: A language and environment for
     ##   statistical computing. R Foundation for Statistical Computing,
     ##   Vienna, Austria. URL https://www.R-project.org/.
-    ## 
+    ##
     ## A BibTeX entry for LaTeX users is
-    ## 
+    ##
     ##   @Manual{,
     ##     title = {R: A Language and Environment for Statistical Computing},
     ##     author = {{R Core Team}},
@@ -161,7 +161,7 @@ There's a few things to pick apart here, so let's start at the top:
     ##     year = {2019},
     ##     url = {https://www.R-project.org/},
     ##   }
-    ## 
+    ##
     ## We have invested a lot of time and effort in creating R, please
     ## cite it when using it for data analysis. See also
     ## 'citation("pkgname")' for citing R packages.
@@ -229,7 +229,7 @@ Use comments for everything. I can not stress this enough. Comments are your way
 ::
 
     #### Simple calculations ----
-    
+
     3 + 4   # Addition
     3 - 4   # Subtraction
     3 * 4   # Multiplication
@@ -265,7 +265,7 @@ Of course, numeric results are just one kind of result you can obtain from R. As
 ::
 
     #### Logical relations ----
-    
+
     3 == 4   # Equal?
     3 != 4   # Unequal?
     3 > 4    # Greater than?
@@ -443,7 +443,7 @@ How can you ever know the names and order of the arguments to a function? There 
 
 ::
 
-    ## function (x, base = exp(1)) 
+    ## function (x, base = exp(1))
     ## NULL
 
 
@@ -1000,7 +1000,7 @@ are ordered and then used as the levels of the factor. Printing the contents of 
 
 ::
 
-    ## [1] green  purple blue   purple red    green 
+    ## [1] green  purple blue   purple red    green
     ## Levels: blue green purple red
 
 
@@ -1101,7 +1101,7 @@ the resulting levels are not really helpful. In this case, you can provide new l
 
 ::
 
-    ## [1] green  purple blue   purple red    green 
+    ## [1] green  purple blue   purple red    green
     ## Levels: blue green purple red
 
 
@@ -1121,7 +1121,7 @@ Now, as I've noted, normal factors encode nominal scales. You can also encode or
 
 ::
 
-    ## [1] green  purple blue   purple red    green 
+    ## [1] green  purple blue   purple red    green
     ## Levels: blue < green < purple < red
 
 
@@ -1343,11 +1343,11 @@ Combining :code:`color` and :code:`text` worked, because both are of the same ty
 
 ::
 
-    ##      color    text     cong    react 
-    ## [1,] "green"  "green"  "TRUE"  "597" 
+    ##      color    text     cong    react
+    ## [1,] "green"  "green"  "TRUE"  "597"
     ## [2,] "purple" "purple" "TRUE"  "1146"
-    ## [3,] "blue"   "blue"   "TRUE"  "497" 
-    ## [4,] "purple" "green"  "FALSE" "938" 
+    ## [3,] "blue"   "blue"   "TRUE"  "497"
+    ## [4,] "purple" "green"  "FALSE" "938"
     ## [5,] "red"    "blue"   "FALSE" "1080"
     ## [6,] "green"  "red"    "FALSE" "1304"
 
@@ -1710,12 +1710,12 @@ Because vectors are one-dimensional, selecting elements from them requires only 
 
 ::
 
-    ##      color    text    
-    ## [1,] "green"  "green" 
+    ##      color    text
+    ## [1,] "green"  "green"
     ## [2,] "purple" "purple"
-    ## [3,] "blue"   "blue"  
-    ## [4,] "purple" "green" 
-    ## [5,] "red"    "blue"  
+    ## [3,] "blue"   "blue"
+    ## [4,] "purple" "green"
+    ## [5,] "red"    "blue"
     ## [6,] "green"  "red"
 
 
@@ -1732,7 +1732,7 @@ This matrix has six rows and two columns, so to select any single element we nee
 
 ::
 
-    ##  text 
+    ##  text
     ## "red"
 
 
@@ -1749,7 +1749,7 @@ In R, as is usual, the first dimension of matrices is the row and the second dim
 
 ::
 
-    ##   color    text 
+    ##   color    text
     ## "green" "green"
 
 
@@ -1796,8 +1796,8 @@ Again, this selection procedure is not limited to numeric vectors, but can also 
 
 ::
 
-    ##      color    text    
-    ## [1,] "green"  "green" 
+    ##      color    text
+    ## [1,] "green"  "green"
     ## [2,] "purple" "purple"
     ## [3,] "blue"   "blue"
 
@@ -1817,7 +1817,7 @@ Character vectors can be used for selection, if the dimensions of a matrix have 
 
     ## [[1]]
     ## NULL
-    ## 
+    ##
     ## [[2]]
     ## [1] "color" "text"
 
@@ -2248,9 +2248,9 @@ Up until this point, everything we have discussed was handled by R internally. I
 
 ::
 
-    ##  [1] "color"      "color_fac"  "color_fac2" "color_num"  "color_ord" 
-    ##  [6] "con"        "cong"       "dat"        "dat2"       "five"      
-    ## [11] "inc"        "lst"        "mat"        "meta_list"  "react"     
+    ##  [1] "color"      "color_fac"  "color_fac2" "color_num"  "color_ord"
+    ##  [6] "con"        "cong"       "dat"        "dat2"       "five"
+    ## [11] "inc"        "lst"        "mat"        "meta_list"  "react"
     ## [16] "sel"        "text"       "three"
 
 
@@ -2424,14 +2424,14 @@ The :code:`read.table` command is the first one we are looking at, that requires
 
 ::
 
-    ## function (file, header = FALSE, sep = "", quote = "\"'", dec = ".", 
-    ##     numerals = c("allow.loss", "warn.loss", "no.loss"), row.names, 
-    ##     col.names, as.is = !stringsAsFactors, na.strings = "NA", 
-    ##     colClasses = NA, nrows = -1, skip = 0, check.names = TRUE, 
-    ##     fill = !blank.lines.skip, strip.white = FALSE, blank.lines.skip = TRUE, 
-    ##     comment.char = "#", allowEscapes = FALSE, flush = FALSE, 
-    ##     stringsAsFactors = default.stringsAsFactors(), fileEncoding = "", 
-    ##     encoding = "unknown", text, skipNul = FALSE) 
+    ## function (file, header = FALSE, sep = "", quote = "\"'", dec = ".",
+    ##     numerals = c("allow.loss", "warn.loss", "no.loss"), row.names,
+    ##     col.names, as.is = !stringsAsFactors, na.strings = "NA",
+    ##     colClasses = NA, nrows = -1, skip = 0, check.names = TRUE,
+    ##     fill = !blank.lines.skip, strip.white = FALSE, blank.lines.skip = TRUE,
+    ##     comment.char = "#", allowEscapes = FALSE, flush = FALSE,
+    ##     stringsAsFactors = default.stringsAsFactors(), fileEncoding = "",
+    ##     encoding = "unknown", text, skipNul = FALSE)
     ## NULL
 
 
@@ -2488,9 +2488,9 @@ We looked at how you can save this file in an RDA or RDS format in the last sect
 
 ::
 
-    ## function (x, file = "", append = FALSE, quote = TRUE, sep = " ", 
-    ##     eol = "\n", na = "NA", dec = ".", row.names = TRUE, col.names = TRUE, 
-    ##     qmethod = c("escape", "double"), fileEncoding = "") 
+    ## function (x, file = "", append = FALSE, quote = TRUE, sep = " ",
+    ##     eol = "\n", na = "NA", dec = ".", row.names = TRUE, col.names = TRUE,
+    ##     qmethod = c("escape", "double"), fileEncoding = "")
     ## NULL
 
 

@@ -2,7 +2,7 @@ Introduction to Programming with Python
 #######################################
 
 :Authors: Peer Herholz
-:Citation: Herholz, P. (2019). Computer stuff. In S.E.P. Boettcher, D. Draschkow, J. Sassenhagen & M. Schultze (Eds.). Scientific Methods for Open Behavioral, Social and Cognitive Sciences. https://doi.org/10.17605/OSF.IO/V8NPH
+:Citation: Herholz, P. (2019). Introduction to Programming with Python. In S.E.P. Boettcher, D. Draschkow, J. Sassenhagen & M. Schultze (Eds.). Scientific Methods for Open Behavioral, Social and Cognitive Sciences. https://doi.org/10.17605/OSF.IO/V8NPH
 
 This section is meant as a general introduction to Python and is by far not
 complete. The goal of this section is to give a short introduction to Python

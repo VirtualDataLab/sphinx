@@ -1,11 +1,11 @@
 
 :Version: 0.1
 
-What is probability
+What is probability?
 ####################
 
 :Authors: Timo Lorenz
-:Citation: Lorenz, T. (2019). Philosophical Foundations. In S.E.P. Boettcher, D. Draschkow, J. Sassenhagen & M. Schultze (Eds.). Scientific Methods for Open Behavioral, Social and Cognitive Sciences. https://doi.org/10.17605/OSF.IO/WT96Q
+:Citation: Lorenz, T. (2019). What is probability? In S.E.P. Boettcher, D. Draschkow, J. Sassenhagen & M. Schultze (Eds.). Scientific Methods for Open Behavioral, Social and Cognitive Sciences. https://doi.org/10.17605/OSF.IO/WT96Q
 
 When we talk about probability, we are talking about a concept that is
 omnipresent in our life – from thinking about all the probabilities you have
