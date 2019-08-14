@@ -11,10 +11,9 @@ Get in touch
 ============
 
 - Report errors, suggest features or view the source code `on GitHub`_.
-- For less well defined questions or ideas, use our Slack *smobsc* channel on https://brainhack-slack-invite.herokuapp.com/.
 
 
 Contributing
 ============
 
-We are always happy for more substantial contributions, for example contributing a chapter. Please contact us via Slack with your idea.
+We are always happy for more substantial contributions, for example contributing a chapter. Please contact us with your idea.
