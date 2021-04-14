@@ -18,7 +18,7 @@ Many blogs are filled with heaps of reasons to use R over other software that wa
 
 1. It's free
 
-This is the obvious one: R costs you nothing to obtain or use. A lot of other software for data analysis requires you to either buy a specific version or rent a yearly license. R, on the other hand, you can simply download, install, and use. R is developed and maintained by `non-profit foundation<https://www.r-project.org/foundation/>`_, meaning it is free of commercial interests.
+This is the obvious one: R costs you nothing to obtain or use. A lot of other software for data analysis requires you to either buy a specific version or rent a yearly license. R, on the other hand, you can simply download, install, and use. R is developed and maintained by (non-profit foundation)[https://www.r-project.org/foundation/], meaning it is free of commercial interests.
 
 2. It's free
 
